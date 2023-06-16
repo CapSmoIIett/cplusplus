@@ -4,6 +4,8 @@
 
 В качестве его основы я взял этот [roadmap](https://github.com/salmer/CppDeveloperRoadmap), от которого я отталкивался
 
+![карта с++](https://github.com/CapSmoIIett/cplusplus/blob/main/images/%D0%9A%D0%B0%D1%80%D1%82%D0%B0%20%D0%A1%2B%2B.png)
+
 
 # Синтаксис
 
@@ -158,7 +160,7 @@ x = x >> 3;             //0b00011111 (31)
 
 # Патерны
 
-[Источник](https://refactoring.guru/ru/design-patterns/catalo)
+[Сайт с патернами](https://refactoring.guru/ru/design-patterns/catalo)
 
 
 ## Порождающие
@@ -198,6 +200,8 @@ x = x >> 3;             //0b00011111 (31)
 ## Контейнеры
 
 ![алгоритм выбора контейнера](https://github.com/CapSmoIIett/cplusplus/blob/main/images/%D0%9A%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B.png)
+
+![скорости работы контейнеров](https://github.com/CapSmoIIett/cplusplus/blob/main/images/%D0%9A%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%B3%D0%B5%D1%80%D1%8B_%D1%81%D0%BA%D0%BE%D1%80%D0%BE%D1%81%D1%82%D1%8C%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B.jpg)
 
 # Системы сборки
 
