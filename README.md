@@ -160,6 +160,10 @@ x = x >> 3;             //0b00011111 (31)
 
 # STL
 
+## Контейнеры
+
+![алгоритм выбора контейнера](https://github.com/CapSmoIIett/cplusplus/blob/main/images/%D0%9A%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B.png)
+
 # Системы сборки
 
 # Пакетные менеджеры
