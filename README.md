@@ -6,8 +6,16 @@
 
 ![карта с++](https://github.com/CapSmoIIett/cplusplus/blob/main/images/%D0%9A%D0%B0%D1%80%D1%82%D0%B0%20%D0%A1%2B%2B.png)
 
+# Содержание:
+
+
+# [Синтаксис](syntax)
+## [Идиомы](idioms)
+# [STL](STL)
+
 
 # Синтаксис
+<a name="syntax"></a> 
 
 ## Базовые операции 
 
@@ -130,6 +138,7 @@ x = x >> 3;             //0b00011111 (31)
 ## Шаблоны
 
 ## Идиомы
+<a name="idioms"></a> 
 
 ### RAII
 *Resource Acquisition Is Initialization - Получение ресурса есть инициализация*
@@ -410,6 +419,7 @@ class CantCopy : private NonCopyable
 # Алгоритмы и структуры данных
 
 # STL
+<a name="STL"></a> 
 
 ## Контейнеры
 
