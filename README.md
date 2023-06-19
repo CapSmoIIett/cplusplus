@@ -17,9 +17,9 @@
 - [Контроль версий (Git)](#контроль-версий-git)
 - [Многопоточность](#многопоточность)
 - [Сети](#сети)
-    -[OSI](#osi)
-    -[TCP](#tcpip)
-    -[UDP](#udp)
+    - [OSI](#osi)
+    - [TCP](#tcpip)
+    - [UDP](#udp)
 
 ![карта с++](https://github.com/CapSmoIIett/cplusplus/blob/main/images/%D0%9A%D0%B0%D1%80%D1%82%D0%B0%20%D0%A1%2B%2B.png)
 
