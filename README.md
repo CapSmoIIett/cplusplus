@@ -756,6 +756,128 @@ std::bitset::reference, в котором находится указатель 
 - нельзя использовать укащатели на объект
 - отсутствуют элементарные групповые операции над битами
 
+---
+
+## Строки
+
+В STL строки представляются как в формате ASCII, так и Unicode:  
+**string** — коллекция однобайтных символов в формате ASCII;  
+**wstring** — коллекция двухбайтных символов в формате Unicode;  
+
+## Строковые потоки
+
+strstream — используются для организации STL-строкового сохранения простых типов данных.
+
+Следующий пример берет строку из общего потока ввода и разбивает его на слова (для обработки введенных команд):
+```c++
+std::getline(std::cin, msg);        // Берем строку из стандартного ввода
+std::istringstream iSStream(msg);   // Строкой иницируем поток
+
+std::transform(msg.begin(), msg.end(), msg.begin(),
+    [](unsigned char c) { return std::tolower(c); });   // Все символы в нижний регистр
+
+std::string word;
+while (iSStream >> word)            // Цикл по словам потока
+    commands.push_back(word);       // Сохраняем сллова в вектор команд
+```
+
+## Итераторы
+
+Итераторы обеспечивают доступ к элементам контейнера и представляют реализацию распространенного паттерна объектно-ориентированного программирования "Iterator".
+С помощью итераторов очень удобно перебирать элементы.
+В C++ итераторы реализуют общий интерфейс для различных типов контейнеров, что позволяет использовать единой подход для обращения к элементам разных типов контейнеров.
+
+Стоит отметить, что итераторы имеют только контейнеры, адаптеры контейнеров — типы std::stack, std::queue и std::priority_queue итераторов не имеют.
+
+Существуют три типа итераторов:  
+1. (forward) iterator — для обхода коллекции от меньшего индекса к большему;  
+2. reverse iterator — для обхода коллекции от большего индекс к меньшему;  
+3. random access iterator — для обхода коллекции в любом направлении.  
+
+Важно понимать, что при получении итератора на какой-то элемент коллекции и последующем изменении коллекции итератор может стать непригоден для использования.
+
+## Алгоритмы
+
+Методы перебора всех элементов коллекции и их обработки:  
+[count](https://cplusplus.com/reference/algorithm/count/) - Возвращает количество элементов в диапазоне [first,last), которые равны val ;  
+[count_if](https://cplusplus.com/reference/algorithm/count_if/)- Возвращает количество элементов в диапазоне, [first,last)для которых значение *pred* истинно.;  
+[find](https://cplusplus.com/reference/algorithm/find/) - Возвращает итератор к первому элементу в диапазоне [first,last), который сравнивается с равным *val* . Если такой элемент не найден, функция возвращает *last* .;  
+[find_if](https://cplusplus.com/reference/algorithm/find/) - Возвращает итератор к первому элементу в диапазоне, [first,last)для которого *pred* возвращает *true*. Если такой элемент не найден, функция возвращает *last*.;  
+adjacent_find;  
+for_each;  
+mismatch;  
+equal;  
+search copy;  
+copy_backward;  
+swap;  
+iter_swap;  
+swap_ranges;  
+fill;  
+fill_n;  
+generate;  
+generate_n;  
+replace;  
+replace_if;  
+transform;  
+remove;  
+remove_if;  
+remove_copy;  
+remove_copy_if;  
+unique;  
+unique_copy;  
+reverse;  
+reverse_copy;  
+rotate;  
+rotate_copy;  
+random_shuffle;  
+partition;  
+stable_partition;  
+
+Методы сортировки коллекции:  
+[sort](https://cplusplus.com/reference/algorithm/sort/) - Сортирует элементы диапазона [first,last)в порядке возрастания. Элементы сравниваются с использованием operator<для первой версии и комп для второй.;  
+stable_sort;  
+partial_sort;  
+partial_sort_copy;  
+nth_element;  
+binary_search;  
+lower_bound;  
+upper_bound;  
+equal_range;  
+merge;  
+inplace_merge;  
+includes;  
+set_union;  
+set_intersection;  
+set_difference;  
+set_symmetric_difference;  
+make_heap;  
+push_heap;  
+pop_heap;  
+sort_heap;  
+min;  
+max;  
+min_element;  
+max_element;  
+lexographical_compare;  
+next_permutation;  
+prev_permutation;  
+
+Методы выполнения определенных арифметических операций над членами коллекций:  
+[Accumulate](https://cplusplus.com/reference/numeric/accumulate/) - Возвращает результат накопления всех значений в диапазоне [first,last) для *init* .;  
+inner_product;  
+partial_sum;  
+adjacent_difference;  
+
+### Предикаты
+Для многих алгоритмов STL можно задать условие, посредством которого алгоритм определит, что ему делать с тем или иным членом коллекции.
+Предикат — это функция, которая принимает несколько параметров и возвращает логическое значение (истина/ложь). 
+Существует и набор стандартных предикатов.
+
+## Потокобезопасность
+Важно понимать, что STL — не потокобезопасная библиотека. Но решить эту проблему очень просто: если два потока используют одну коллекцию, просто реализуйте критическую секцию и Mutex.
+
+---
+
 # Системы сборки
 
 # Пакетные менеджеры
