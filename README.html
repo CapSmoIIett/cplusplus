@@ -1,0 +1,2626 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%D1%81">С++</h1>
+<p>Этот репозиторий представляет мою базу знаний по С++</p>
+<p>В качестве его основы я взял эти карты:</p>
+<ul>
+<li><a href="https://github.com/salmer/CppDeveloperRoadmap">roadmap</a></li>
+<li><a href="https://habr.com/ru/specials/726724/">карта ЛР</a></li>
+</ul>
+<h1 id="%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5">Содержание:</h1>
+<ul>
+<li><a href="#%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81">Синтаксис</a>
+<ul>
+<li><a href="#%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">Базовые операции</a>
+<ul>
+<li><a href="#%D0%B0%D1%80%D0%B8%D1%84%D0%BC%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">Арифметические операции</a></li>
+<li><a href="#%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">Логические операции</a></li>
+<li><a href="#%D1%86%D0%B8%D0%BA%D0%BB%D1%8B">Циклы</a></li>
+<li><a href="#%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2">Приведение типов</a></li>
+<li><a href="#%D0%BF%D0%BE-%D0%B1%D0%B8%D1%82%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">По битовые операции</a></li>
+<li><a href="#%D1%84%D1%83%D0%BD%D0%BA%D1%82%D0%BE%D1%80">Функтор</a></li>
+<li><a href="#%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B5-%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D0%BB%D1%8B">Пользовательские литералы</a></li>
+<li><a href="#sizeof">sizeof</a></li>
+<li><a href="#%D0%B8%D0%BD%D1%82%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%86%D0%B8%D1%8F">Интроспекция</a></li>
+</ul>
+</li>
+<li><a href="#%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8-%D0%B2%D0%B8%D0%B4%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8">Области видимости</a></li>
+<li><a href="#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C%D1%8E">Работа с памятью</a>
+<ul>
+<li>[Выравнивание] (#выравнивание)</li>
+</ul>
+</li>
+<li><a href="#%D0%BF%D0%B5%D1%80%D0%B5%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">Перечисления</a></li>
+<li><a href="#%D0%B8%D0%B4%D0%B8%D0%BE%D0%BC%D1%8B">Идиомы</a></li>
+<li><a href="#%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D0%B8-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8">Указатели и ссылки</a>
+<ul>
+<li>[Ссылки] (#ссылки)</li>
+<li><a href="#%D1%83%D0%BC%D0%BD%D1%8B%D0%B5-%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8">Умные казатели</a>
+<ul>
+<li><a href="#std%D0%B0ut%D0%BE_ptr">std::auto_ptr</a></li>
+<li><a href="#stdunique_ptr">std::unique_ptr</a></li>
+<li><a href="#stdshared_ptr">std::shared_ptr</a></li>
+<li><a href="#make-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8">Make функции</a></li>
+</ul>
+</li>
+<li><a href="#row-%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%81%D1%8B%D1%80%D1%8B%D0%B5-%D0%B8%D0%BB%D0%B8-%D0%BE%D0%B1%D1%8B%D1%87%D0%BD%D1%8B%D0%B5">Row указатели</a></li>
+</ul>
+</li>
+<li>[Семантика перемещения] ()</li>
+<li><a href="">Концепции языка</a></li>
+<li><a href="#%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D1%8B">Стандарты</a>
+<ul>
+<li><a href="#c98">C++98</a></li>
+<li><a href="#c11">C++11</a></li>
+<li><a href="#c14">C++14</a></li>
+<li><a href="#c17">C++17</a></li>
+<li><a href="#c20">C++20</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%D0%BE%D0%BE%D0%BF">ООП</a></li>
+<li><a href="#%D0%BF%D0%B0%D1%82%D0%B5%D1%80%D0%BD%D1%8B">Патерны</a>
+<ul>
+<li><a href="#%D0%BF%D0%BE%D1%80%D0%BE%D0%B6%D0%B4%D0%B0%D1%8E%D1%89%D0%B8%D0%B5">Порождающие</a>
+<ul>
+<li><a href="#%D1%84%D0%B0%D0%B1%D1%80%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4">Фабричный метод</a></li>
+</ul>
+</li>
+<li><a href="#%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5">Структурные</a></li>
+</ul>
+</li>
+<li><a href="#%D0%BF%D0%BE-%D0%B1%D0%B8%D1%82%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">По битовые операции</a></li>
+<li><a href="#STL">STL</a></li>
+<li><a href="#%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8">Системы сборки</a>
+<ul>
+<li><a href="#make">Make</a></li>
+<li><a href="#cmake">CMake</a></li>
+</ul>
+</li>
+<li><a href="#%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B9-git">Контроль версий (Git)</a></li>
+<li><a href="#%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D1%81%D1%82%D1%8C">Многопоточность</a></li>
+<li><a href="#%D1%81%D0%B5%D1%82%D0%B8">Сети</a>
+<ul>
+<li><a href="#osi">OSI</a></li>
+<li><a href="#tcpip">TCP</a></li>
+<li><a href="#udp">UDP</a></li>
+<li><a href="#win-socket">Win socket</a></li>
+</ul>
+</li>
+<li><a href="#%D0%BE%D1%81">ОС</a>
+<ul>
+<li><a href="#%D0%B6%D0%B8%D0%B7%D0%BD%D1%8C-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B">Жизнь программы</a></li>
+</ul>
+</li>
+<li><a href="#%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8-%D0%B8-%D1%84%D1%80%D0%B5%D0%B9%D0%BC%D0%B2%D0%BE%D1%80%D0%BA%D0%B8">Библиотеки и фреймворки</a>
+<ul>
+<li><a href="#boost">Boost</a></li>
+<li><a href="#qt">Qt</a></li>
+<li><a href="#gtestgmoch">gtest/gmoch</a></li>
+</ul>
+</li>
+</ul>
+<p><img src="images/Карта С++.png" alt="карта с++"></p>
+<p><img src="images/roadmapLK.png" alt="карта LK"></p>
+<h1 id="%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81">Синтаксис</h1>
+<h2 id="%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">Базовые операции</h2>
+<h3 id="%D0%B0%D1%80%D0%B8%D1%84%D0%BC%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">Арифметические операции</h3>
+<h4 id="%D0%B8%D0%BD%D0%BA%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D1%82-%D0%B8-%D0%B4%D0%B5%D0%BA%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D1%82">Инкремент и декремент</h4>
+<p>Префиксный - увеличивает значение до выполенения кода в строке где его вызвали.<br>
+Постфиксный - после выполнения кода в строке в которой его вызвали.</p>
+<pre class="hljs"><code><div><span class="hljs-addition">! Постфиксный немного медленее т.к. возвращает копию переменой которую инкрементировал.</span>
+</div></code></pre>
+<p><a href="https://www.cyberforum.ru/cpp-beginners/thread1297462.html">Источник</a></p>
+<p>Операторы могут быть <em>левоассоциативными</em> - выполняются слева направо и <em>правоассоциативными</em> - выполняются справа налево.<br>
+Большинство операторов левоассоциативны.<br>
+Правоассоциативными операторами являются все унарные операторы, различные операторы присваивания и условный оператор.</p>
+<hr>
+<h3 id="%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">Логические операции</h3>
+<hr>
+<h3 id="%D1%86%D0%B8%D0%BA%D0%BB%D1%8B">Циклы</h3>
+<hr>
+<h3 id="%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2">Приведение типов</h3>
+<p><a href="#type-casting">type casting</a></p>
+<hr>
+<h3 id="%D0%BF%D0%BE-%D0%B1%D0%B8%D1%82%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">По битовые операции</h3>
+<p>&lt;&lt; сдвиг влево<br>
+&gt;&gt; сдвиг вправо<br>
+~ поразрядная инверсия<br>
+| поразрядное ИЛИ<br>
+&amp; поразрядное И<br>
+^ поразрядное исключающее ИЛИ</p>
+<p>Если нужно записывать определенные биты, не стирая другие:</p>
+<p>Чтобы записать единицу в бит n:</p>
+<pre class="hljs"><code><div>x |= (<span class="hljs-number">1</span> &lt;&lt; n);  
+</div></code></pre>
+<p>Чтобы записать ноль в бит n:</p>
+<pre class="hljs"><code><div>x &amp;= ~(<span class="hljs-number">1</span> &lt;&lt; n);
+</div></code></pre>
+<p>Если нужно инвертировать состояние бита:</p>
+<pre class="hljs"><code><div>x ^= (<span class="hljs-number">1</span> &lt;&lt; n);
+</div></code></pre>
+<p>Если нужно прочитать отдельный бит:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> x = (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">2</span>) | (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">3</span>) | (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">7</span>);  
+<span class="hljs-keyword">if</span> (x &amp; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">2</span>)) {  <span class="hljs-comment">/* во второй бит вписана единица */</span> }  
+<span class="hljs-keyword">if</span> (x &amp; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">3</span>)) {  <span class="hljs-comment">/* в третий бит вписана единица */</span> }  
+<span class="hljs-keyword">if</span> (x &amp; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">7</span>)) {  <span class="hljs-comment">/* в седьмой бит вписана единица */</span> }  
+</div></code></pre>
+<p>Если нужно определить, что в X на N-й позиции:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">bool</span> b = (<span class="hljs-keyword">bool</span>((<span class="hljs-number">1</span> &lt;&lt; n)  &amp;  x))
+</div></code></pre>
+<p>Если нужно обнулить один или несколько битов:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> x = <span class="hljs-number">58</span>;       <span class="hljs-comment">// 00111010</span>
+<span class="hljs-keyword">int</span> y = x &amp; <span class="hljs-number">0x0F</span>; <span class="hljs-comment">// 00001010</span>
+
+<span class="hljs-comment">//или</span>
+
+x = x &amp; (~((<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">3</span>)|(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">5</span>)|(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">6</span>))); <span class="hljs-comment">//обнуляем третий, пятый и шестой биты</span>
+</div></code></pre>
+<p>Если нужно установить заданные биты в единицу. Используют оператор |</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> x = <span class="hljs-number">155</span>
+x = x | <span class="hljs-number">4</span>;     <span class="hljs-comment">//устанавливаем в единицу второй бит переменной x</span>
+</div></code></pre>
+<p>Сдвигает число на n разрядов влево</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> x = <span class="hljs-number">3</span>;  <span class="hljs-comment">//0b00000011</span>
+x = x &lt;&lt; <span class="hljs-number">3</span>;           <span class="hljs-comment">//0b00011000 (24)</span>
+</div></code></pre>
+<p>Сдвиг вправо &gt;&gt;</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> x = <span class="hljs-number">255</span>;  <span class="hljs-comment">//0b11111111</span>
+x = x &gt;&gt; <span class="hljs-number">3</span>;             <span class="hljs-comment">//0b00011111 (31)</span>
+</div></code></pre>
+<p><a href="https://volstr.ru/?p=36">Источник</a></p>
+<hr>
+<h3 id="%D1%84%D1%83%D0%BD%D0%BA%D1%82%D0%BE%D1%80">Функтор</h3>
+<h3 id="%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B5-%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D0%BB%D1%8B">Пользовательские литералы</h3>
+<h3 id="sizeof">sizeof</h3>
+<p>Этот пункт я создал в связи с вопросом о размерах экземляров классов в памяти.</p>
+<p><a href="https://habr.com/ru/articles/117996/">Сколько в памяти занимает произвольная структура?</a></p>
+<p>Ответ: sizeof всех членов + остаток для выравнивания (по умолчанию выравнивание 4 байта) + sizeof указателя на vtable (если есть виртуальные функции) + указатели на классы предков, от которых было сделано виртуальное наследование (размер указателя * количество классов)
+Пример:</p>
+<p><a href="https://habr.com/ru/articles/117996/">Сколько в памяти занимает структура без членов?</a>
+sizeof пустого класса не определён, но должен быть &gt; 0.
+Это нужно чтобы не получить ошибку division by zero в таких случаях</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Foo</span>{</span>};
+</div></code></pre>
+<h3 id="%D0%B8%D0%BD%D1%82%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%86%D0%B8%D1%8F">Интроспекция</h3>
+<h2 id="%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8-%D0%B2%D0%B8%D0%B4%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8">Области видимости</h2>
+<h2 id="%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C%D1%8E">Работа с памятью</h2>
+<p><a href="https://habr.com/ru/articles/117996/">В чем отличие malloc от new?</a>
+Ответ: malloc — выделение блока памяти в стиле Си, опасное с точки зрения приведения типов (non-typesafe), т.к. возвращает void * и требует обязательного приведения. new — выделение блока памяти и последующий вызов конструктора, безопасное с точки зрения приведения типов (typesafe), т.к. тип возвращаемого значения определен заранее.
+(new вызывает конструктор)</p>
+<p><a href="https://habr.com/ru/articles/117996/">В чем различия между delete и delete</a>[]?</p>
+<p>Ответ: delete предназначен для уничтожения объектов, память под которые выделена при помощи new(). delete[] для объектов выделенных при помощи оператора new<a href=""></a>.</p>
+<h3 id="%D0%B2%D1%8B%D1%80%D0%B0%D0%B2%D0%BD%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5">Выравнивание</h3>
+<h2 id="%D0%BF%D0%B5%D1%80%D0%B5%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">Перечисления</h2>
+<p><a href="https://github.com/CapSmoIIett/cplusplus/blob/main/Books/%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%B8_%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1_%D0%A1%D0%BA%D0%BE%D1%82%D1%82_%D0%9C%D0%B5%D0%B9%D0%B5%D1%80%D1%81.pdf">Эффективный и современныи С++: 42 рекомендации по использованию С++ 11 и С++ 14 - Скотт Мейерс</a> - Глава 3.4</p>
+<p><strong>Предпочитайте перечисления с областью видимости перечислениям без таковой</strong></p>
+<p>Обычно фигуные скобки огрничивают <a href="#%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8-%D0%B2%D0%B8%D0%B4%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8">область видимости</a> для всех объявленных внутри них.<br>
+С Enum-ами все иначе.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> Color {black, white, red};     <span class="hljs-comment">// blсk, white, red находятся</span>
+                                    <span class="hljs-comment">// в той же области видимости,</span>
+                                    <span class="hljs-comment">// что и Color </span>
+</div></code></pre>
+<p>Из-за этого есть ввели два типа enum-ов:</p>
+<ul>
+<li>Без области видимости (<em>unscoped</em>)</li>
+<li>С областью видимости (<em>scoped enum</em>)(с <a href="#c11">C++11</a>) (<em>Или классы перечислений</em>)</li>
+</ul>
+<p>Перечисления с областью видимостиб не допускают указанной выше утечки имен:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span> {</span> blасk, white, red }; <span class="hljs-comment">// blасk, white, red принадлежат</span>
+                                        <span class="hljs-comment">// области видимости Color</span>
+
+Color с = white;            <span class="hljs-comment">// Ошибка ' Нет имени перечисления</span>
+                            <span class="hljs-comment">// "white" в этой области видимости</span>
+Color с = Color::white;     <span class="hljs-comment">// Это ок</span>
+<span class="hljs-keyword">auto</span> с = Color::white;      <span class="hljs-comment">// Это хорошо </span>
+</div></code></pre>
+<p><a href="#auto">auto</a></p>
+<p>Приемущества scoped enum:</p>
+<ul>
+<li>Снижение загрязнения пространства имен</li>
+<li>Строго типизированны</li>
+</ul>
+<h4 id="%D0%BF%D1%80%D0%BE-%D1%82%D0%B8%D0%BF%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8E-enum-%D0%BE%D0%B2">Про типизацию enum-ов:</h4>
+<p>unscoped enum - неякно преобразуются в int (а потом и double)</p>
+<pre class="hljs"><code><div>eпum Color { Ьlack, white, red };   <span class="hljs-comment">// Перечисление без</span>
+                                    <span class="hljs-comment">//области видимости</span>
+
+<span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span>&gt;  <span class="hljs-title">primeFactors</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> х )</span> </span>; 
+                    <span class="hljs-comment">// Функция, возвращающая</span>
+                    <span class="hljs-comment">// простые делители х</span>
+
+Color с = red;
+
+<span class="hljs-keyword">if</span> (с &lt; <span class="hljs-number">14.5</span>)   <span class="hljs-comment">// Сравнение Color и double (!)</span>
+{
+    <span class="hljs-keyword">auto</span> factors = primeFactors(c); <span class="hljs-comment">// Вычисление простых делителей</span>
+                                    <span class="hljs-comment">// значения Color (!)</span>
+}
+</div></code></pre>
+<p>С scoped enum - другая история. НИкаких неявных преобразований</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span> {</span> black, white, red};  <span class="hljs-comment">// Перечисление с областью видимости</span>
+
+Color с = Color::red;   <span class="hljs-comment">// Как и ранее, но с квалификатором</span>
+                        <span class="hljs-comment">// области видимости</span>
+
+<span class="hljs-keyword">if</span> (с &lt; <span class="hljs-number">14.5</span>)   <span class="hljs-comment">// Ошибка ! Нельзя сравнивать</span>
+                <span class="hljs-comment">// Color и double</span>
+{
+    <span class="hljs-keyword">auto</span> factors = primeFactors(c);  <span class="hljs-comment">//Ошибка ! Нельзя передавать Color в</span>
+                                    <span class="hljs-comment">// функцию, ожидающую std::size_t</span>
+}
+</div></code></pre>
+<p>Если нужно привести class enum к другому типу - нужно использовать приведение типов</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">double</span>&gt;(c) &lt; <span class="hljs-number">14.5</span>)  <span class="hljs-comment">// Странный, но</span>
+                                    <span class="hljs-comment">// корректный код</span>
+<span class="hljs-keyword">auto</span> factors =                      <span class="hljs-comment">// Сомнительно, но компилируется</span>
+    primeFactors (<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span>&gt;(c));
+</div></code></pre>
+<h4 id="%D0%BF%D1%80%D0%B5%D0%B4%D0%B2%D0%B0%D1%80%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B1%D0%B5%D0%B7-%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BF%D0%B5%D1%80%D0%B5%D1%87%D0%B8%D1%81%D0%BB%D0%B8%D1%82%D0%B5%D0%BB%D0%B9">Предварительное объявление без указания перечислителй</h4>
+<p>(Польза этого проявляется когда нужно будет добавить элемент в перечисление.
+Если не использовать предварительное объявление будут пересобраны все места где эти enum-ы используют)</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> Color;         <span class="hljs-comment">// Ошибка !</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>;</span>   <span class="hljs-comment">// ок</span>
+</div></code></pre>
+<p>Каждое перечисление имеет целочисленный <em>базовый тип</em> (underlying type) которое определяется компилятором.<br>
+Для неболщих перечеслений может использоваться char.<br>
+Для перечислений с большим диапазоном значений будет использоваться другой тип.<br>
+Для эффективного использования памяти компиляторы часто выбирают наименьший базовый тип (которого достаточно).<br>
+В некоторых случаях, когда компиляторы выполняют оптимизацию по скорости, а не по размеру, они могут выбрать не наименьший допустимый тип.</p>
+<p>По умолчанию базовым типом для eпum с областью видимости является int.<br>
+Если вас не устраивает значение по умолчанию, вы можете его перекрыть:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Status</span> :</span> <span class="hljs-built_in">std</span>::<span class="hljs-keyword">uint32_t</span>;  <span class="hljs-comment">// Базовый тип для Status -</span>
+                                    <span class="hljs-comment">// std::uint32_t (из &lt;cstdint&gt;)</span>
+
+</div></code></pre>
+<p>Чтобы указать базовый тип для перечисления без области видимости, вы делаете то
+же, что и для перечисления с областью видимости, и полученный результат может быть
+предварительно объявлен:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> Color : <span class="hljs-built_in">std</span>::uintB_t;  <span class="hljs-comment">// Предварительное объявление</span>
+                            <span class="hljs-comment">// перечисления без области видимости;</span>
+                            <span class="hljs-comment">// базовый тип - std::uint8_t</span>
+</div></code></pre>
+<h4 id="%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D0%B8%D1%8F-%D0%BF%D1%80%D0%B8-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D1%81%D1%82%D0%B0%D1%80%D1%8B%D0%B9-enum-%D0%BB%D1%83%D1%87%D1%88%D0%B5-%D0%BD%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE">Ситуация при которой старый enum лучше нового:</h4>
+<p>при обращениии к полям кортежа std::tuple</p>
+<p>Предположим, например, что у нас есть кортеж, содержащий имя,
+адрес электронной почты и значение репутации пользователя на сайте социальной сети:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">using</span> Userinfo =<span class="hljs-built_in">std</span>::tuple&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>, <span class="hljs-comment">// Имя</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>,    <span class="hljs-comment">// Адрес</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span>&gt;    <span class="hljs-comment">// Репутация </span>
+</div></code></pre>
+<p><a href="">Псевдоним типа</a></p>
+<p>Для удобства создадим enum с соответсвующими названиями элементов кортежа</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> UserinfoFields { uiName, uiEmail, uiReputation } ;
+
+UserInfo uinfo;             <span class="hljs-comment">// Как и ранее</span>
+
+<span class="hljs-keyword">auto</span> val = <span class="hljs-built_in">std</span>::<span class="hljs-built_in">get</span>&lt;uiEmail&gt; (uinfo); <span class="hljs-comment">// Значение адреса</span>
+</div></code></pre>
+<p>Все было бы гораздо сложнее без неявного преобразования значений.<br>
+Соответствующий код с применением перечисления с областью видимости существенно многословнее:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserinfoFields</span> {</span> uiName , uiEmail, uiReputation } ;
+
+Userinfo uinfo ;            <span class="hljs-comment">//Как и ранее</span>
+
+<span class="hljs-keyword">auto</span> val = 
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">get</span>&lt;<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span>&gt; (UserinfoFields::uiEmail)&gt;(uinfo);
+</div></code></pre>
+<ul>
+<li>Перечисления в стиле С++98 в настоящее время известны как перечисления без областей видимости.</li>
+<li>Перечислители перечислений с областями видимости видимы только внутри перечислений.
+Они преобразуются в другие типы только с помощью явных приведений.</li>
+<li>Как перечисления с областями видимости, так и без таковых поддерживают указание базового типа.
+Базовым типом по умолчанию для перечисления с областью видимости является int.
+Перечисление без области видимости базового типа по умолчанию не имеет.</li>
+<li>Перечисления с областями видимости могут быть предварительно объявлены.
+Перечисления без областей видимости могут быть предварительно объявлены,
+только если их объявление указывает базовый тип.</li>
+</ul>
+<h2 id="%D1%82%D0%B8%D0%BF%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Типы данных</h2>
+<h2 id="%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D0%B8-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8">Указатели и ссылки</h2>
+<h3 id="%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8">Ссылки</h3>
+<h3 id="%D1%83%D0%BC%D0%BD%D1%8B%D0%B5-%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8">Умные казатели</h3>
+<p><a href="https://github.com/CapSmoIIett/cplusplus/blob/main/Books/%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%B8_%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1_%D0%A1%D0%BA%D0%BE%D1%82%D1%82_%D0%9C%D0%B5%D0%B9%D0%B5%D1%80%D1%81.pdf">Эффективный и современныи С++: 42 рекомендации по использованию С++ 11 и С++ 14 - Скотт Мейерс</a> - Глава 4</p>
+<p>Интеллектуальные указатели представляют собой оболочки вокруг встроенных указателей,
+которые действуют так же, как и встроенные указатели, но позволяют избежать
+многих связанных с последними ловушек. <em>Поэтому вы должны предпочитать встроенным указателям интеллектуальные</em></p>
+<p>В С++11 имеются четыре интеллектуальных указателя:
+- std::аutо_ptr,
+- std::unique_ptr,
+- std::shared_ptr,
+- std::weak_ptr.</p>
+<p>По производительности:
+-raw
+-std::unique_ptr
+-std::shared_ptr</p>
+<h4 id="std%D0%B0ut%D0%BEptr">std::аutо_ptr</h4>
+<p>Является устаревшим указателем, доставшимся в наследство от <a href="#c98">С++98</a>.
+В <a href="#c11">С++11</a> его заменил std::unique_ptr.</p>
+<p>В <a href="#c98">С++98</a> небыло семантики перемещения, необходимой для std::аutо_ptr.
+Поэтому в std::аutо_ptr превратили операцию копирования в перемещение.
+А это привело кк тому, что при копировании std::аutо_ptr он становился равен = nullptr.</p>
+<p>Единственный случай обоснованного применения std::auto_ptr - необходимость компиляции
+кода компилятором <a href="#c98">С++98</a>. Если у вас нет такого ограничения, вы должны заменять
+std::auto_ptr указателем std::unique_ptr.</p>
+<p><a href="https://habr.com/ru/articles/117996/">Что стоит учитывать при использовании auto_ptr?</a>
+Ответ: Так как данный умный указатель реализует подход разрушающего копирования, то при присвоении его другому умному указателю оригинальный потеряет свое значение. А так же его нельзя использовать в стандартных STL контейнерах.</p>
+<h3 id="stduniqueptr">std::unique_ptr</h3>
+<p>std::unique_ptr делает все то же, что и std::auto_ptr, плюс еще кое-что.
+Он делает это максимально эффективно и безо всяких искажений понятия копирования объекта.
+Он во всех отношениях лучше std::auto_ptr.</p>
+<p>по умолчанию std::unique_ptr имеет тот же размер, что и обычный указатель, и для большинства
+операций (включая разыменования) выполняются точно такие же команды.
+(почти всегда работаю так же быстро и занимают столько же памяти как и обычные указатели)</p>
+<p><strong>Испоnьзуйте std::unique_ptr дnя управnения ресурсами путем искnючитеnьноrо впадения</strong></p>
+<p>Интеллектуальные указатели std::unique_ptr воплощают в себе семантику исключительного владения.</p>
+<ul>
+<li>Ненулевой std::unique_ptr всегда владеет тем, на что указывает.</li>
+<li>Перемещение std::unique_ptr передает владение от исходного указателя целевому. (Исходный указатель при этом становится нулевым.)</li>
+<li>Копирование std::unique_ptr не разрешается, так как если вы можете копировать std : : unique _ptr, то у вас будут два
+std::unique_ptr, указывающих на один и тот же ресурс, и каждый из них будет считать,
+что именно он владеет этим ресурсом (а значит, должен его уничтожить).</li>
+</ul>
+<p><strong>std::unique_ptr является только перемещаемым типом</strong></p>
+<p>При деструкции ненулевой
+std::unique_ptr освобождает ресурс, которым владеет.
+По умолчанию освобождение ресурса выполняется с помощью оператора de lete, примененного ко встроенному указателю
+в std::unique_ptr.</p>
+<p>Обычное применение std::unique_ptr - возвращаемый тип <a href="#%D1%84%D0%B0%D0%B1%D1%80%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4">фабричных функций</a>
+для объектов иерархии.</p>
+<p>В процессе конструирования объект std::unique_ptr можно настроить для использования пользовательских удалителей (custom deleters):
+произвольных функций (или функциональных объектов, включая получающиеся из лямбда-выражений), вызываемых
+для освобождения ресурсов.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">auto</span> funForDelete = [](MyClass* a)
+{
+    doSomething(a);
+    <span class="hljs-keyword">delete</span> a;
+}
+
+<span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;MyClass, <span class="hljs-title">decltype</span><span class="hljs-params">(funForDelete)</span>&gt; <span class="hljs-title">ptr</span><span class="hljs-params">(<span class="hljs-literal">nullptr</span>, funForDelete)</span></span>;
+</div></code></pre>
+<ul>
+<li>funForDelete представляет собой пользовательский удалитель для объекта.
+Все функции пользовательских удалителей принимают обычный указатель на удаляемый объект и затем выполняют все необходимые действия по его удалению.
+Применение лямбда-выражения для создания funForDelete удобно, но, как вы вскоре увидите, оно также гораздо
+эффективнее написания обычной функции.</li>
+<li>Когда используется пользовательский удалитель, его тип должен быть указан
+в качестве второго аргумента типа std::unique_ptr.</li>
+<li>Для связи пользовательского удалителя funForDelete с нашим указателем
+ptr мы передаем его в качестве второго аргумента конструктора.</li>
+<li>Попытка присвоить обычный указатель (например, возвращенный оператором new)
+указателю std::unique_ptr компилироваться не будет, поскольку она будет содержать неявное преобразование обычного указателя в интеллектуальный.
+Такие неявные преобразования могут быть проблематичными, так что интеллектуальные указатели С++ 11 их запрещают.
+Для того, чтобы ptr взял на себя владение объектом, созданным с помощью оператора new, применяется вызов reset.</li>
+</ul>
+<pre class="hljs"><code><div>ptr.reset(<span class="hljs-keyword">new</span> Bond(<span class="hljs-built_in">std</span>::forward&lt;Data&gt;(data)))
+</div></code></pre>
+<p>Если в std::unique_ptr используются пользовательские удалители, то в его размер увеличивается на слова-два (удалители - указатель на функцию)</p>
+<p>Функциональные объекты без
+состояний (например, получающиеся из лямбда-выражений без захватов) не приводят
+к увеличению размеров std::unique_ptr, а это означает что
+<em>когда пользовательский удалитель может быть реализован как функция или как лямбда-выражение, то реализация в виде лямбдавыражения предпочтительнее</em></p>
+<p>Удалители в виде функциональных объектов с большим размером состояния могут
+привести к значительным размерам объектов std::unique _ptr. Если вы обнаружите, что
+пользовательский удалитель делает ваш интеллектуальный указатель std : : unique _ptr
+неприемлемо большим, вам, вероятно, стоит изменить свой дизайн.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">auto</span> funForDel1 = [] (MyClass* plnvestment)
+{                               <span class="hljs-comment">// Пользовательский удалитель</span>
+makeLogEntry (plnvestment) ;    <span class="hljs-comment">// как лямбда-выражение</span>
+<span class="hljs-keyword">delete</span> plnvestment;             <span class="hljs-comment">// без состояния</span>
+}; 
+</div></code></pre>
+<p><strong>std::unique_ptr часто используют для реализации <a href="#pimpl">pimpl</a></strong></p>
+<p>Интеллектуальный указатель std::unique_ptr имеет две разновидности:
+- одну - для индивидуальных объектов (std::unique_ptr<T>)
+- другую - для массивов (std::unique_ptr&lt;T []&gt;)</p>
+<p>в случае указателя для одного объекта отсутствует оператор индексирования (operator [] ),<br>
+в случае указателя для массива отсутствуют операторы разыменования (operator* и operator- &gt;).</p>
+<p>Существование std::unique_ptr для массивов должно представлять только интеллектуальный интерес,
+поскольку std::array, std::vector и std::string почти всегда
+оказываются лучшим выбором, чем встроенные массивы</p>
+<p>Единственная ситуация, когда std::unique_ptr&lt;T [] &gt; имеет смысл - при использовании С-образного
+API, который возвращает встроенный указатель на массив в динамической памяти, которым вы будете владеть.</p>
+<p>std::unique_ptr можно легко и эффективно преобразовать в std::shared_ptr.<br>
+Благодаря этому этот указатель хорошо подходит для возвращаемого типа фабричных функций.</p>
+<ul>
+<li>std::unique_ptr представляет собой маленький, быстрый, предназначенный
+только для перемещения интеллектуальный указатель для управления ресурсами
+с семантикой исключительного владения.</li>
+<li>По умолчанию освобождение ресурсов выполняется с помощью оператора delete,
+но могут применяться и пользовательские удалители. Удалители без состояний
+и указатели на функции в качестве удалителей увеличивают размеры объектов
+std::unique_ptr.</li>
+<li>Интеллектуальные указатели std::unique_ptr легко преобразуются в интеллектуальные указатели std::shared_ptr(обратное неверно)</li>
+</ul>
+<hr>
+<h3 id="stdsharedptr">std::shared_ptr</h3>
+<p>Не может работать  с массивами ( и пробовать не стоит)</p>
+<p><strong>Испопьзуйте std::shared_ptr дпя управпения ресурсами путем совместноrо владения</strong></p>
+<p>Объект, доступ к которому осуществляется через указатели std::shared_ptr,
+имеет время жизни, управление которым осуществляется этими указателями
+посредством совместного владения</p>
+<p>Когда последний указатель std::shared_ptr, указывающий на объект, прекратит на него
+указывать (например, из-за того, что этот std::shared_ptr будет уничтожен или перенаправлен
+на другой объект), этот std::shared_ptr уничтожит объект, на который он указывал.</p>
+<p>В std::shared_ptr есть счетчик ссылок (не в нем а в блоке управления) - показывающий сколько std::shared_ptr указывает на один и тот же ресурс.</p>
+<p>Конструкторы std::shared_ptr увеличивают этот счетчик (обычно увеличивают - см. ниже),<br>
+деструкторы std::shared_ptr уменьшают его,<br>
+а операторы копирующего присваивания делают и то, и другое.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// sp1 и sp2 - std::shared_ptr указывающие на разные объекты.</span>
+<span class="hljs-comment">// При: </span>
+sp1 = sp2;
+
+<span class="hljs-comment">// sp1 - теперь указывает на ресурс sp2</span>
+<span class="hljs-comment">// счетчик sp1 - уменьшается</span>
+<span class="hljs-comment">// счетчик sp2 - увеличивается</span>
+</div></code></pre>
+<p>Если std::shared_ptr после выполнения декремента видит нулевой счетчик
+ссылок, это означает, что на ресурс не указывает больше ни один std::shared_ptr, так
+что наш интеллектуальный указатель освобождает этот ресурс.</p>
+<p>Особенности:</p>
+<ul>
+<li>Размер std::shared_ptr в два раза больше размера обычноrо указателя, поскольку данный интеллектуальный указатель
+содержит обычный указатель на ресурс и другой обычный указатель на структуру данных в которой находится счетчик ссылок
+(стандарт не требует именно такой реализации, но в std сделано так)</li>
+<li>Память для счетчика ссылок должна выделяться динамически. (точнее для структуры данных в которой находится счетчик)
+(Приятным следствием этого является то, что интеллектуальный указатель std::shared_ptr может работать с объектами любого типа (в том числе встроенных типов).)
+(далее будет описан способ как можно избежать динамческого выделения с помощью std::make_shared)</li>
+<li>Инкремент и декремент счетчика ссылок должны быть атомарными, поскольку
+могут присутствовать одновременное чтение и запись в разных потоках.
+<em>Атомарные операции обычно медленнее неатомарных, так что несмотря на то, что обычно счетчики ссылок имеют размер в одно слово, следует рассматривать их чтение и запись как относительно дорогостоящие операции.</em></li>
+</ul>
+<p><strong>При вызове конструктора перемещения счетчик не изменяется.</strong><br>
+Использование перемещающего конструктора std::shared_ptr, делает исходный указатель нулевым.
+Старый указатель перестает указывать на ресурс в тот же момент как новый начинает это делать.
+<strong>Таким образом, перемещение std::shared_ptr оказывается быстрее копирования: копирование требует увеличения счетчика ссылок, а перемещение - нет.</strong>
+Это справедливо как для присваивания, так и для конструирования, так что перемещающее конструирование быстрее копирующего
+конструирования, а перемещающее присваивание быстрее копирующего присваивания.</p>
+<p>В отличии от std::unique_ptr тип удалителя не является частью типа интеллектуального указателя std::shared_ptr:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;Widget, <span class="hljs-keyword">decltype</span>(funForDel)&gt;    <span class="hljs-comment">// Тип удалителя является</span>
+    upw (<span class="hljs-keyword">new</span> Widget, funForDel);                <span class="hljs-comment">// частью типа указателя</span>
+
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Widget&gt;                         <span class="hljs-comment">// Тип удалителя не является</span>
+    spw (<span class="hljs-keyword">new</span> Widget, funForDel);               <span class="hljs-comment">// частью типа указателя</span>
+</div></code></pre>
+<p>Следовательно дизайн std::shared_ptr более гибок
+(можно разместить в контейнере std::shared_ptr указатели с различными удалителями, так же их можно без проблем присваивать один другому)</p>
+<p><strong>Указание пользовательского удалителя не влияет на размер объекта std::shared_ptr.</strong>
+Независимо от удалителя объект std::shared_ptr имеет размер, равный размеру двух указателей.</p>
+<p>std::shared_ptr - имеет указатель на данные и на управляющий блок в котором находится информация о счетчеке указателей,
+пользовательском удалителеб, опционально пользовательский распределитель памяти</p>
+<p><img src="images/shared_ptr_1.png" alt="указатели shared_ptr"></p>
+<p>Управляющий блок объекта настраивается функцией, создающей первый указатель std::shared_ptr на объект.
+при создании управляющего блока должны использоваться следующие правила:</p>
+<ul>
+<li>Функция std::make_shared всегда создает управляющий блок.
+Она производит новый объект, на который будет указывать интеллектуальный
+указатель, так что в момент вызова std::make_shared управляющий блок для этого объекта, определенно, не существует.</li>
+<li>Управляющий блок создается тогда, когда указатель std::shared_ptr создается из указателя с исключительным владением (т.е. std::unique_ptr или
+std::auto_ptr). Указатели с исключительным владением не используют управляющие блоки, так что никакого управляющего блока для указываемого объекта не
+существует. (Как часть своего построения std::shared_ptr осуществляет владение указываемым объектом, так что указатель с исключительным владением становится нулевым.)</li>
+<li>Когда конструктор std::shared_ptr вызывается с обычным указателем, он создает управляющий блок.
+(Если вы хотите создать std::shared_ptr из объекта, у которого уже имеется управляющий блок, вы предположительно передаете
+в качестве аргумента конструктора std::shared_ptr или std::weak_ptr)</li>
+</ul>
+<p>создание более одного std::shared_ptr из единственного обычного указателя  - ведет к неопределенному поведению</p>
+<p>Старайтесь не передавать обычные указатели shared_ptr, если без этого не как, то передавайте сразу результа <em>new</em>, а не обычную переменную</p>
+<p>С make_shared нельзя задать удалители</p>
+<p>управляющий блок - размером в несколько слов (пользовательские удалители и распределители могут его увеличить)
+(по  умолчанию при создании с помощью make_shared - около 3-х слов)</p>
+<p>взаимодействие со счетчиком - 1/2 атомарные операции.</p>
+<p>Обычно реализация управляющего блока применяет наследование и имеет виртуальные функции ( для коректного уничтожения) -
+это все то же увеичивает стоимость std::shared_ptr</p>
+<p><strong>std::shared_ptr - не лучший способ управления ресурсами!</strong>
+<em>Но его функицонал/стоимость очень приятна</em></p>
+<p><strong>std::shared_ptr и this</strong></p>
+<p>Создавть std::shared_ptr с помощью <em>this</em> - плохая идея.<br>
+Но если нужно это сделать, используй std::еnаblе_shared_from_this.
+std::еnаblе_shared_from_this - Это шаблон базового класса, который вы наследуете,
+если хотите, чтобы класс, управляемый указателями std::shared_ptr, был способен
+безопасно создавать std::shared_ptr из указателя this.</p>
+<p>(std::enable_shared_from_this<T> - <a href="#crtp">CRTP</a>)
+Шаблое std::enable_shared_from_this - определяет функцию член, которая создает std::shared_ptr для this (shared_from_this).
+При этом он не дублирует управляющие блоки</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Widget</span> :</span> <span class="hljs-keyword">public</span> <span class="hljs-built_in">std</span>::enable_shared_from_this&lt;Widget&gt;
+{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">( )</span>
+    </span>{
+        <span class="hljs-built_in">array</span>.emplace_back(shared_from_this());
+    }
+};
+</div></code></pre>
+<p>std::shared_from_this - внутри ищет управляющий блок объекта и создает  std::share_ptr,
+который использует этот же управляющий блок.
+НО для этого управляющий блок должен быть создан.
+Чтобы препятствовать вызову функции-члена, в которой используется
+shared_from_this, до того как на объект будет указывать указатель std::shared_ptr,
+классы, наследуемые от std::enable_shared_from_this, часто объявляют свои конструкторы как
+private и заставляют клиентов создавать объекты путем вызова фабричных функций,
+которые возвращают указатели std::shared_ptr.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Widget</span> :</span> <span class="hljs-keyword">public</span> <span class="hljs-built_in">std</span>::enable_shared_from_this&lt;Widget&gt;
+{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> Ts&gt;
+    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Widget&gt; <span class="hljs-title">create</span><span class="hljs-params">(Ts&amp;&amp; ... params )</span>  <span class="hljs-comment">// Фабричная функция</span>
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">// конструкторы</span>
+
+}</span>;
+</div></code></pre>
+<ul>
+<li>std::shared_ptr предоставляет удобный подход к управлению временем жизни
+произвольных ресурсов, аналогичный сборке мусора.</li>
+<li>По сравнению с std::unique_ptr объекты std::shared_ptr обычно в два раза
+больше, привносят накладные расходы на работу с управляющими блоками и требуют атомарной работы со счетчиками ссылок.
+• Освобождение ресурсов по умолчанию выполняется с помощью оператора delete,
+однако поддерживаются и пользовательские удалители. Тип удалителя не влияет
+на тип указателя std::shared_ptr.
+• Избегайте создания указателей std::shared_ptr из переменных, тип которых -
+обычный встроенный указатель.</li>
+</ul>
+<hr>
+<h3 id="stdweakptr">std::weak_ptr</h3>
+<p>Проблема неизвестного указателя - ситуация когда умный указатель указывает на освобожденную память</p>
+<p>std::weak_ptr - неявляется автономным интелектуальным указателем, это дополнение к std::shared_ptr.
+В нем нет операций разыменования</p>
+<p>std::weak_ptr создается из указателей std::shared_ptr, но не влияют на счетчики ссылок (У них есть свой - weak счетчик), на который указывают</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">auto</span> spw = <span class="hljs-built_in">std</span>::make_shared&lt;Widget&gt;();
+
+<span class="hljs-function"><span class="hljs-built_in">std</span>::weak_ptr&lt;Widget&gt; <span class="hljs-title">wpw</span> <span class="hljs-params">(spw)</span> </span>;
+
+spw = <span class="hljs-literal">nullptr</span>;
+<span class="hljs-comment">// после этого объект Widget уничтожается а wpw становиться висячим (просроченым - expired)</span>
+
+<span class="hljs-keyword">if</span> (wpw.expired())  <span class="hljs-comment">// проверка на то, просрочен ли указатель</span>
+</div></code></pre>
+<p>чтобы из std::weak_ptr получить даные из него нужно сделать std::shared_ptr
+Есть два пособа это сделать:</p>
+<ul>
+<li>std::weak_ptr::lock() - возвращает shared_ptr (нулевой если std::weak_ptr - expired)</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Widget&gt; spw1 = wpw.lock();
+<span class="hljs-keyword">auto</span> spw2 = wpw.lock();
+</div></code></pre>
+<ul>
+<li>конcтруктор std::shared_ptr</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Widget&gt; <span class="hljs-title">spw</span><span class="hljs-params">(wpw)</span></span>;   <span class="hljs-comment">// Если wpw просрочен генерирует std::bad_weak_ptr</span>
+</div></code></pre>
+<p>Для чего нужен std::weak_ptr?
+Пример: есть фабричный метод возвращающий умные указатели.
+Допустим этот метод очень нагружает систему.
+Логично использование кэширования для улучшения производительности.
+Но большое количество копий объекта очень засорит память.
+Тогда кэшировать стоит, когда эти объекты больше нигде в программе не используются.
+Тогда данный метод будет возвращать std::shared_ptr, а кэшировать std::weak_ptr.<br>
+Грубая (очень грубая) реализация:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;<span class="hljs-keyword">const</span> Widget&gt; <span class="hljs-title">fastLoadWidget</span> <span class="hljs-params">(Widget ID id)</span>
+</span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unordered_map</span>&lt;WidgetID,
+        <span class="hljs-built_in">std</span>::weakytr&lt;<span class="hljs-keyword">const</span> Widget&gt;&gt; cache;
+    
+    <span class="hljs-keyword">auto</span> obj_ptr = cache[id].lock(); 
+    <span class="hljs-comment">// obj Ptr является std::shared_pt для кешированного объекта и</span>
+    <span class="hljs-comment">// нулевым указателем для объекта, отсутствующего в кеше</span>
+
+    <span class="hljs-keyword">if</span> (!obj_ptr) 
+    {
+        obj_ptr = loadWidget (id);
+        cache[id] = obj_ptr;
+        <span class="hljs-comment">//При отсутствии в кеше объект загружается и кешируется</span>
+    }
+
+    <span class="hljs-keyword">return</span> obj Ptr;
+}
+</div></code></pre>
+<p>Второй пример применения:
+Шаблон проектирования <a href="#%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C">Observer</a>.
+В большинстве реализаций объект за которым наблюдают (субъект) имеет указатели на его наблюдателей.
+Каждый субъект хранит контейнер std::weak_ptr на его наблюдателей.</p>
+<p>Еще пример:
+Есть структуры A, B,C.
+A и C имеют указатели на B.
+<img src="images/weak_ptr_1.png" alt="Пример weak_ptr">
+Нам нужен указатель из B на A, как это лучше делать?<br>
+Варианты:</p>
+<ul>
+<li><strong>Обычный указатель</strong>.
+В таком случае если A уничтожить, то B созранит висячий указатель на него.</li>
+<li><strong>std::shared_ptr</strong>.
+Если A и B имеют std::shared_ptr друг на друга то их уничтожение - большая проблема.</li>
+<li><strong>std::weak_ptr</strong>.
+Этот вариант лишен выше указаных проблем.</li>
+</ul>
+<p>std::weak_ptr - соразмерен std::shared_ptr (используют теже управляющие блоки).<br>
+А создание, уничтожение, присваивание - атомарные операции взаимодействующие со счтечиком ссылок(они работают со своим счетчиком ссылок).</p>
+<ul>
+<li>Используйте std::weak_ptr как std::shared_ptr - oбpaзныe указатели, которые могут быть висячими.</li>
+<li>Потенциальные применения std::weak_ptr включают хеширование, списки наблюдателей и предупреждение циклов указателей std::shared_ptr.</li>
+</ul>
+<hr>
+<h3 id="make-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8">Make функции</h3>
+<p><strong>std::make_unique и std::make_shared против new</strong></p>
+<p>Три make-функции.
+Принимающие произвольное количество аргументов и производящие
+прямую передачу конструктору данного объекта и возвращающие умный указатель:</p>
+<ul>
+<li>std::make_unique</li>
+<li>std::make_shared</li>
+<li>std::allocate_shared (аналогичен std::make_shared, за исключением того,
+что первым аргументом является объект распределителя, использующийся для выделения динамической памяти.)</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">upw1</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::make_unique&lt;Widget&gt;())</span></span>;     <span class="hljs-comment">// С make-функицей</span>
+<span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">unique_ptr</span>&lt;Widget&gt; <span class="hljs-title">upw2</span><span class="hljs-params">(<span class="hljs-keyword">new</span> Widget)</span></span>;   <span class="hljs-comment">// Без</span>
+
+<span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">spw1</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::make_shared&lt;Widget&gt;())</span></span>;     <span class="hljs-comment">// С make-функицей</span>
+<span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Widget&gt; <span class="hljs-title">spw2</span><span class="hljs-params">(<span class="hljs-keyword">new</span> Widget)</span></span>;   <span class="hljs-comment">// Без</span>
+</div></code></pre>
+<p>Плюсы make-функций:</p>
+<ul>
+<li>Можно работать с auto;</li>
+<li>Безопасность исключений</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">processWidget</span> <span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Widget&gt; spw, <span class="hljs-keyword">int</span> priority)</span></span>;
+...
+{
+    processWidget(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;Widget&gt;(<span class="hljs-keyword">new</span> Widget), compPrior());    
+    <span class="hljs-comment">// Тут возможна утечка Widget</span>
+    <span class="hljs-comment">// Это связано с тем как компилятор транслирует исходный код в объектный </span>
+    <span class="hljs-comment">// Во время выполнения аргументы функциии должны быть вычеслены до вызова функции, </span>
+    <span class="hljs-comment">// До выполнения processWidget произойдет следующее</span>
+    <span class="hljs-comment">//  - new Widget создаст в динамической памяти объект Widget</span>
+    <span class="hljs-comment">//  - Будет вызван конструктор std::shared_ptr&lt;Widget&gt;</span>
+    <span class="hljs-comment">//  - Будет вызван compPrior</span>
+    <span class="hljs-comment">// Последовательность выполнения этих действий не определена </span>
+    <span class="hljs-comment">// и если compPrior будет вызван после new и до создание указателя,</span>
+    <span class="hljs-comment">// указатель созданный new будет утерян и будет вызвано исключение  </span>
+}
+</div></code></pre>
+<ul>
+<li>Если не исопльзовать make-функции, то создание std::share_ptr использует два выделения памяти
+(для объекта и для управляющего блока)
+(std::make_shared выделяет один блок памяти для одного и для другого)</li>
+</ul>
+<p>Ситуации при которых не стоит использовать make-функции:</p>
+<ul>
+<li>Если нужно задать пользовательский удалитель.</li>
+<li>трудности с <a href="!">std::initializer_list</a> (но по умолчанию используются круглые скобки)</li>
+</ul>
+<p>Ситуации при которых не стоит испольщовать только std::shared_ptr:</p>
+<ul>
+<li>
+<p>Если для класа переопределены <em>operator new</em> и <em>operator delete</em></p>
+</li>
+<li>
+<p>Выделеный блок памяти с помощью make-функции (управляющий блок рядом с даннымия) существует
+пока обычный и weak счетчики не равны 0. Память для данных не будет освобождена пока существует хотя бы
+один std::shared_ptr или std::weak_ptr.</p>
+</li>
+<li>
+<p>По сравнению с непосредственным использованием new, mаkе-функции устраняют
+дублирование кода, повышают безопасность кода по отношению к исключениям
+и в случае функций std::make_shared и std::allocate_shared генерируют меньший по размеру и более быстрый код.</p>
+</li>
+<li>
+<p>Ситуации, когда применение mаkе-функций неприемлемо, включают необходимость указания
+пользовательских удалителей и необходимость передачи инициализаторов в фигурных скобках.</p>
+</li>
+<li>
+<p>Для указателей std::shared_ptr дополнительными ситуациями, в которых применение mаkе-функций
+может быть неблагоразумным, являются классы с пользовательским управлением памятью и системы, в которых проблемы с объемом памяти
+накладываются на использование очень больших объектов и наличие указателей
+std::weak_ptr, время жизни которых существенно превышает время жизни указателей std::shared_ptr.</p>
+</li>
+</ul>
+<hr>
+<h3 id="row-%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%81%D1%8B%D1%80%D1%8B%D0%B5-%D0%B8%D0%BB%D0%B8-%D0%BE%D0%B1%D1%8B%D1%87%D0%BD%D1%8B%D0%B5">Row указатели (сырые или обычные)</h3>
+<pre><code>Недостатки перечисленные в 
+</code></pre>
+<p><a href="https://github.com/CapSmoIIett/cplusplus/blob/main/Books/%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%B8_%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1_%D0%A1%D0%BA%D0%BE%D1%82%D1%82_%D0%9C%D0%B5%D0%B9%D0%B5%D1%80%D1%81.pdf">Эффективный и современныи С++: 42 рекомендации по использованию С++ 11 и С++ 14 - Скотт Мейерс</a> - стр 126:</p>
+<ol>
+<li>Их объявление не дает информации о том, указывают ли они на один объект или на массив.</li>
+<li>Их объявление ничего не говорит о том, должны ли вы уничтожить то, на что он
+указывает, когда завершите работу, т.е. владеет ли указатель тем, на что указывает.</li>
+<li>Если вы определили, что должны уничтожить то, на что указывает указатель, нет никакого способа указать, как это сделать.
+Должны ли вы использовать delete
+или имеется иной механизм деструкции (например, специальная функция уничтожения, которой следует передать этот указатель)?</li>
+<li>Если вам удалось выяснить, что требуется использовать оператор delete, то причина 1 означает,
+что нет никакого способа узнать, следует ли использовать оператор для удаления одного объекта (delete) или для удаления массива (delete []).
+Если вы используете оператор неверного вида, результат будет неопределенным.</li>
+<li>Если вы определили, что указатель владеет тем, на что указывает, и выяснили,
+каким образом уничтожить то, на что он указывает, оказывается очень трудно
+обеспечить уничтожение ровно один раз на каждом пути вашего кода (включая те,
+которые возникают благодаря исключениям). Пропущенный путь ведет к утечке
+ресурсов, а выполнение уничтожения более одного раза - к неопределенному поведению.</li>
+<li>Обычно нет способа выяснить, не является ли указатель висячим, т.е. не указывает
+ли он на память, которая больше не хранит объект, на который должен указывать
+указатель. Висячие указатели образуются, когда объекты уничтожаются, в то время как указатели по-прежнему указывают на них.</li>
+</ol>
+<h2 id="%D1%81%D0%B5%D0%BC%D0%B0%D0%BD%D1%82%D0%B8%D0%BA%D0%B0-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D1%8F">Семантика перемещения</h2>
+<p><a href="https://github.com/CapSmoIIett/cplusplus/blob/main/Books/%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%B8_%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1_%D0%A1%D0%BA%D0%BE%D1%82%D1%82_%D0%9C%D0%B5%D0%B9%D0%B5%D1%80%D1%81.pdf">Эффективный и современныи С++: 42 рекомендации по использованию С++ 11 и С++ 14 - Скотт Мейерс</a> - Глава 5</p>
+<h3 id="rvalue-%D0%B8-lvalue">rvalue и lvalue</h3>
+<p>rvalue указывает на объекты которые могут быть перемещены. (концептуально соответсвует временным объектам возвращенным функцией)
+Копии ravlue конструируются копированием.</p>
+<p>В общем случае lvalue не могут быть перемещены. (соответсвуют объектам на которые вы можете ссылаться по имени)</p>
+<p>тест на lvalue - можно ли получить его адрес?<br>
+да - lavlue<br>
+нет - rvalue</p>
+<p><strong>Тип выражения не зависит от того rvalue и lvalue оно.</strong></p>
+<p>rvalue похволяет реализовать семантику перемещения и прямую передачу</p>
+<p>Семантика перемещения позволяет</p>
+<ul>
+<li>заменить конструктор копирования более дешевы перемещением</li>
+<li>создавть объекты как <a href="#stdunique_ptr">std::unique_ptr</a>, std::future, std:: thread</li>
+</ul>
+<p>прямая передача</p>
+<ul>
+<li>шаблонные функции, принимающее произвольные аргументы и передающие другим функциям (котороые получают <em>точно такие же</em> аргументы)</li>
+</ul>
+<p>Для понимания следующего важно помнить что:<br>
+параметр всегда lvalue, даже если его тип rvalue</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(Widget&amp;&amp; w)</span></span>;   <span class="hljs-comment">// w - lavalue, его тип rvalue ссылка на Widget</span>
+</div></code></pre>
+<h3 id="stdmove-%D0%B8-stdforward">std::move и std::forward</h3>
+<p><strong>std::move - ничего не перемещает</strong><br>
+<strong>std::forward - ничего не передает</strong></p>
+<p>std::move и std::forward - шаблоны функций<br>
+std::move - приводит входной аргумент к rvalue<br>
+std::forward - выполняет приведение при определенных условий</p>
+<p>пример реализации std::move (близкий к стандарту)</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// C++11</span>
+<span class="hljs-comment">// В пространстве имен std</span>
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> Т&gt; 
+<span class="hljs-keyword">typename</span> remove_reference&lt;T&gt;::<span class="hljs-function">type&amp;&amp; <span class="hljs-title">move</span> <span class="hljs-params">(T&amp;&amp; param)</span>
+</span>{
+    <span class="hljs-keyword">using</span> ReturnType = <span class="hljs-comment">// Объявление псевдонима</span>
+        <span class="hljs-keyword">typename</span> remove_reference&lt;T&gt;::type&amp;&amp;;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">static_cast</span>&lt;Return<span class="hljs-number">'l</span><span class="hljs-number">'</span>ype&gt;(param) ;
+}
+</div></code></pre>
+<ul>
+<li>std::move получает <a href="">универсальную ссылку</a> на объект и возвращает тот же объект</li>
+<li>&amp;&amp; в возвращаемом типе говорит что будет возвращен rvalue</li>
+</ul>
+<p>В с++14</p>
+<pre class="hljs"><code><div></div></code></pre>
+<p><a href="">псевдонимы</a></p>
+<h2 id="%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%86%D0%B8%D0%B8-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B0">Концепции языка</h2>
+<h3 id="type-casting">type casting</h3>
+<h4 id="c-style">C-style</h4>
+<p>Приведение типов в стиле языка C может привести выражение любого типа к любому другому типу данных.<br>
+Общий вид приведения:<br>
+(new_type)exp</p>
+<p>C-style cast по сути самое медленное преобразование, так как в этом случае последовательно перебираются следующие вызовы:</p>
+<ul>
+<li>const_cast</li>
+<li>static_cast</li>
+<li>static_cast + const_cast</li>
+<li>reinterpret_cast</li>
+<li>reinterpret_cast + const_cast</li>
+</ul>
+<h4 id="const-cast">const-cast</h4>
+<p>Оператор приведения const_cast удаляет или добавляет квалификаторы
+const и volatile с исходного типа данных
+(простые типы, пользовательские типы, указатели, ссылки).<br>
+Общий вид приведения:<br>
+const_cast&lt;new_type&gt;(exp)</p>
+<h4 id="reinterpretcast">reinterpret_cast</h4>
+<p>Оператор приведения reinterpret_cast используется для приведения несовместимых типов.
+Может приводить целое число к указателю, указатель к целому числу,
+указатель к указателю (это же касается и ссылок).
+Является функционально усеченным аналогом приведения типов в стиле языка С.
+Отличие состоит в том, что reinterpret_cast не может снимать квалификаторы const и volatile,
+а также не может делать небезопасное приведение типов не через указатели, а напрямую по значению.
+Например, переменную типа int к переменной типа double привести при помощи reinterpret_cast нельзя.<br>
+Общий вид приведения:<br>
+reinterpret_cast&lt;new_type&gt;(exp)</p>
+<h4 id="staticcast">static_cast</h4>
+<p>Оператор приведения static_cast применяется для неполиморфного приведения типов на этапе компиляции программы.
+Отличие static_cast от приведения типов в стиле языка C состоит в том,
+что данный оператор приведения может отслеживать недопустимые преобразования,
+такие как приведение указателя к значению или наоборот.<br>
+При множественном наследовании static_cast может вернуть указатель не на исходный объект, а на его подобъект.<br>
+Общий вид приведения:<br>
+static _cast&lt;new_type&gt;(exp)</p>
+<h4 id="dynamiccast">dynamic_cast</h4>
+<p>Оператор приведения dynamic_cast применяется для полиморфного приведения типов
+на этапе выполнения программы (класс считается полиморфным, если в нем есть хотя бы одна виртуальная функция).</p>
+<p>Если приведение указателей невозможно, то на этапе выполнения программы будет возвращен (0).
+Если приведение производится над ссылками, то будет сгенерировано исключение std::bad_cast.
+Может быть использован и для обычных неполиморфных типов вверх по иерархии.
+Использует систему RTTI (Runtime Type Information).<br>
+При множественном наследовании dynamic_cast может вернуть указатель не на исходный объект, а на его подобъект.<br>
+Общий вид приведения:<br>
+dynamic_cast &lt;new_type&gt;(exp)</p>
+<h2 id="%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2%D0%BE%D0%B9-%D0%B1%D0%B0%D0%B7%D1%8B">Организация кодовой базы</h2>
+<h2 id="%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%8B-%D0%B8-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D1%8B">Структуры и классы</h2>
+<p>Главное различие между классом и структурой в с++, по умолчанию область видимости полей в структуре - public, а у класса - private.</p>
+<h2 id="%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8-%D0%B8-%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BE%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5-%D1%81-%D0%BD%D0%B8%D0%BC%D0%B8">Библиотеки и взаимодействие с ними</h2>
+<h2 id="%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA">Обработка ошибок</h2>
+<h2 id="%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%86%D0%B8%D0%B8-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B0">Концепции языка</h2>
+<h2 id="%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B">Шаблоны</h2>
+<h3 id="crtp">CRTP</h3>
+<p>The Curiously Recurring Template Pattern - Странно повторяющийся шаблон</p>
+<p>Пример этого: std::enable_shared_from_this<T></p>
+<h2 id="%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8">Функции</h2>
+<h3 id="%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D1%8B-%D0%B8-%D0%B0%D1%80%D0%B3%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B">Параметры и аргументы</h3>
+<p>При вызове функции выражения переданные в источник вызова называют - <strong>аргуметнами</strong>
+Эти аргументы используют для инициализации <strong>параметров</strong> функции.</p>
+<p>параметры функции всегда [lvalue]. но могут быть инициальзированны и [rvalue] и [lvalue]</p>
+<h3 id="%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B0-%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D0%BE%D0%B2-%D0%B2-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8">Передача параметров в функции</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(Widget w)</span></span>; <span class="hljs-comment">// передача по значению</span>
+
+Widget wid;
+fun(wid);       <span class="hljs-comment">// вызов копиркующего конструктора</span>
+fun(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">move</span>); <span class="hljs-comment">// вызов конструктора перемещения</span>
+</div></code></pre>
+<h2 id="%D0%B8%D0%B4%D0%B8%D0%BE%D0%BC%D1%8B">Идиомы</h2>
+<h3 id="raii">RAII</h3>
+<p><em>Resource Acquisition Is Initialization - Получение ресурса есть инициализация</em></p>
+<p>Идиома очень простая и кратко описывается следующим образом: в конструкторе объект получает доступ к какому либо ресурсу (например, открывается файл или устанавливается соединение по сети к базе данных) и сохраняет описатель ресурса в закрытый члена класса, а при вызове деструктура этот ресурс освобождается (закрывается файл или соединение к БД). При объявлении объекта данного класса на стеке происходит и его инициализация с вызовом конструктора, захватывающий ресурс. При выходе из области видимости объект выталкивается из стека, но перед этим вызывается деструктор объекта, который и освобождает захваченный ресурс.</p>
+<p><a href="https://habr.com/ru/sandbox/21603/">Источник</a></p>
+<p>Основные моменты:</p>
+<ol>
+<li>Обращение к ресурсу происходит в один этап. Либо мы получаем готовый полностью функциональный объект сразу, либо не получаем ничего.</li>
+<li>Безопасность по отношению к исключению. Например, если после создания объекта и обращения к ресурсу произойдет исключение и мы перейдем к обработчику исключения, мы можем быть уверены что ресурс освободится без нашего участия. Даже если ресурсов несколько, мы уверены что все они будут корректно освобождены. В противном случае, если захватывать и освобождать ресурс вручную, то при возникновении исключения нужно учитывать, какие ресурсы уже захвачены, а какие – нет, и освобождать только использованные ресурсы, что не слишком просто.</li>
+<li>Идиома очень удобна, когда нужно отслеживать важные ресурсы, а при этом сопровождение кода оставляет желать лучшего.</li>
+<li>Часто при использовании нескольких ресурсов освобождать их следует в обратном порядке. При использовании идиомы RAII, вследствие того что объекты с захваченными ресурсами располагаются на стеке, их уничтожение происходит в обратном порядке, что как правило и является желательным.</li>
+<li>Поддержка принципа DRY (Don’t Repeat Yourself). Код инициализации и освобождения ресурса содержится только в одном месте. Нет необходимости копировать и вставлять код инициализации в каждое место в программе где это необходимо. Достаточно просто создать объект.</li>
+<li>При необходимости использовать дополнительные параметры для обращения к ресурсу (например, логин и пароль к БД) эти параметры могут быть переданы в качестве аргументов конструктора.</li>
+<li>Накладные расходы при простейшей реализации обращения к ресурсу минимальны. В С++, как правило, при оптимизации компилятор реализует невиртуальные конструкторы и деструкторы в виде inline-функций.</li>
+<li>Данная идиома применима только в языках с предсказуемым временем жизни объекта. Сюда относится, например, С++, а также языки с сборщиком мусора, где время жизни объекта определяется количеством ссылок на него, такие как Objective C.</li>
+<li>Эта идиома неприменима в таких языках как Java или С#, где невозможно предсказать когда объект будет удален.</li>
+</ol>
+<hr>
+<h3 id="pimpl">pimpl</h3>
+<p><em>pointer to implementation - указатель на реализацию</em></p>
+<p>Идиома <strong>pimpl</strong> - полезна в тех случаях, когда нам нужно что-то скрыть.
+Она обеспечивает еще более глубокий вид инкапсуляции, которая маскирует не просто реализацию, а также все ее зависимости.
+Нужна для:</p>
+<ol>
+<li>Для того, что бы была возможность изменять реализацию скрываемого класса без перекомпиляции остального кода, так как закрытые члены хоть и недоступны извне никому, кроме функций-членов и друзей, но видимы всем, кто имеет доступ к определению класса. Изменение определения класса приводит к необходимости перекомпиляции всех пользователей класса</li>
+<li>Для сокрытия имен из области видимости. Закрытые члены хоть и не могут быть вызваны кодом вне класса, тем не менее они участвуют в поиске имен и разрешении перегрузок</li>
+<li>Для ускорения времени сборки, так как компилятору не нужно обрабатывать лишние определения закрытых типов</li>
+</ol>
+<p>Как мы этого добиваемся?
+Переносим #include &lt;название библтотеки&gt; из .h в .cpp.
+В .h дописываем необзодимый include</p>
+<p>До:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// .h</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"HideClass.h"</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> 
+{</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-keyword">private</span>:
+    HideClass b;
+}
+
+
+<span class="hljs-comment">// .cpp</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">A::fun</span><span class="hljs-params">()</span>
+</span>{ <span class="hljs-comment">/*Do something*/</span>}
+</div></code></pre>
+<p>После:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// .h</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HideClass</span>;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>
+{</span>
+<span class="hljs-keyword">public</span>:
+    A();
+    ~A();
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-keyword">private</span>:
+    HideClass* b;
+}
+
+
+<span class="hljs-comment">// .cpp</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"HideClass.h"</span></span>
+
+A::A():
+    b (<span class="hljs-keyword">new</span> HideClass)
+{ <span class="hljs-comment">/*Do something*/</span>}
+
+A::~A()
+{ <span class="hljs-keyword">delete</span> b; }
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">A::fun</span><span class="hljs-params">()</span>
+</span>{ <span class="hljs-comment">/*Do something*/</span>}
+</div></code></pre>
+<p>В С++, в случае изменений в классе (даже в закрытых функциях членах) все пользователи данного класса должны быть перекомпилированы.
+Для избежания подобных зависимостей используется указатель на функции члены, реализацию которых необходимо скрыть.
+Два основных недостатка заключаются в следующем:</p>
+<ol>
+<li>Каждое создание объекта требует динамического выделения памяти для объекта, на который ссылается указатель</li>
+<li>Использование нескольких уровней косвенности (как минимум — один) для доступа к членам скрытого объекта</li>
+</ol>
+<p>Что же можно попробовать скрыть?</p>
+<ol>
+<li>Только скрытые данные-члены</li>
+<li>Все скрытые данные-члены и функции-члены. К сожалению, скрыть виртуальную функцию невозможно, так как она должна быть видима для производных классов. Также в закрытом классе может понадобиться ссылка на открытый класс для использования его функций</li>
+<li>Закрытые и защищенные члены. К сожалению, защищенные члены скрыть нельзя, так как они должны быть доступны производным классам</li>
+<li>Весь класс. Преимущество заключается в том, что закрытому классу не нужен указатель на открытый класс. С другой стороны, мы лишаемся возможностей наследования</li>
+</ol>
+<p>(Сам до конца не понимаю указанное выше)</p>
+<p>И еще:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// .h</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HideClass</span>;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>
+{</span>
+<span class="hljs-keyword">public</span>:
+    A();
+    ~A();
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">int</span> hideClassSize = <span class="hljs-number">42</span>;
+    <span class="hljs-keyword">char</span> hideClassObj[hideClassSize];
+}
+
+
+<span class="hljs-comment">// .cpp</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"HideClass.h"</span></span>
+
+A::A()
+{
+    assert(hideClassSize &gt;= <span class="hljs-keyword">sizeof</span>(HideClass));
+    <span class="hljs-keyword">new</span>(&amp;hideClassObj[<span class="hljs-number">0</span>]) HideClass;
+}
+
+A::~A()
+{
+    (<span class="hljs-keyword">reinterpret_cast</span>&lt;HideClass *&gt; (&amp;hideClassObj[<span class="hljs-number">0</span>]))-&gt;~HideClass();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">A::fun</span><span class="hljs-params">()</span>
+</span>{ <span class="hljs-comment">/*Do something*/</span>}
+</div></code></pre>
+<p>Кодом выше получилось избавиться отдинамического выделения памяти.</p>
+<p>Нам удалось избавиться от объявления класса UnixSocketImpl в заголовочном файле GeneralSocket, и избавиться от динамического выделения памяти. Взамен мы получили ряд существенных недостатков:</p>
+<ol>
+<li>С++ — язык со строгой типизацией, и данное ухищрение – попытка обойти ограничения языка</li>
+<li>Проблемы с выравниванием памяти. Данный способ не гарантирует что память будет выравнена должным образом для всех членов UnixSocketImpl. Решение, которое не гарантирует полную переносимость, но все же работает в большинстве случаев – использование union:</li>
+</ol>
+<p><a href="https://github.com/CapSmoIIett/cplusplus/blob/main/Books/%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%B8_%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%A1_%D0%A1%D0%BA%D0%BE%D1%82%D1%82_%D0%9C%D0%B5%D0%B9%D0%B5%D1%80%D1%81.pdf">Эффективный и современныи С++: 42 рекомендации по использованию С++ 11 и С++ 14 - Скотт Мейерс</a> - Глава 4.5 c. 155</p>
+<h3 id="non-copyablenon-moveable">Non-Copyable/Non-Moveable</h3>
+<p>(Как я понял) Если есть класс который нельзя копировать и перемещать то просто удаляем его конструкторы копирования.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NonCopyable</span>
+{</span>
+  <span class="hljs-keyword">public</span>: 
+    NonCopyable (<span class="hljs-keyword">const</span> NonCopyable &amp;) = <span class="hljs-keyword">delete</span>;
+    NonCopyable &amp; <span class="hljs-keyword">operator</span> = (<span class="hljs-keyword">const</span> NonCopyable &amp;) = <span class="hljs-keyword">delete</span>;
+
+  <span class="hljs-keyword">protected</span>:
+    NonCopyable () = <span class="hljs-keyword">default</span>;
+    ~NonCopyable () = <span class="hljs-keyword">default</span>; <span class="hljs-comment">/// Protected non-virtual destructor</span>
+};
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CantCopy</span> :</span> <span class="hljs-keyword">private</span> NonCopyable
+{};
+</div></code></pre>
+<p><a href="https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Non-copyable_Mixin">Источник</a></p>
+<hr>
+<h3 id="erase-remove">Erase-Remove</h3>
+<p>Идиома <strong>remove-erase idiom</strong> призвана решить проблему удаления элементов из контейнера, поскольку данная проблема может представлять нетривиальную задачу, чреватую возникновением ошибок.
+Данная идиома предполагает применение алгоритма remove() или remove_if(), за которым следует вызов функции erase() контейнера.</p>
+<p>При применении алгоритмов remove() и remove_if() те элементы, которые надо сохранить, помещаются в начало контейнера, а функции remove() и remove_if() возвращают итератор на первый удаляемый элемент.
+Затем этот итератор передается в функцию erase(), которая собственно и удаляет элементы.</p>
+<p><a href="https://metanit.com/cpp/tutorial/16.4.php#:~:text=%D0%98%D0%B4%D0%B8%D0%BE%D0%BC%D0%B0%20remove%2Derase%20idiom%20%D0%BF%D1%80%D0%B8%D0%B7%D0%B2%D0%B0%D0%BD%D0%B0,%D0%B2%D1%8B%D0%B7%D0%BE%D0%B2%20%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8%20erase()%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D0%B0.">Источник</a></p>
+<hr>
+<h3 id="copy-and-swap">Copy and swap</h3>
+<p>Когда нужно изменить состояние одного или нескольких объектов, и на любом этапе модификации может возникнуть ошибка, для создания кода, устойчиваого к ошибкам, может применяться <strong>идиома копирования и замены (copy-and-swap idiom)</strong>.
+Суть данной идиомы состоит в следующей последовательности действий:</p>
+<ol>
+<li>Создаем копию объекта(ов)</li>
+<li>Изменяем копию. При этом оригинальные объекты остаются нетронутыми</li>
+<li>Если все изменения прошли успешно, заменяем оригинальный объект измененной копией. Если же при изменении копии на каком-то этапе возникла ошибка, то оригинальный объект не заменяется.</li>
+</ol>
+<p><a href="https://metanit.com/cpp/tutorial/13.1.php">Источник</a></p>
+<hr>
+<h3 id="copy-on-write">Copy on write</h3>
+<p>Копирование объекта иногда может привести к снижению производительности.
+Если объекты часто копируются, но редко изменяются позже, копирование при записи может обеспечить значительную оптимизацию.
+Для реализации копирования при записи используется интеллектуальный указатель на реальное содержимое для инкапсуляции значения объекта, и при каждой модификации проверяется счетчик ссылок на объект;
+если на объект ссылаются более одного раза, перед модификацией создается копия содержимого.</p>
+<p>Я понимаю это следующим образом:</p>
+<ul>
+<li>много умных указателей на один элемент</li>
+<li>если хотим что-то поменять в данных по указателю для этого создаем его копию и работаем сней ( остальные умные указатели все еще указывают на оригинальный объект)</li>
+</ul>
+<hr>
+<h3 id="crtp">CRTP</h3>
+<p><strong>Curiously Recurring Template Pattern (CRTP)</strong> идиома языка C++, название которой можно примерно перевести как Странно рекурсивный шаблон или Странно повторяющийся шаблон, часто просто Рекурсивный Шаблон, состоящая в том, что некоторый класс X наследуется от шаблона класса, использующего X как шаблонный параметр.</p>
+<p><a href="https://habr.com/ru/articles/543098/">Классно работает с паттерном мост</a></p>
+<hr>
+<h2 id="%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D1%8B">Стандарты</h2>
+<h3 id="c98">C++98</h3>
+<h3 id="c11">C++11</h3>
+<p>std::make_shared</p>
+<p><a href="#%D0%BF%D0%B5%D1%80%D0%B5%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">scoped enum</a></p>
+<p>std::tuple</p>
+<h3 id="c14">C++14</h3>
+<p>std::make_unique</p>
+<h3 id="c17">C++17</h3>
+<h3 id="c20">c++20</h3>
+<h1 id="%D0%BE%D0%BE%D0%BF">ООП</h1>
+<p><strong>Инкапсуляция</strong> - механизм позволяющий связывать данные и методы работающие с этими данными в единый объект (использование this для обращения к полям класса)</p>
+<p><strong>Наследование</strong> - концепция согласно которой абстрактный тип данных может наследовать данные и функциональность некоторого существующего типа</p>
+<p><strong>Полиморфизм</strong> - способность функции обрабатывать данные разных типов.<br>
+Перегрузки - вид полиморфизма (<em>Ad hoc</em> полиморфизм или специальный полиморфизм)
+Инкапсуляция с наследованием нужны для реализации полиморфизмах, сами по себе они бесполезны и даже вредны</p>
+<p><strong>Абстрактный класс</strong> -  базовый класс, который не предполагает создания экземпляров (абстрактный класс объявляется включением хотя бы одной чистой виртуальной функции, типа virtual <em>сигнатура_функции</em> =0;)</p>
+<p><strong>Интерфейс</strong> — это абстрактный класс, у которого ни один метод не реализован, все они публичные и нет переменных класса.</p>
+<h4 id="%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D0%BE%D1%80">виртуальный конструктор</h4>
+<p>Виртуальный <strong>конструктор</strong> невозможен, так как на момент его вызова объекта ещё просто не существует - ещё даже не существует указателя.</p>
+<p>Но если бы теоретически &quot;виртуальный конструктор&quot; существовал, то зачем он мог бы быть нужен? Самая простая причина - десериализация. Представим себе функцию/метод, которая на вход получает XML/JSON и каким-то магическим образом догадывается, какой объект был там сериализован, и возвращает объект нужного типа. Более того, в Java это используется... Просто называется по-другому. А называется это Фабричный метод.</p>
+<h4 id="%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B4%D0%B5%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D0%BE%D1%80">Виртуальный деструктор</h4>
+<p><strong>Дeструктор</strong> полиморфного базового класса должен объявляться виртуальным. Только так обеспечивается корректное разрушение объекта производного класса через указатель на соответствующий базовый класс.</p>
+<p><a href="https://www.youtube.com/watch?v=BHNt1fcg8iw">Источник</a></p>
+<hr>
+<h1 id="%D0%BF%D0%B0%D1%82%D0%B5%D1%80%D0%BD%D1%8B">Патерны</h1>
+<p><a href="https://refactoring.guru/ru/design-patterns/catalo">Сайт с патернами</a></p>
+<h3 id="%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C">Наблюдатель</h3>
+<h2 id="%D0%BF%D0%BE%D1%80%D0%BE%D0%B6%D0%B4%D0%B0%D1%8E%D1%89%D0%B8%D0%B5">Порождающие</h2>
+<h3 id="%D1%84%D0%B0%D0%B1%D1%80%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4">Фабричный метод</h3>
+<h2 id="%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5">Структурные</h2>
+<h3 id="%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B5%D1%80">Адаптер</h3>
+<p><em>Wrapper, Обёртка, AdapterI</em></p>
+<p><strong>Адаптер</strong> — это структурный паттерн проектирования, который позволяет объектам с несовместимыми интерфейсами работать вместе.<br>
+Это объект-переводчик, который трансформирует интерфейс или данные одного объекта в такой вид, чтобы он стал понятен другому объекту.</p>
+<p>Применение:</p>
+<ul>
+<li>Когда вы хотите использовать сторонний класс, но его интерфейс не соответствует остальному коду приложения.</li>
+</ul>
+<hr>
+<h3 id="%D0%BC%D0%BE%D1%81%D1%82">Мост</h3>
+<p><em>Bridge</em></p>
+<p>Пример:<br>
+У вас есть класс геометрических Фигур, который имеет подклассы Круг и Квадрат. Вы хотите расширить иерархию фигур по цвету, то есть иметь Красные и Синие фигуры. Но чтобы всё это объединить, вам придётся создать 4 комбинации подклассов, вроде СиниеКруги и КрасныеКвадраты.<br>
+Паттерн Мост предлагает заменить наследование агрегацией или композицией. Для этого нужно выделить одну из таких «плоскостей» в отдельную иерархию и ссылаться на объект этой иерархии, вместо хранения его состояния и поведения внутри одного класса.</p>
+<p><strong>Мост</strong> — это структурный паттерн проектирования, который разделяет один или несколько классов на две отдельные иерархии — абстракцию и реализацию, позволяя изменять их независимо друг от друга.</p>
+<hr>
+<h2 id="%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B5">Структурные</h2>
+<h2 id="%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D1%8C%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5">Поведеньческие</h2>
+<hr>
+<h1 id="%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%B8-%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%8B-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">Алгоритмы и структуры данных</h1>
+<h1 id="stl">STL</h1>
+<h2 id="%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B">Контейнеры</h2>
+<p><em>или коллекции</em></p>
+<p><img src="images/Контейнеры.png" alt="алгоритм выбора контейнера"></p>
+<p><img src="images/Контейгеры_скоростьработы.jpg" alt="скорости работы контейнеров"></p>
+<h3 id="%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8">Контейнеры последовательности:</h3>
+<h3 id="array">Array</h3>
+<p>Контейнер array  представляет аналог массива. Имеет фиксированный размер.
+Для создания объекта array в угловых скобках после названия типа необходимо передать его тип и размер:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">std</span>::<span class="hljs-built_in">array</span>&lt;<span class="hljs-keyword">int</span>, 5&gt; numbers; 
+</div></code></pre>
+<p>В array-е все объекты инициальизируются сразу.
+По правилам C++ в массиве инициализация объектов происходит слева направо, уничтожение справа налево.</p>
+<p>Если у объекта array тривиальный конструктор/деструктор (совсем ничего не делает), то кроме выделения памяти ничего не происходит.</p>
+<p><img src="images/array_1.png" alt="устройство array"></p>
+<h3 id="vector">Vector</h3>
+<p>vector — коллекция элементов, сохраненных в массиве, изменяющегося по мере необходимости размера (обычно, увеличивающегося);</p>
+<p>vector - реализует динамический массив.
+Размер вектора — это фактическое число элементов, а объём — количество используемой им памяти.
+Если при вставке в вектор новых элементов, его размер становится больше его объёма, происходит перераспределение памяти. Как правило, это приводит к тому, что вектор выделяет новую область хранения, перемещая элементы и свободные старые области в новый участок памяти.
+Поскольку адреса элементов в течение этого процесса меняются, любые ссылки или итераторы элементов в векторе могут стать недействительными. Использование недействительных ссылок приводит к неопределённому поведению.</p>
+<p>устройство вектора:</p>
+<p>Выделаяет память в куче.
+Хранит указатели на начало данных, конец данных и следующую ячейку памяти после выделенной под вектор.
+Объект в заранее аллоцированной памяти создается с помощью конструкции <a href="https://www.geeksforgeeks.org/placement-new-operator-cpp/">placement new</a>.
+А начиная с C++11 с вводом perfect <a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D1%8F%D0%BC%D0%B0%D1%8F_%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B0_(C%2B%2B)">forwarding</a> новый объект для вектора можно создавать in-place (с помощью метода emplace/emplace_back)</p>
+<p>.size() - количество объяектов в векторе.<br>
+.capacity() - под какое количество объектов зарезервированна память.</p>
+<p><img src="images/vector_1.png" alt="устройство вектора"></p>
+<p>вставка нового элемента:</p>
+<p><img src="images/vector_2.png" alt="вставка нового элемента"></p>
+<p>вставка нового элемента, в случае когда размер становится больше объема:</p>
+<p>при нехватке места ветор увеличивается в 2 раза.</p>
+<p><img src="images/vector_3.png" alt="вставка нового элемента, в случае когда размер становится больше объема"></p>
+<h3 id="deque">Deque</h3>
+<p>Это контейнер с быстрым добавлением объектов в начало и в конец.
+Вся память разбивается на несколько кусков памяти (чанков) одинаковой величины.</p>
+<p><img src="images/deque_1.png" alt="устройство deque"></p>
+<p>Указатели на чанки находятся в контейнере, похожем на вектор (с мелкими отличиями).
+Получение ссылки на объект проводится через 2 разыменования (вместо 1 у std::vector).</p>
+<p>Если нельзя добавить объект в начало/конец, то сначала аллоцируется новый чанк памяти.
+В худшем случае аллокаций будет два, потому что может понадобиться реаллокация контейнера указателей на чанки.</p>
+<p>Плюс контейнера в том, что при добавлении новых объектов в начало/конец никакие существующие ссылки/указатели на другие объекты контейнера не инвалидируются.</p>
+<h3 id="forwardlist">forward_list</h3>
+<p>Это однонаправленный список - самая простая реализация списка. Список состоит из вершин.
+Вершина списка это сам объект и указатель на следующую вершину (указатель принимает значение nullptr, если объект последний в списке).</p>
+<p>Контейнер поддерживает быструю вставку и удаление объектов в любом месте, потому что для этого понадобится только правка next_ptr у вершины слева.
+Впрочем, &quot;быстрая вставка&quot; относится исключительно к алгоритмической сложности.
+Aллокация памяти для новой вершины может быть небыстрой.</p>
+<p>Быстро получить N-й объект нельзя, для этого нужно пройтись от корневой вершины по next_ptr N раз.
+Размер списка тоже можно узнать только пройдя по всем next_ptr, пока не увидим nullptr.
+У контейнера даже нет метода .size().</p>
+<p><img src="images/forward_list_1.png" alt="устройство forward_list"></p>
+<h3 id="list">List</h3>
+<p>Это более сложная организация списка.
+Она имеет все те же свойства, как у std::forward_list, но вершины дополнительно могут ссылаться на предыдущие вершины, и есть быстрое добавление в конец списка.</p>
+<p><img src="images/list_1.png" alt="устройство list"></p>
+<p>.size() - есть</p>
+<h3 id="%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B-%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B5%D1%80%D1%8B">Контейнеры-адаптеры</h3>
+<p>Некоторые контейнеры не имеют хитрого внутреннего устройства, и их функционал базируется на функционале какого-нибудь другого контейнера.</p>
+<p>В них используется инкапсулированный объект контейнера в качестве базового контейнера, представляя определенный набор функций членов для доступа к его элементам.</p>
+<p>Базовым контейнером может быть любой из стандартных шаблонов класса контейнера или какой-либо другой специально разработанный класс контейнера.</p>
+<p>В STL таких контейнеров три: (stack, queue, priority_queue)</p>
+<h3 id="stack">Stack</h3>
+<p>Класс std::stack<T> представляет стек - контейнер, который работает по принципу LIFO (last-in first-out или &quot;последний вошел — первым вышел&quot;) — первым всегда извлекается последний добавленный элемент.
+Стек можно сравнить со стопкой предметов, например, стопкой тарелок - тарелки добавляются сверху, каждая последующая тарелка кладется поверх предыдущей.
+А если надо взять тарелку, то сначала берется та, которая в самом верху (которую положили самой последней).</p>
+<p>базовый контейнер по умолчанию (deque).</p>
+<p>В базовом контейнеры должны быть реализованны:</p>
+<ul>
+<li>empty</li>
+<li>size</li>
+<li>back</li>
+<li>push_back</li>
+<li>pop_back</li>
+</ul>
+<p><a href="https://cplusplus.com/reference/stack/stack/">источник</a></p>
+<h3 id="queue">Queue</h3>
+<p>Адаптивынй контейнер для работы по принципу FIFO (первым пришел — первым вышел), где элементы вставляются в один конец контейнера и извлекаются из другого.</p>
+<p>базовый контейнер по умолчанию (deque).</p>
+<p>Базовый контейнер должен поддерживать как минимум следующие операции:</p>
+<ul>
+<li>empty</li>
+<li>size</li>
+<li>front</li>
+<li>back</li>
+<li>push_back</li>
+<li>pop_front</li>
+</ul>
+<h3 id="priorityqueue">priority_queue</h3>
+<p>priority_queue представляет очередь приоритетов - контейнер, который, как и станлдартная очередь, работает по принципу FIFO.
+При добавлении элементов в очередь приоритетов применяется функция компаратора, которая сравнивает добавляемые элементы и располагает их в очереди в определенном порядке.</p>
+<p>Вставиви в pq следующие значения: { 2, 10, 4, 8, 6, 9 };
+получим: {10, 9, 8, 6, 4, 2}</p>
+<h3 id="%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B">ассоциативные контейнеры</h3>
+<h3 id="set">Set</h3>
+<p>Контейнер, в котором хранятся уникальные элементы в определенном порядке.</p>
+<p>В set значение элемента также является его идентификатором (значение является ключом типа T), и каждое значение должно быть уникальным.
+Значение элементов в set нельзя изменить после добавления в контейнер (элементы всегда const), но их можно вставлять или удалять из контейнера.</p>
+<p>Внутренне элементы в set всегда отсортированы в соответствии с определенным строгим критерием слабого упорядочивания, указанным его внутренним объектом сравнения (типа Compare).</p>
+<p>Контейнеры set обычно медленнее контейнеров unordered_set при доступе к отдельным элементам по их ключу, но они позволяют прямую итерацию по подмножествам в соответствии с их порядком.</p>
+<p>set обычно реализованы в виде бинарных деревьев поиска.</p>
+<p>Свойства контейнеров:</p>
+<ul>
+<li>
+<p>Ассоциативные.
+Элементы в ассоциативных контейнерах идентифицируются по ключу, а не по их абсолютной позиции в контейнере.</p>
+</li>
+<li>
+<p>Упорядоченные.
+Элементы в контейнере всегда следуют строгому порядку. Все вставленные элементы занимают определенную позицию в этом порядке.</p>
+</li>
+<li>
+<p>Множество (Set).
+Значение элемента также является ключом, используемым для его идентификации.</p>
+</li>
+<li>
+<p>Уникальные ключи.
+Ни одни два элемента в контейнере не могут иметь эквивалентные ключи.</p>
+</li>
+<li>
+<p>Allocator-aware.
+Контейнер использует объект аллокатора для динамической обработки своих потребностей в памяти.</p>
+</li>
+</ul>
+<h3 id="multiset">Multiset</h3>
+<p>Мультимножества (Multiple-key set) - это контейнеры, которые хранят элементы в определенном порядке, где несколько элементов могут иметь эквивалентные значения.</p>
+<p>В мультимножестве значение элемента также является его идентификатором (значение является ключом типа T). Значение элементов в мультимножестве нельзя изменить после добавления в контейнер (элементы всегда const), но их можно вставлять или удалять из контейнера.</p>
+<p>Внутренне элементы в мультимножестве всегда отсортированы в соответствии с определенным строгим критерием слабого упорядочивания, указанным его внутренним объектом сравнения (типа Compare).</p>
+<p>Контейнеры мультимножества обычно медленнее контейнеров unordered_multiset при доступе к отдельным элементам по их ключу, но они позволяют прямую итерацию по подмножествам в соответствии с их порядком.</p>
+<p>Мультимножества обычно реализованы в виде бинарных деревьев поиска.</p>
+<p>Свойства контейнеров:</p>
+<ul>
+<li>
+<p>Ассоциативные.
+Элементы в ассоциативных контейнерах идентифицируются по своему ключу, а не по абсолютной позиции в контейнере.</p>
+</li>
+<li>
+<p>Упорядоченные.
+Элементы в контейнере всегда следуют строгому порядку. Все вставленные элементы занимают определенную позицию в этом порядке.</p>
+</li>
+<li>
+<p>Множество (Set).
+Значение элемента также является ключом, используемым для его идентификации.</p>
+</li>
+<li>
+<p>Множество с множественными эквивалентными ключами.
+В контейнере может быть несколько элементов с эквивалентными ключами.</p>
+</li>
+<li>
+<p>Allocator-aware.
+Контейнер использует объект аллокатора для динамической обработки своих потребностей в памяти.</p>
+</li>
+</ul>
+<h3 id="map">Map</h3>
+<p>Карты (Map) - это ассоциативные контейнеры, которые хранят элементы, состоящие из комбинации значения ключа и значения отображаемого элемента, следуя определенному порядку.</p>
+<p>В map ключи обычно используются для сортировки и уникальной идентификации элементов, а значения отображают содержимое, связанное с этим ключом. Типы ключа и отображаемого значения могут отличаться и объединены в типе-члене value_type, который является типом пары, объединяющей оба значения:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-keyword">const</span> Key, T&gt; value_type;
+</div></code></pre>
+<p>Внутренне элементы в map всегда отсортированы по ключу в соответствии с определенным строгим критерием слабого упорядочивания, указанным его внутренним объектом сравнения (типа Compare).</p>
+<p>Контейнеры map обычно медленнее контейнеров unordered_map при доступе к отдельным элементам по их ключу, но они позволяют прямую итерацию по подмножествам в соответствии с их порядком.</p>
+<p>Значения отображаемых элементов в map могут быть получены напрямую по соответствующему ключу с использованием оператора квадратных скобок (operator[]).</p>
+<p>map обычно реализованы в виде бинарных деревьев поиска.</p>
+<p>Свойства контейнеров:</p>
+<ul>
+<li>
+<p>Ассоциативные.
+Элементы в ассоциативных контейнерах идентифицируются по ключу, а не по их абсолютной позиции в контейнере.</p>
+</li>
+<li>
+<p>Упорядоченные.
+Элементы в контейнере всегда следуют строгому порядку. Все вставленные элементы занимают определенную позицию в этом порядке.</p>
+</li>
+<li>
+<p>Карта (Map).
+Каждый элемент ассоциирует ключ с отображаемым значением: ключи предназначены для идентификации элементов, основное содержимое которых является отображаемым значением.</p>
+</li>
+<li>
+<p>Уникальные ключи.
+Ни одни два элемента в контейнере не могут иметь эквивалентные ключи.</p>
+</li>
+<li>
+<p>Allocator-aware.
+Контейнер использует объект аллокатора для динамической обработки своих потребностей в памяти.</p>
+</li>
+</ul>
+<h3 id="multimap">Multimap</h3>
+<p>Мультимапы (Multiple-key map) - это ассоциативные контейнеры, которые хранят элементы, состоящие из комбинации значения ключа и значения отображаемого элемента, следуя определенному порядку, где несколько элементов могут иметь эквивалентные ключи.</p>
+<p>В multimap ключи обычно используются для сортировки и уникальной идентификации элементов, а значения отображают содержимое, связанное с этим ключом. Типы ключа и отображаемого значения могут отличаться и объединены в типе-члене value_type, который является типом пары, объединяющей оба значения:</p>
+<p>Внутренне элементы в multimap всегда отсортированы по ключу в соответствии с определенным строгим критерием слабого упорядочивания, указанным его внутренним объектом сравнения (типа Compare).</p>
+<p>Контейнеры multimap обычно медленнее контейнеров unordered_multimap при доступе к отдельным элементам по их ключу, но они позволяют прямую итерацию по подмножествам в соответствии с их порядком.</p>
+<p>multimap обычно реализованы в виде бинарных деревьев поиска.</p>
+<p>Свойства контейнеров:</p>
+<ul>
+<li>
+<p>Ассоциативные.
+Элементы в ассоциативных контейнерах идентифицируются по своему ключу, а не по абсолютной позиции в контейнере.</p>
+</li>
+<li>
+<p>Упорядоченные.
+Элементы в контейнере всегда следуют строгому порядку. Все вставленные элементы занимают определенную позицию в этом порядке.</p>
+</li>
+<li>
+<p>Карта (Map).
+Каждый элемент ассоциирует ключ с отображаемым значением: ключи предназначены для идентификации элементов, основное содержимое которых является отображаемым значением.</p>
+</li>
+<li>
+<p>Множество эквивалентных ключей.
+В контейнере может быть несколько элементов с эквивалентными ключами.</p>
+</li>
+<li>
+<p>Allocator-aware.
+Контейнер использует объект аллокатора для динамической обработки своих потребностей в памяти.</p>
+</li>
+</ul>
+<h3 id="unordered-set">Unordered set</h3>
+<p>Unordered Set (Неупорядоченное множество) - это контейнер, который хранит уникальные элементы в произвольном порядке и позволяет быстро получать отдельные элементы на основе их значения.</p>
+<p>В unordered_set значение элемента одновременно является его ключом, который уникально идентифицирует его. Ключи неизменяемы, поэтому элементы в неупорядоченном множестве не могут быть изменены после размещения в контейнере. Однако, элементы могут быть вставлены и удалены из множества.</p>
+<p>Внутренне элементы в unordered_set не отсортированы по какому-либо определенному порядку, но они организованы в корзины (buckets) в зависимости от их хэш-значений, что позволяет быстро получать отдельные элементы напрямую по их значениям (с постоянной средней сложностью по времени).</p>
+<p>unordered_set обычно работают быстрее, чем упорядоченные множества, при доступе к отдельным элементам по их ключу, хотя они в целом менее эффективны для итерации по подмножеству элементов.</p>
+<h3 id="unorderedmultiset">Unordered_multiset</h3>
+<p>Unordered Multiset (Неупорядоченный мультимножество) - это контейнер, который хранит элементы в произвольном порядке, позволяя быстро получать отдельные элементы на основе их значения, подобно неупорядоченному множеству (unordered_set), но позволяющий различным элементам иметь эквивалентные значения.</p>
+<p>В unordered_multiset значение элемента одновременно является его ключом, используемым для его идентификации. Ключи неизменяемы, поэтому элементы в unordered_multiset не могут быть изменены после размещения в контейнере. Однако, элементы могут быть вставлены и удалены из мультимножества.</p>
+<p>Внутренне элементы в unordered_multiset не отсортированы по какому-либо определенному порядку, но они организованы в корзины (buckets) в зависимости от их хэш-значений, что позволяет быстро получать отдельные элементы напрямую по их значениям (с постоянной средней сложностью по времени).</p>
+<p>Элементы с эквивалентными значениями группируются в одну корзину и таким образом, что итератор (см. equal_range) может перебирать их все.</p>
+<p>Итераторы в контейнере являются по крайней мере прямыми итераторами (forward iterators).</p>
+<p>Обратите внимание, что этот контейнер не определен в своем собственном заголовочном файле, но использует заголовочный файл &lt;unordered_set&gt; вместе с неупорядоченным множеством (unordered_set).</p>
+<h3 id="unordered-map">Unordered map</h3>
+<p>Unordered Map  - это ассоциативный контейнер, который хранит элементы, состоящие из комбинации ключевого значения и отображаемого значения, и позволяет быстро получать отдельные элементы на основе их ключей.</p>
+<p>В unordered_map ключевое значение обычно используется для уникальной идентификации элемента, в то время как отображаемое значение является объектом, содержащим связанное с этим ключом содержимое. Типы ключа и отображаемого значения могут отличаться.</p>
+<p>Внутренне элементы в unordered_map не отсортированы по какому-либо определенному порядку ни по ключу, ни по отображаемым значениям, но они организованы в корзины (buckets) в зависимости от их хэш-значений, что позволяет быстро получать отдельные элементы напрямую по их ключевым значениям (с постоянной средней сложностью по времени).</p>
+<p>unordered_map работают быстрее, чем map, при доступе к отдельным элементам по их ключу, хотя они в целом менее эффективны для итерации по подмножеству элементов.</p>
+<p>unordered_map реализуют оператор прямого доступа (operator[]), который позволяет прямой доступ к отображаемому значению с использованием его ключевого значения в качестве аргумента.</p>
+<p>Итераторы в контейнере являются по крайней мере прямыми итераторами (forward iterators).</p>
+<h3 id="unordered-multimap">Unordered multimap</h3>
+<p>Unordered Multimap - это ассоциативный контейнер, который хранит элементы, состоящие из комбинации ключевого значения и отображаемого значения, подобно неупорядоченному отображению (unordered_map), но позволяющий различным элементам иметь эквивалентные ключи.</p>
+<p>В unordered_multimap ключевое значение обычно используется для уникальной идентификации элемента, в то время как отображаемое значение является объектом, содержащим связанное с этим ключом содержимое. Типы ключа и отображаемого значения могут отличаться.</p>
+<p>Внутренне элементы в unordered_multimap не отсортированы по какому-либо определенному порядку ни по ключу, ни по отображаемым значениям, но они организованы в корзины (buckets) в зависимости от их хэш-значений, что позволяет быстро получать отдельные элементы напрямую по их ключевым значениям (с постоянной средней сложностью по времени).</p>
+<p>Элементы с эквивалентными ключами группируются в одну корзину и таким образом, что итератор (см. equal_range) может перебирать их все.</p>
+<p>Итераторы в контейнере являются по крайней мере прямыми итераторами (forward iterators).</p>
+<p>Обратите внимание, что этот контейнер не определен в своем собственном заголовочном файле, но использует заголовочный файл &lt;unordered_map&gt; вместе с неупорядоченным отображением (unordered_map).</p>
+<h3 id="%D0%B1%D0%B8%D1%82%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B">Битовые контейнеры</h3>
+<p>Битовые контейнеры нужны для управления последовательностью из N битов.
+Cпециальный контейнер для битов в 8 раз эффективнее по памяти.</p>
+<p>В std::bitset<N>, который лежит на стеке, количество битов нужно знать &quot;заранее&quot;.
+Изначально все биты заполняются нулями.
+В контейнере есть несколько разнообразных методов для управления битами (всеми битами или конкретным битом)</p>
+<p>Групповые операции, например .count() работают намного быстрее, чем если бы они совершались в обычном цикле for.
+Процессоры умеют производить все битовые операции над числом в одну инструкцию.</p>
+<p>operator[] (size_t pos) переопределен так, чтобы на его вызов возвращался &quot;легкий&quot; объект
+std::bitset::reference, в котором находится указатель на число и &quot;маска&quot; бита.
+И в свою очередь у этого объекта переопределен operator=(bool x), который производит запись в нужный бит.</p>
+<p>если использовать vector<bool> вместо bitset:</p>
+<ul>
+<li>нельзя использовать укащатели на объект</li>
+<li>отсутствуют элементарные групповые операции над битами</li>
+</ul>
+<hr>
+<h2 id="%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8">Строки</h2>
+<p>В STL строки представляются как в формате ASCII, так и Unicode:<br>
+<strong>string</strong> — коллекция однобайтных символов в формате ASCII;<br>
+<strong>wstring</strong> — коллекция двухбайтных символов в формате Unicode;</p>
+<h2 id="%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B8">Строковые потоки</h2>
+<p>strstream — используются для организации STL-строкового сохранения простых типов данных.</p>
+<p>Следующий пример берет строку из общего потока ввода и разбивает его на слова (для обработки введенных команд):</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">std</span>::getline(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>, msg);        <span class="hljs-comment">// Берем строку из стандартного ввода</span>
+<span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">istringstream</span> <span class="hljs-title">iSStream</span><span class="hljs-params">(msg)</span></span>;   <span class="hljs-comment">// Строкой иницируем поток</span>
+
+<span class="hljs-built_in">std</span>::transform(msg.<span class="hljs-built_in">begin</span>(), msg.<span class="hljs-built_in">end</span>(), msg.<span class="hljs-built_in">begin</span>(),
+    [](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> c) { <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">tolower</span>(c); });   <span class="hljs-comment">// Все символы в нижний регистр</span>
+
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-keyword">word</span>;
+<span class="hljs-keyword">while</span> (iSStream &gt;&gt; <span class="hljs-keyword">word</span>)            <span class="hljs-comment">// Цикл по словам потока</span>
+    commands.push_back(<span class="hljs-keyword">word</span>);       <span class="hljs-comment">// Сохраняем сллова в вектор команд</span>
+</div></code></pre>
+<h2 id="%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B">Итераторы</h2>
+<p>Итераторы обеспечивают доступ к элементам контейнера и представляют реализацию распространенного паттерна объектно-ориентированного программирования &quot;Iterator&quot;.
+С помощью итераторов очень удобно перебирать элементы.
+В C++ итераторы реализуют общий интерфейс для различных типов контейнеров, что позволяет использовать единой подход для обращения к элементам разных типов контейнеров.</p>
+<p>Стоит отметить, что итераторы имеют только контейнеры, адаптеры контейнеров — типы std::stack, std::queue и std::priority_queue итераторов не имеют.</p>
+<p>Существуют три типа итераторов:</p>
+<ol>
+<li>(forward) iterator — для обхода коллекции от меньшего индекса к большему;</li>
+<li>reverse iterator — для обхода коллекции от большего индекс к меньшему;</li>
+<li>random access iterator — для обхода коллекции в любом направлении.</li>
+</ol>
+<p>Важно понимать, что при получении итератора на какой-то элемент коллекции и последующем изменении коллекции итератор может стать непригоден для использования.</p>
+<h2 id="%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B">Алгоритмы</h2>
+<p>Методы перебора всех элементов коллекции и их обработки:<br>
+<a href="https://cplusplus.com/reference/algorithm/count/">count</a> - Возвращает количество элементов в диапазоне [first,last), которые равны val ;<br>
+<a href="https://cplusplus.com/reference/algorithm/count_if/">count_if</a>- Возвращает количество элементов в диапазоне, [first,last)для которых значение <em>pred</em> истинно.;<br>
+<a href="https://cplusplus.com/reference/algorithm/find/">find</a> - Возвращает итератор к первому элементу в диапазоне [first,last), который сравнивается с равным <em>val</em> . Если такой элемент не найден, функция возвращает <em>last</em> .;<br>
+<a href="https://cplusplus.com/reference/algorithm/find/">find_if</a> - Возвращает итератор к первому элементу в диапазоне, [first,last)для которого <em>pred</em> возвращает <em>true</em>. Если такой элемент не найден, функция возвращает <em>last</em>.;<br>
+<a href="https://en.cppreference.com/w/cpp/algorithm/adjacent_find">adjacent_find</a> - Ищет диапазон[первый, последний)для двух последовательных равных элементов;<br>
+<a href="https://en.cppreference.com/w/cpp/algorithm/for_each">for_each</a> - если тип итератора ( InputIt/ ForwardIt) является изменяемым,фможет изменять элементы диапазона через разыменованный итератор;<br>
+mismatch;<br>
+equal;<br>
+search copy;<br>
+copy_backward;<br>
+swap;<br>
+iter_swap;<br>
+swap_ranges;<br>
+fill;<br>
+fill_n;<br>
+generate;<br>
+generate_n;<br>
+replace;<br>
+replace_if;<br>
+transform;<br>
+remove;<br>
+remove_if;<br>
+remove_copy;<br>
+remove_copy_if;<br>
+unique;<br>
+unique_copy;<br>
+reverse;<br>
+reverse_copy;<br>
+rotate;<br>
+rotate_copy;<br>
+random_shuffle;<br>
+partition;<br>
+stable_partition;</p>
+<p>Методы сортировки коллекции:<br>
+<a href="https://cplusplus.com/reference/algorithm/sort/">sort</a> - Сортирует элементы диапазона [first,last)в порядке возрастания. Элементы сравниваются с использованием operator&lt;для первой версии и комп для второй.;<br>
+stable_sort;<br>
+partial_sort;<br>
+partial_sort_copy;<br>
+nth_element;<br>
+binary_search;<br>
+lower_bound;<br>
+upper_bound;<br>
+equal_range;<br>
+merge;<br>
+inplace_merge;<br>
+includes;<br>
+set_union;<br>
+set_intersection;<br>
+set_difference;<br>
+set_symmetric_difference;<br>
+make_heap;<br>
+push_heap;<br>
+pop_heap;<br>
+sort_heap;<br>
+min;<br>
+max;<br>
+min_element;<br>
+max_element;<br>
+lexographical_compare;<br>
+next_permutation;<br>
+prev_permutation;</p>
+<p>Методы выполнения определенных арифметических операций над членами коллекций:<br>
+<a href="https://cplusplus.com/reference/numeric/accumulate/">Accumulate</a> - Возвращает результат накопления всех значений в диапазоне [first,last) для <em>init</em> .;<br>
+inner_product;<br>
+partial_sum;<br>
+adjacent_difference;</p>
+<h3 id="%D0%BF%D1%80%D0%B5%D0%B4%D0%B8%D0%BA%D0%B0%D1%82%D1%8B">Предикаты</h3>
+<p>Для многих алгоритмов STL можно задать условие, посредством которого алгоритм определит, что ему делать с тем или иным членом коллекции.
+Предикат — это функция, которая принимает несколько параметров и возвращает логическое значение (истина/ложь).
+Существует и набор стандартных предикатов.</p>
+<h2 id="%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C">Потокобезопасность</h2>
+<p>Важно понимать, что STL — не потокобезопасная библиотека. Но решить эту проблему очень просто: если два потока используют одну коллекцию, просто реализуйте критическую секцию и Mutex.</p>
+<hr>
+<h1 id="%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8">Системы сборки</h1>
+<p><a href="https://www.youtube.com/watch?v=CCBH8UQHCW4">Введение в Системы Сборки для C++</a><br>
+<a href="https://habr.com/ru/articles/442682/">В чем набрать и чем собрать C++ проект</a></p>
+<h2 id="make">Make</h2>
+<p><strong>make</strong> — утилита предназначенная для автоматизации преобразования файлов из одной формы в другую.
+Правила преобразования задаются в скрипте с именем Makefile, который должен находиться в корне рабочей директории проекта.<br>
+Cам скрипт состоит из набора правил, которые в свою очередь описываются:</p>
+<ol>
+<li>целями (то, что данное правило делает);</li>
+<li>реквизитами (то, что необходимо для выполнения правила и получения целей);</li>
+<li>командами (выполняющими данные преобразования).</li>
+</ol>
+<p>В общем виде синтаксис makefile можно представить так:</p>
+<pre class="hljs"><code><div># Индентация осуществляется исключительно при помощи символов табуляции,
+# каждой команде должен предшествовать отступ
+&lt;цели&gt;: &lt;реквизиты&gt;
+	&lt;команда #1&gt;
+	...
+	&lt;команда #n&gt;
+
+</div></code></pre>
+<p>Пример:</p>
+<pre class="hljs"><code><div>all:
+	clear
+	gcc -shared -fpic -g mylib.c -o mylib.so -lrt
+	gcc -g -o main main.c -ldl #mylib.so 
+	./main
+
+c:
+	clear
+	gcc -g mylib.c -o mylibtest
+	./mylibtest	
+</div></code></pre>
+<h3 id="%D0%B8%D0%BD%D0%BA%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%BD%D0%B0%D1%8F-%D0%BA%D0%BE%D0%BC%D0%BF%D0%B8%D0%BB%D1%8F%D1%86%D0%B8%D1%8F">Инкрементная компиляция</h3>
+<pre class="hljs"><code><div>main.o: main.c
+        gcc -c -o main.o main.c
+hello.o: hello.c
+        gcc -c -o hello.o hello.c
+hello: main.o hello.o
+        gcc -o hello main.o hello.o
+</div></code></pre>
+<h3 id="%D1%84%D0%B8%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B5-%D1%86%D0%B5%D0%BB%D0%B8">Фиктивные цели</h3>
+<p>На самом деле, в качестве make целей могут выступать не только реальные файлы.
+Все, кому приходилось собирать программы из исходных кодов должны быть знакомы с двумя стандартными в мире UNIX командами:</p>
+<pre class="hljs"><code><div>	$ make
+	$ make install
+</div></code></pre>
+<p>Командой make производят компиляцию программы, командой make install — установку.
+Такой подход весьма удобен, поскольку все необходимое для сборки и развертывания приложения в целевой системе включено в один файл (забудем на время о скрипте configure).
+Обратите внимание на то, что в первом случае мы не указываем цель, а во втором целью является вовсе не создание файла install, а процесс установки приложения в систему.
+Проделывать такие фокусы нам позволяют так называемые фиктивные (phony) цели.
+Вот краткий список стандартных целей:</p>
+<ul>
+<li>all — является стандартной целью по умолчанию. При вызове make ее можно явно не указывать.</li>
+<li>clean — очистить каталог от всех файлов полученных в результате компиляции.</li>
+<li>install — произвести инсталляцию</li>
+<li>uninstall — и деинсталляцию соответственно.</li>
+</ul>
+<p>Для того чтобы make не искал файлы с такими именами, их следует определить в Makefile, при помощи директивы .PHONY.
+Далее показан пример Makefile с целями all, clean, install и uninstall:</p>
+<pre class="hljs"><code><div>.PHONY: all clean install uninstall
+	
+all: hello
+	
+clean:
+			rm -rf hello *.o
+main.o: main.c
+			gcc -c -o main.o main.c
+hello.o: hello.c
+			gcc -c -o hello.o hello.c
+hello: main.o hello.o
+			gcc -o hello main.o hello.o
+install:
+			install ./hello /usr/local/bin
+uninstall:
+			rm -rf /usr/local/bin/hello
+</div></code></pre>
+<h2 id="%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5">Переменные</h2>
+<p>Переменные в make представляют собой именованные строки и определяются очень просто:</p>
+<pre class="hljs"><code><div>&lt;VAR_NAME&gt; = &lt;value string&gt;
+
+SRC = main.c hello.c
+
+gcc -o hello $(SRC)
+</div></code></pre>
+<h1 id="%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5">Автоматические переменные</h1>
+<p>Автоматические переменные предназначены для упрощения мейкфайлов, но на мой взгляд негативно сказываются на их читабельности.
+Как бы то ни было, я приведу здесь несколько наиболее часто используемых переменных, а что с ними делать (и делать ли вообще) решать вам:</p>
+<pre class="hljs"><code><div>$@ Имя цели обрабатываемого правила
+$&lt; Имя первой зависимости обрабатываемого правила
+$^ Список всех зависимостей обрабатываемого правила
+</div></code></pre>
+<p><a href="https://habr.com/ru/articles/211751/">Просто о make</a></p>
+<hr>
+<h2 id="cmake">CMake</h2>
+<p>CMake — это расширяемая система с открытым исходным кодом, которая управляет процессом сборки в операционной системе и независимо от компилятора.
+В отличие от многих кроссплатформенных систем, CMake предназначен для использования в сочетании с собственной средой сборки.
+Простые файлы конфигурации, размещенные в каждом исходном каталоге (называемые файлами CMakeLists.txt), используются для создания стандартных файлов сборки (например, make-файлов в Unix и проектов/рабочих областей в Windows MSVC), которые используются обычным образом.
+CMake может создать собственную среду сборки, которая будет компилировать исходный код, создавать библиотеки, генерировать оболочки и создавать исполняемые файлы в произвольных комбинациях.
+CMake поддерживает сборки на месте и вне места и, следовательно, может поддерживать несколько сборок из одного исходного дерева. CMake также поддерживает статические и динамические сборки библиотек.
+Еще одна приятная особенность CMake заключается в том, что он создает файл кеша, предназначенный для использования с графическим редактором.
+Например, при запуске CMake находит файлы, библиотеки и исполняемые файлы и может столкнуться с необязательными директивами сборки.
+Эта информация собирается в кэш, который может быть изменен пользователем до создания собственных файлов сборки.</p>
+<p>CMake — кроcсплатформенная утилита для автоматической сборки программы из исходного кода.
+При этом сама CMake непосредственно сборкой не занимается, а представляет из себя front-end.
+В качестве back-end-a могут выступать различные версии make и Ninja.
+Так же CMake позволяет создавать проекты для CodeBlocks, Eclipse, KDevelop3, MS VC++ и Xcode.
+Стоит отметить, что большинство проектов создаются не нативных, а всё с теми же back-end`ами</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">2.8</span>) <span class="hljs-comment"># Проверка версии CMake.</span>
+									<span class="hljs-comment"># Если версия установленой программы</span>
+									<span class="hljs-comment"># старее указаной, произайдёт аварийный выход.</span>
+
+<span class="hljs-keyword">add_executable</span>(main main.cpp)		<span class="hljs-comment"># Создает исполняемый файл с именем main</span>
+									<span class="hljs-comment"># из исходника main.cpp</span>
+</div></code></pre>
+<p>Синтаксис CMake похож на синтаксис bash.
+Всё что после символа &quot;#&quot; является комментарием и обрабатываться программой не будет.
+CMake позволяет не засорять дерево исходных кодов временными файлами — очень просто и без лишних телодвижений сборка производится «Out-of-Source».</p>
+<pre class="hljs"><code><div>cmake /Путь_К_Исходникам/
+</div></code></pre>
+<h3 id="%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8">Библиотеки</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">project</span>(hello_world)			<span class="hljs-comment"># Название проекта</span>
+
+<span class="hljs-keyword">set</span>(SOURCE_EXE main.cpp)		<span class="hljs-comment"># Установка переменной со списком исходников для исполняемого файла</span>
+
+<span class="hljs-keyword">set</span>(SOURCE_LIB foo.cpp)			<span class="hljs-comment"># Тоже самое, но для библиотеки</span>
+
+<span class="hljs-keyword">add_library</span>(foo STATIC <span class="hljs-variable">${SOURCE_LIB}</span>)	<span class="hljs-comment"># Создание статической библиотеки с именем foo</span>
+
+<span class="hljs-keyword">add_executable</span>(main <span class="hljs-variable">${SOURCE_EXE}</span>)	<span class="hljs-comment"># Создает исполняемый файл с именем main</span>
+
+<span class="hljs-keyword">target_link_libraries</span>(main foo)		<span class="hljs-comment"># Линковка программы с библиотекой</span>
+</div></code></pre>
+<p>Переменные могут хранить списки значений, разделённых пробелами\табуляциями\переносами:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">set</span>(SOURCE main.cpp foo.cpp)
+<span class="hljs-keyword">set</span>(HEADER main.h
+			foo.h)
+</div></code></pre>
+<p>Что бы получить значение переменной ипользуем конструкцию:</p>
+<pre class="hljs"><code><div><span class="hljs-variable">${var_name}</span>
+</div></code></pre>
+<h3 id="%D0%BF%D0%BE%D0%B4%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B">Подпроекты</h3>
+<p>Каждый подпроект является по сути полноценным проектом и может использоваться самостоятельно.</p>
+<p>Команда указывает компилятору, где искать заголовочные файлы.
+Может быть вызвана несколько раз.
+Хэдеры будут искаться во всех указаных директориях.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">include_directories</span>(foo)			<span class="hljs-comment"># Расположение заголовочных файлов</span>
+</div></code></pre>
+<p>Указать директорию с подпроектом:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">add_subdirectory</span>(foo)
+</div></code></pre>
+<h3 id="%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA">Поиск библиотек</h3>
+<p>CMake обладает достаточно развитыми средствами поиска установленых библиотек, правда они не встроеные, а реализованы в виде отдельных модулей.
+В стандартной поставке довольно много модулей, но некоторые проекты (например Ogre) поставляют свои.
+Они позволяют системе автоматически определить наличие необходимых для линковки проекта библиотек.</p>
+<p>Поиск библиотеки.
+Если в системе её нет, выведется сообщение об ошибке и завершается выполнение cmake.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">find_package</span>(SDL REQUIRED)
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">NOT</span> SDL_FOUND)
+	<span class="hljs-keyword">message</span>(SEND_ERROR <span class="hljs-string">"Failed to find SDL"</span>)
+	<span class="hljs-keyword">return</span>()
+<span class="hljs-keyword">else</span>()
+	<span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">${SDL_INCLUDE_DIR}</span>)
+<span class="hljs-keyword">endif</span>()
+</div></code></pre>
+<p>Поиск необходимого компонента</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">find_package</span>(Boost COMPONENTS thread-mt REQUIRED)
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">NOT</span> Boost_FOUND)
+	<span class="hljs-keyword">message</span>(SEND_ERROR <span class="hljs-string">"Failed to find boost::thread-mt."</span>)
+	<span class="hljs-keyword">return</span>()
+<span class="hljs-keyword">else</span>()
+	<span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">${Boost_INCLUDE_DIRS}</span>)
+<span class="hljs-keyword">endif</span>()
+</div></code></pre>
+<p>SDL_FOUND, Boost_FOUND — признак присутствия бибилиотеки;<br>
+SDL_LIBRARY, Boost_LIBRARIES — имена библиотек для линковки;<br>
+SDL_INCLUDE_DIR, Boost_INCLUDE_DIRS — пути к заголовочным файлам.</p>
+<h3 id="%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B5-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8-%D0%B8-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BD%D1%8B%D0%B5-%D1%84%D0%B0%D0%B9%D0%BB%D1%8B">Внешние библиотеки и объектные файлы:</h3>
+<p>Если вы пишите для «дяди», а злой «дядя» любит самописные библиотеки и делиться исходниками не желает, поэтому присылает готовую библиотеку, то вы по адресу.<br>
+Объектные файлы в CMake стоят на ряду с исходниками — достаточно включить объектник в список файлов для компиляции.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">add_library</span>(netutil STATIC IMPORTED)
+<span class="hljs-keyword">set_property</span>(<span class="hljs-keyword">TARGET</span> netutil PROPERTY
+             IMPORTED_LOCATION Binary/game_client/libnetutil.a)
+</div></code></pre>
+<p>Слово «IMPORTED», указывает, что библиотека берётся извне.<br>
+В CMake каждая цель имеет параметры, а set_property позволяет их изменять.
+Линкуется такая библиотека стандартно:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">target_link_libraries</span>(<span class="hljs-variable">${TARGET}</span> netutil)
+</div></code></pre>
+<p>Для динамических библиотек все аналогично, только тип «SHARED», расширение — &quot;.so&quot;.</p>
+<h3 id="%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B">Генераторы</h3>
+<p>Как было сказано в начале, CMake умеет генерировать множество различных видов проектов.
+Это удобно и позволяет использовать CMake для практически любой популярной IDE.
+Если запустить cmake без параметров, в конце будут описаны доступные генераторы.</p>
+<pre class="hljs"><code><div>$ cmake ~/cmake/example_3/ -G <span class="hljs-string">"KDevelop3 — Unix Makefiles"</span>
+</div></code></pre>
+<p><a href="https://habr.com/ru/articles/155467/">Введение в CMake</a></p>
+<hr>
+<h2 id="ninja">Ninja</h2>
+<h2 id="bazel">Bazel</h2>
+<h2 id="premake">Premake</h2>
+<h1 id="%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%BD%D1%8B%D0%B5-%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D1%8B">Пакетные менеджеры</h1>
+<h1 id="%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B9-git">Контроль версий (Git)</h1>
+<pre class="hljs"><code><div><span class="hljs-comment"># Установим пользователя</span>
+<span class="hljs-comment"># Кавычки оставляем</span>
+git config --global user.name <span class="hljs-string">"&lt;ваше_имя&gt;"</span>
+
+<span class="hljs-comment"># Теперь установим email. </span>
+git config --global user.email <span class="hljs-string">"&lt;адрес_почты@email.com&gt;"</span>
+
+<span class="hljs-comment"># Инициализация/создание репозитория</span>
+git init
+
+<span class="hljs-comment"># Добавим все файлы проекта в нам будующий commit</span>
+git add *
+git add .
+git add --all
+
+<span class="hljs-comment"># Если хотим добавить конкретный файл то можно так</span>
+git add &lt;имя_файла&gt; 
+
+<span class="hljs-comment"># Создание коммита</span>
+<span class="hljs-comment"># И не забываем про кавычки</span>
+git commit -m <span class="hljs-string">"&lt;комментарий&gt;"</span>
+
+git <span class="hljs-built_in">clone</span> https://github.com/CapSmoIIett/cplusplus.git
+<span class="hljs-comment"># клонирует репозиторий в новый каталог</span>
+
+git status
+<span class="hljs-comment"># показывает состояния файлов в рабочем каталоге и индексе: какие файлы изменены, </span>
+<span class="hljs-comment"># но не добавлены в индекс; какие ожидают коммита в индексе.</span>
+
+git diff
+<span class="hljs-comment"># используется для вычисления разницы между любыми двумя Git деревьями. </span>
+<span class="hljs-comment"># Это может быть разница между вашей рабочей копией и индексом (собственно </span>
+<span class="hljs-comment"># git diff), разница между индексом и последним коммитом (git diff --staged), </span>
+<span class="hljs-comment"># или между любыми двумя коммитами (git diff master branchB).</span>
+
+git reset 
+<span class="hljs-comment"># используется в основном для отмены изменений. </span>
+<span class="hljs-comment"># Она изменяет указатель HEAD и, опционально, состояние индекса</span>
+
+git branch
+<span class="hljs-comment"># это своего рода "менеджер веток". Она умеет перечислять </span>
+<span class="hljs-comment"># ваши ветки, создавать новые, удалять и переименовывать их.</span>
+
+git checkout
+<span class="hljs-comment"># Команда git checkout используется для переключения веток </span>
+<span class="hljs-comment"># и выгрузки их содержимого в рабочий каталог.</span>
+</div></code></pre>
+<pre class="hljs"><code><div>git merge
+<span class="hljs-comment"># Команда git merge используется для слияния одной или </span>
+<span class="hljs-comment"># нескольких веток в текущую. Затем она устанавливает указатель </span>
+<span class="hljs-comment"># текущей ветки на результирующий комми</span>
+</div></code></pre>
+<p><img src="images/git_1.png" alt="merge,rebase,squash"></p>
+<p>git squash - сжатие комитов для rebase (не знаю почему на фото с squash merge)</p>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">log</span>
+<span class="hljs-comment"># используется для просмотра истории коммитов, начиная с </span>
+<span class="hljs-comment"># самого свежего и уходя к истокам проекта.</span>
+
+git stash
+git stash pop
+git stash show
+git stash drop
+<span class="hljs-comment"># используется для временного сохранения всех незафиксированных </span>
+<span class="hljs-comment"># изменений с целью очистки рабочего каталога без необходимости </span>
+<span class="hljs-comment"># фиксировать незавершённую работу в текущей ветке.</span>
+
+git tag 
+<span class="hljs-comment"># используется для задания постоянной метки на какой-либо </span>
+<span class="hljs-comment"># момент в истории проекта. Обычно она используется для релизов.</span>
+
+git fetch
+<span class="hljs-comment"># связывается с удалённым репозиторием и забирает из него </span>
+<span class="hljs-comment"># все изменения, которых у вас пока нет и сохраняет их локально.</span>
+
+git pull
+<span class="hljs-comment"># работает как комбинация команд git fetch и git merge, т. е. G</span>
+<span class="hljs-comment"># it вначале забирает изменения из указанного удалённого репозитория, </span>
+<span class="hljs-comment"># а затем пытается слить их с текущей веткой.</span>
+
+git push
+<span class="hljs-comment"># используется для установления связи с удалённым репозиторием, </span>
+<span class="hljs-comment"># вычисления локальных изменений отсутствующих в нём, и </span>
+<span class="hljs-comment"># собственно их передачи в вышеупомянутый репозиторий</span>
+
+git remote
+<span class="hljs-comment"># служит для управления списком удалённых репозиториев. </span>
+<span class="hljs-comment"># Она позволяет сохранять длинные URL репозиториев в виде </span>
+<span class="hljs-comment"># понятных коротких строк, например «origin», так что вам </span>
+<span class="hljs-comment"># не придётся забивать голову всякой ерундой и набирать её </span>
+<span class="hljs-comment"># каждый раз для связи с сервером </span>
+
+git <span class="hljs-built_in">help</span> <span class="hljs-comment"># справка по всем командам</span>
+
+</div></code></pre>
+<h2 id="git-%D0%B4%D0%BB%D1%8F-%D0%BD%D0%BE%D0%B2%D0%B8%D1%87%D0%BA%D0%BE%D0%B2"><a href="https://habr.com/ru/articles/541258/">Git для новичков</a></h2>
+<h1 id="cicd">CI/CD</h1>
+<h1 id="%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D1%81%D1%82%D1%8C">Многопоточность</h1>
+<p><a href="https://radioprog.ru/post/1402">Источник</a></p>
+<h2 id="%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5">Определение</h2>
+<p><strong>Многозадачность (multitasking)</strong> – свойство операционной системы или среды выполнения обеспечивать возможность параллельной (или псевдопараллельной) обработки нескольких задач.</p>
+<p><strong>Многопоточность (multithreading)</strong> – свойство платформы (например, операционной системы, виртуальной машины и т. д.) или приложения, состоящее в том, что процесс, порождённый в операционной системе, может состоять из нескольких потоков, выполняющихся «параллельно», то есть без предписанного порядка во времени. При выполнении некоторых задач такое разделение может достичь более эффективного использования ресурсов вычислительной машины.</p>
+<p><strong>Процесс</strong> – экземпляр программы во время выполнения;<br>
+<strong>Потоки</strong> – ветви кода, выполняющиеся «параллельно», то есть без предписанного порядка во времени.</p>
+<p><strong>Процесс</strong> – это абстракция, реализованная на уровне операционной системы. Процесс был придуман для организации всех данных, необходимых для работы программы.<br>
+<strong>Процесс</strong> – это просто контейнер, в котором находятся ресурсы программы:</p>
+<ul>
+<li>адресное пространство;</li>
+<li>потоки;</li>
+<li>открытые файлы;</li>
+<li>дочерние процессы;</li>
+<li>и т.д.;</li>
+</ul>
+<p><strong>Поток</strong> – это абстракция, реализованная на уровне операционной системы. Поток был придуман для контроля выполнения кода программы.</p>
+<p><strong>Поток</strong> – это просто контейнер, в котором находятся:</p>
+<ul>
+<li>счётчик команд;</li>
+<li>регистры;</li>
+<li>стек.</li>
+</ul>
+<h2 id="%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%8B-%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%B8">Проблемы многопоточности</h2>
+<h3 id="race-condition">Race condition</h3>
+<p><strong>Состояние гонки</strong> – ошибка проектирования многопоточной системы или приложения, при которой работа системы или приложения зависит от того, в каком порядке выполняются части кода.</p>
+<p>Суть состояния гонки заключается в том, что итоговое состояние общего ресурса зависит от того, в каком порядке выполняются операции потоками или процессами.
+Если не предусмотрены механизмы синхронизации или взаимного исключения, то возникает конкуренция между потоками за доступ к ресурсу.</p>
+<p>Примером состояния гонки может быть следующая ситуация: предположим, что два потока одновременно пытаются увеличить значение одной переменной на 1.
+Оба потока читают текущее значение переменной, увеличивают его и записывают новое значение.
+Однако, если оба потока прочитали старое значение одновременно, то они оба увеличат его на 1 и запишут обновленное значение, игнорируя вклад другого потока.
+В результате значение переменной будет увеличено только на 1, хотя должно было увеличиться на 2.</p>
+<h3 id="dead-lock">Dead lock</h3>
+<p><strong>Deadlock</strong> – ситуация, при которой несколько потоков находятся в состоянии ожидания ресурсов, занятых друг другом, и ни один из них не может продолжать выполнение.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun1</span><span class="hljs-params">()</span> <span class="hljs-comment">// функция выполняющаяся в одном потоке</span>
+</span>{
+    mtx1.lock();    <span class="hljs-comment">// блокировка мьютекса </span>
+    
+    mtx2.lock();    <span class="hljs-comment">// блокировка мьютекса </span>
+
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fun2</span><span class="hljs-params">()</span> <span class="hljs-comment">// функция выполняющаяся в другом потоке </span>
+</span>{
+    mtx2.lock();    <span class="hljs-comment">// блокировка мьютекса </span>
+    
+    mtx1.lock();    <span class="hljs-comment">// блокировка мьютекса </span>
+
+}
+</div></code></pre>
+<p>Пример выше показывает ситуацию с взаимной блокировакой</p>
+<h3 id="live-lock">Live lock</h3>
+<p><strong>Livelock</strong> – очень похож на deadlock, с той лишь разницей, что во время livelock’а потоки во время ожидания выполняют какие-то операции. Однако эти операции не имеют практического смысла, так как потоки несмотря на выполняемые операции и так не могут завершить свои задания.</p>
+<h3 id="starvation">Starvation</h3>
+<h2 id="%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81">Синтаксис</h2>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;thread&gt;       // Подключение либы</span></span>
+
+this_thread::get_id();  <span class="hljs-comment">// Индентификатор текущего потока</span>
+<span class="hljs-comment">/*
+    this_thread - это пространство имен группирует набор функций, которые обращаются к текущему потоку.
+*/</span>
+
+<span class="hljs-function"><span class="hljs-built_in">std</span>::thread <span class="hljs-title">th</span><span class="hljs-params">(<span class="hljs-comment">/*указатель на функцию*/</span>)</span></span>;
+<span class="hljs-function"><span class="hljs-built_in">std</span>::thread <span class="hljs-title">th</span><span class="hljs-params">(<span class="hljs-comment">/*указатель на функцию*/</span>, <span class="hljs-comment">/*Параметры*/</span>)</span></span>;
+<span class="hljs-function"><span class="hljs-built_in">std</span>::thread <span class="hljs-title">th</span><span class="hljs-params">(<span class="hljs-comment">/*указатель на функцию*/</span>, <span class="hljs-built_in">std</span>::ref(<span class="hljs-comment">/*Параметры*/</span>))</span></span>; <span class="hljs-comment">// Для передачи параметров по ссылке</span>
+<span class="hljs-function"><span class="hljs-built_in">std</span>::thread <span class="hljs-title">th</span><span class="hljs-params">(<span class="hljs-comment">/*указатель на класс с перегрженными ()*/</span>, <span class="hljs-comment">/*Объект*/</span>, <span class="hljs-comment">/*Параметры*/</span>)</span></span>;
+<span class="hljs-function"><span class="hljs-built_in">std</span>::thread <span class="hljs-title">th</span><span class="hljs-params">(&amp;<span class="hljs-comment">/*Название класса*/</span>::<span class="hljs-comment">/*название метода*/</span>, <span class="hljs-comment">/*Параметры*/</span>)</span></span>;
+<span class="hljs-function"><span class="hljs-built_in">std</span>::thread <span class="hljs-title">th</span> <span class="hljs-params">([](){})</span>
+
+th.<span class="hljs-title">join</span><span class="hljs-params">()</span></span>;          <span class="hljs-comment">// Текущий поток ждет поток th</span>
+th.<span class="hljs-built_in">detach</span>();        <span class="hljs-comment">// Продолжаем выполнение текущего потока не дожидаясь завершения th</span>
+
+<span class="hljs-built_in">std</span>::mutext mtx;
+mtx.lock();
+<span class="hljs-comment">/*
+    участок кода который выполняется только при разрешении мьютексом
+*/</span>
+mtx.unlock();
+
+<span class="hljs-function"><span class="hljs-built_in">std</span>::lock_guard&lt;mutex&gt; <span class="hljs-title">guard</span><span class="hljs-params">(mtx)</span></span>;
+
+<span class="hljs-built_in">std</span>::recursive_mutex rm;    <span class="hljs-comment">// Рекурсивный мьютекс можно лочить любое количество раз</span>
+<span class="hljs-comment">// но и разблочить его нужно столько же раз</span>
+
+rm.lock();
+rm.lock();
+rm.lock();
+
+rm.unlock();
+rm.unlock();
+rm.unlock();
+
+<span class="hljs-function"><span class="hljs-built_in">std</span>::unique_lock <span class="hljs-title">ul</span><span class="hljs-params">(mtx)</span></span>;
+<span class="hljs-function"><span class="hljs-built_in">std</span>::unique_lock <span class="hljs-title">ul</span><span class="hljs-params">(mtx,<span class="hljs-built_in">std</span>::defer_lock)</span></span>; <span class="hljs-comment">// не вызывать lock у мьютекса</span>
+
+
+</div></code></pre>
+<h3 id="lock-guard">Lock guard</h3>
+<p>Своего рода умный указатель для мьютекса. При создании вызывает mutex.lock(), а в деструкторе вызывает mutex.unlock();</p>
+<h3 id="uniquelock">unique_lock</h3>
+<p>При выходе из зоны видимости так же освобождает mutex.<br>
+Можно вызвать unlock  вручную</p>
+<p><a href="https://www.youtube.com/watch?v=NawpxG81RRk&amp;list=PLQOaTSbfxUtAc_RpyDiWCHq0YTzLtVSD0">Цикл видео о этом</a></p>
+<h1 id="%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B">Процессы</h1>
+<h2 id="%D0%BC%D0%B5%D0%B6%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BD%D0%BE%D0%B5-%D0%B2%D0%B7%D0%B0%D0%B8%D0%BC%D0%BE%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5">Межпроцессное взаимодействие</h2>
+<p>Релизовать обмен данными сложнее чем с потоками из-за разного адресного пространства</p>
+<p>Для IPC имеется множество библиотек C ++, например Boost.Interprocess.</p>
+<p><strong>Различные подходы к IPC в C++:</strong></p>
+<p>-Файл;</p>
+<ul>
+<li>Общая память;</li>
+<li>Конвейер;</li>
+<li>Доменный сокет Unix;</li>
+<li>Очередь сообщений и др.</li>
+</ul>
+<p>Для сложных типов, к примеру, имеющих виртуальные функции и указатели/ссылки
+в качестве членов, нельзя просто выгрузить память, поскольку она содержат
+адреса (указатели, виртуальные указатели), которые действительны только в этом процессе.</p>
+<p><strong>Методы последовательного представления данных:</strong></p>
+<h3 id="shared-memmory">Shared memmory</h3>
+<h3 id="pipes">Pipes</h3>
+<h3 id="%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F">Сериализация</h3>
+<h1 id="%D1%81%D0%B5%D1%82%D0%B8">Сети</h1>
+<h2 id="osi">OSI</h2>
+<p><em>Open Systems Interconnection</em></p>
+<p><img src="images/osi_1.png" alt="OSI"></p>
+<p>По модели процесс передачи данных по сети происходит постепенно от одного уровня к другому.
+На каждом из них используются информация с прошлого уровня и определенные протоколы.
+Главными героями здесь выступают устройства отправителя и получателя, а также сами передаваемые данные.
+И как раз процесс обмена информации между устройствами определяет модель OSI.</p>
+<p>На физическом уровне информация предстает в виде битов, а на прикладном она отражается в более привычном для нас виде, в виде данных.
+Существует два процесса перехода от первого уровня к седьмому и наоборот.
+Первый – это инкапсуляция, когда данные отправляются с устройства и переводятся в биты.
+Второй – декапсуляция, обратный переход, когда биты трансформируются в данные.</p>
+<h3 id="1-%D1%84%D0%B8%D0%B7%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9">1 Физический</h3>
+<p>Здесь происходит обмен оптическими, электрическими или радиосигналами между устройствами отправителя и получателя.</p>
+<p>На этом уровне железо не распознает данные в классическом для нас виде (картинки, текст, видео), но оно понимает биты (единицы и нули) и работает только с сигналами.
+Таким оборудованием выступают концентраторы, медиаконвертеры или репитеры.
+Здесь информация или биты передаются либо по проводам, кабелям, либо без них, например через Bluetooth, Wi-Fi.</p>
+<h3 id="2-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9">2 Канальный</h3>
+<p>Если в локальной сети находится более двух устройств, то необходимо определить, куда конкретно направлять информацию.
+Этим занимается как раз канальный уровень, принимающий на себя важную роль адресации.</p>
+<p>Второй уровень принимает биты и трансформирует их в кадры (фреймы).
+Здесь существуют MAC-адреса (Media Access Control), которые необходимы для идентификации устройств.
+На втором уровне происходит еще проверка на ошибки, и исправление информации, а также управление ее передачей. Этим занимается LLC (Logical Link Control).</p>
+<h3 id="3-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B9">3 Сетевой</h3>
+<p>На третьем уровне происходит маршрутизация трафика.
+Этим занимаются такие устройства, как роутеры или маршрутизаторы.</p>
+<p>На сетевом уровне работает протокол ARP (Address Resolution Protocol), который определяет соответствие между логическим адресом сетевого уровня (IP) и физическим адресом устройства (MAC).
+Здесь пересылаемая информация выступает уже в виде пакетов, состоящих из заголовка и поля данных.</p>
+<p>Информация об известных IP и MAC-адресах хранится в виде таблицы (ARP-таблица) с данными, что позволяет устройствам не тратить время на повторную идентификацию.</p>
+<h3 id="4-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BD%D1%8B%D0%B9">4 Транспортный</h3>
+<p>Четвертый уровень получает пакеты и передает их по сети.
+Он отвечает за установку соединения, надежность и управление потоком.
+Блоки данных делятся на отдельные фрагменты, размеры которых зависят от используемого протокола.
+Главными героями тут выступают 2 протокола TCP (Transmission Control Protocol) и UDP (User Datagram Protocol).
+В чем их отличие и когда их применять?</p>
+<p>При транспортировке данных, наиболее восприимчивых к потерям, например, web-страницы, задействуется протокол <a href="#tcpip">TCP</a> с установлением соединения.
+Он контролирует целостность информации, в данном случае нашей страницы, ибо потеря какого-то контента заставит задуматься пользователя о его полезности.
+Чтобы сделать передачу более эффективной и быстрой, транспортный уровень разбивает данные на более мелкие сегменты.</p>
+<p><a href="#udp">UDP</a>-протокол используется с данными, для которых потери не так критичны, например, мультимедиа-трафик.
+Для них более заметна будет задержка, поэтому UDP обеспечивает связь без установки соединения.
+Во время передачи данных с помощью протокола UDP, пакеты делятся уже на автономные датаграммы.
+Они могут доставляться по разным маршрутам и в разной последовательности.</p>
+<h3 id="5-%D1%81%D0%B5%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B9">5 Сеансовый</h3>
+<p>Уровни с пятого по седьмой уже работают с чистыми данными.
+И здесь за дело берутся не сетевые инженеры, а разработчики.</p>
+<p>Сеансовый уровень, исходя из названия, отвечает за поддержание сеанса или сессии.
+Он координирует коммуникацию между приложениями и отвечает за установление, поддержание и завершение связи, синхронизацию задач и сам обмен информацией.
+Примером для пятого уровня можно назвать созвон в Zoom или прямой эфир на YouTube.
+Во время сессии необходимо обеспечивать синхронизированную передачу аудио и видео для всех участников, а также поддерживать саму связь.
+За это как раз отвечают протоколы сеансового уровня (RPC, H.245, RTCP).</p>
+<h3 id="6-%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C-%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">6 Уровень представления</h3>
+<p>Шестой уровень подготавливает информацию для последнего и преобразует (сжимает, кодирует, шифрует) их в понятный язык для пользователя или машины.
+Например, если вы отправляете картинку, то она сначала приходит в виде битов, а потом трансформируются в JPEG, GIF или другой формат.</p>
+<h3 id="7-%D0%BF%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE%D0%B9">7 Прикладной</h3>
+<p>Верхний уровень модели OSI – это прикладной.
+С помощью своих протоколов он отображает данные в понятном конечному пользователю формате.
+Сюда входят такие технологии, как HTTP, DNS, FTP, SSH и многое другое.
+Почти каждый человек ежедневно взаимодействует с протоколами прикладного уровня.</p>
+<h3 id="%D0%BA%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D0%B2%D1%81%D0%B5-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82">Как это все работает?</h3>
+<p>Чтобы информация могла быть передана по сети от устройства к устройству, данные должны пройти семь кругов, а точнее уровней по модели OSI.
+Информация передается с уровня 7 вниз на уровень 1 от отправителя, а затем передается с уровня 1 на уровень 7 на устройстве получателя.</p>
+<p>Примером передачи данных по модели OSI является приложение электронной почты.
+Когда пользователь отправляет письмо, оно приходит на уровень представления с использованием определенного протокола (SMTP для исходящей электронной почты).
+Уровень представления сжимает информацию и отправляет сообщение на сеансовый, который открывает сессию для связи между устройством отправителя и исходящим сервером.</p>
+<p>Далее вступает в силу транспортный уровень, где сегментируются полученные данные.
+Затем сетевой уровень разбивает сегменты на пакеты и отправляет их на канальный уровень, где они разбиваются на фреймы.
+Фреймы переходят на физический уровень, где информация преобразуется в биты и передается через физическую среду, ​​беспроводные соединения или кабели.</p>
+<p>Когда сообщение доходит до получателя, происходит обратный процесс, где информация переходит из битовых единиц и нулей в сообщение на почте получателя.
+Как-то так.</p>
+<p><a href="https://habr.com/ru/companies/serverspace/articles/689704/">Это база. Сетевая модель OSI. Истоки</a></p>
+<h2 id="tcpip">TCP/IP</h2>
+<p><em>Transmission Control Protocol (TCP) и Internet Protocol (IP)</em></p>
+<p>TCP/IP — сетевая модель передачи данных, представленных в цифровом виде.
+Модель описывает способ передачи данных от источника информации к получателю.
+В модели предполагается прохождение информации через четыре уровня, каждый из которых протоколом передачи.</p>
+<p>Надежная передача потоков байт.<br>
+Гарантия доставки данных.<br>
+Сохранения порядка следования сообщений.</p>
+<p>Транспортная подсистема получает поток байт.
+Поток байт разбивается на сегменты, которые по отдельности отправляются.</p>
+<table>
+<thead>
+<tr>
+<th>Уровни</th>
+<th style="text-align:center">Протоколы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Прикладной</td>
+<td style="text-align:center">HTTP, RTSP, FTP, DNS</td>
+</tr>
+<tr>
+<td>Транспортный</td>
+<td style="text-align:center">TCP, UDP, SCTP, DCCP</td>
+</tr>
+<tr>
+<td>Сетевой</td>
+<td style="text-align:center">IP</td>
+</tr>
+<tr>
+<td>Канальный</td>
+<td style="text-align:center">Ethernet, IEEE 802.11, WLAN, SLIP, Token Ring, ATM и MPLS</td>
+</tr>
+</tbody>
+</table>
+<p><img src="images/tcp_1.png" alt="Работа TCP"></p>
+<p>В протоколе подтверждается не каждый сегмент, а несколько отправленных друг за другом(скользящее окно)</p>
+<p>все сегменты нумеруются(номер байт).</p>
+<p><a href="https://www.youtube.com/watch?v=CKUOb4htnB4">Протокол TCP</a></p>
+<h2 id="udp">UDP</h2>
+<p><em>User Datagram Protocol</em></p>
+<p>На транспортном уровне.</p>
+<p>Особенности:</p>
+<ul>
+<li>Нет соединения</li>
+<li>нет гарантий доставки данных</li>
+<li>нет гарантий сохранения порядка</li>
+</ul>
+<p>Преимущество UDP - скорость работы</p>
+<p><a href="https://www.youtube.com/watch?v=CKUOb4htnB4">Протокол UDP</a></p>
+<h3 id="icmp">ICMP</h3>
+<p><em>Internet Control Message Protocol — протокол межсетевых управляющих сообщений</em>
+Cетевой протокол, входящий в стек протоколов TCP/IP. В основном ICMP используется для передачи сообщений об ошибках и других исключительных ситуациях, возникших при передаче данных, например, запрашиваемая услуга недоступна или хост, или маршрутизатор не отвечают.
+Также на ICMP возлагаются некоторые сервисные функции (services).</p>
+<h2 id="%D1%81%D0%BE%D0%BA%D0%B5%D1%82%D1%8B">Сокеты</h2>
+<h3 id="win-socket">Win Socket</h3>
+<p>заголовки</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"winsock.h"</span> </span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"winsock2.h"</span></span>
+</div></code></pre>
+<p>инициализация</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">WSAStartup</span><span class="hljs-params">( WORD wVersionRequested, (in) LPWSADATA lpWSAData (out) )</span></span>; 
+
+WSADATA ws;
+<span class="hljs-comment">//...</span>
+<span class="hljs-keyword">if</span> (FAILED (WSAStartup (MAKEWORD( <span class="hljs-number">1</span>, <span class="hljs-number">1</span> ), &amp;ws) ) ) 
+{
+    <span class="hljs-comment">// Error...</span>
+    error = WSAGetLastError();
+    <span class="hljs-comment">//...</span>
+}
+</div></code></pre>
+<p>создание сокета</p>
+<pre class="hljs"><code><div>SOCKET s;
+
+<span class="hljs-function">SOCKET <span class="hljs-title">socket</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> af (in),          <span class="hljs-comment">// протокол (TCP/IP, IPX...)</span>
+                <span class="hljs-keyword">int</span> type (in),        <span class="hljs-comment">// тип сокета (SOCK_STREAM/SOCK_DGRAM)</span>
+                <span class="hljs-keyword">int</span> protocol (in)     <span class="hljs-comment">// для Windows приложений может быть 0</span>
+              )</span></span>;
+
+<span class="hljs-keyword">if</span> (INVALID_SOCKET == (s = socket (AF_INET, SOCK_STREAM, <span class="hljs-number">0</span>) ) )
+{
+    <span class="hljs-comment">// Error...</span>
+    error = WSAGetLastError();
+    <span class="hljs-comment">// ... </span>
+}
+
+устанавливаем соединение
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">connect</span><span class="hljs-params">(SOCKET s,                             <span class="hljs-comment">// сокет (наш сокет)</span>
+            <span class="hljs-keyword">const</span> struct sockaddr FAR *name,  <span class="hljs-comment">// адрес </span>
+               <span class="hljs-keyword">int</span> namelen                    <span class="hljs-comment">// длинна адреса</span>
+           )</span></span>;
+
+<span class="hljs-comment">// Объявим переменную для хранения адреса </span>
+sockaddr_in s_addr;
+
+<span class="hljs-comment">// Заполним ее:</span>
+ZeorMemory (&amp;s_addr, <span class="hljs-keyword">sizeof</span> (s_addr));
+<span class="hljs-comment">// тип адреса (TCP/IP)</span>
+s_addr.sin_family = AF_INET;
+<span class="hljs-comment">//адрес сервера. Т.к. TCP/IP представляет адреса в числовом виде, то для перевода </span>
+<span class="hljs-comment">// адреса используем функцию inet_addr.</span>
+s_addr.sin_addr.S_un.S_addr = inet_addr (<span class="hljs-string">"193.108.128.226"</span>); 
+<span class="hljs-comment">// Порт. Используем функцию htons для перевода номера порта из обычного в //TCP/IP представление.</span>
+s_addr.sin_port = htons (<span class="hljs-number">1234</span>);
+
+<span class="hljs-comment">// Дальше выполняем соединение:</span>
+<span class="hljs-keyword">if</span> (SOCKET_ERROR == ( <span class="hljs-built_in">connect</span> (s, (sockaddr *) &amp;s_addr, <span class="hljs-keyword">sizeof</span> (s_addr) ) ) )
+{
+    <span class="hljs-comment">// Error...</span>
+    error = WSAGetLastError();
+    <span class="hljs-comment">// ... </span>
+}
+</div></code></pre>
+<p>посылаем данные</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">send</span><span class="hljs-params">(SOCKET s,              <span class="hljs-comment">// сокет- отправитель</span>
+         <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> FAR *buf,   <span class="hljs-comment">// указатель на буффер с данными</span>
+         <span class="hljs-keyword">int</span> len,               <span class="hljs-comment">// длинна данных</span>
+         <span class="hljs-keyword">int</span> flags              <span class="hljs-comment">// флаги (может быть 0)</span>
+        )</span></span>;
+
+<span class="hljs-keyword">if</span> (SOCKET_ERROR == ( send (s, (<span class="hljs-keyword">char</span>* ) &amp; buff), <span class="hljs-number">512</span>, <span class="hljs-number">0</span> ) ) 
+{
+    <span class="hljs-comment">// Error...</span>
+    error = WSAGetLastError();
+    <span class="hljs-comment">// ... </span>
+}
+</div></code></pre>
+<p>Флаги:</p>
+<ul>
+<li>
+<p>MSG_DONTROUTE - указывает на то, что в отправляемое сообщение, не включатся информация о маршрутизации.
+Однако Winsock service provider может игнорировать этот флаг при доставке сообщения. Используется для отладки.
+Адрес назначения - локальный. То есть данные могут быть доставлены только на машины, соединенные напрямую.</p>
+</li>
+<li>
+<p>MSG_OOB (Out Of Band) - Сообщение является OOB данными.<br>
+То есть, такое сообщение передаётся вне потока. Это значит, что при отправке сообщения, транспортный протокол не ждёт полного заполнения буфера, а отсылает сообщение немедленно.
+Данный флаг можно использовать при передаче приоритетных данных.
+При использовании MSG_OOB, Winsock-приложения поддерживающие связь, должны заранее &quot;договориться&quot; об использовании этого флага.</p>
+</li>
+</ul>
+<p>принимаем данные</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">recv</span><span class="hljs-params">(SOCKET s,         <span class="hljs-comment">// сокет- получатель</span>
+         <span class="hljs-keyword">char</span> FAR *buf,    <span class="hljs-comment">// адрес буфера для приёма данных </span>
+         <span class="hljs-keyword">int</span> len,          <span class="hljs-comment">// длинна буфера для приёма данных</span>
+         <span class="hljs-keyword">int</span> flags         <span class="hljs-comment">// флаги (может быть 0)</span>
+        )</span></span>;
+
+<span class="hljs-keyword">int</span> actual_len = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">if</span> (SOCKET_ERROR == (actual_len = recv (s, (<span class="hljs-keyword">char</span>* ) &amp; buff), max_packet_size, <span class="hljs-number">0</span> ) ) 
+{
+    <span class="hljs-comment">// Error...</span>
+    error = WSAGetLastError();
+    <span class="hljs-comment">// ... </span>
+}
+</div></code></pre>
+<p>Флаги:</p>
+<ul>
+<li>
+<p>MSG_PEEK - Данные копируются в принимающий буфер, но из очереди сообщений не изымаются. Функция возвращает количество принятых на данный момент байт данных.</p>
+</li>
+<li>
+<p>MSG_OOB - Сообщение является OOB данными. (Out Of Band) То есть, такое сообщение передаётся вне потока. Это значит, что при отправке такого сообщения, транспортный протокол не ждёт полного заполнения TCP-буфера, а отсылает сообщение немедленно. Данный флаг можно использовать при передаче приоритетных данных. При использовании MSG_OOB, Winsock-приложения поддерживающие связь, должны заранее &quot;договориться&quot; о использовании этого флага.</p>
+</li>
+</ul>
+<p>закрываем соединение</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">shutdown</span><span class="hljs-params">(SOCKET s,     <span class="hljs-comment">// Закрываемый сокет</span>
+             <span class="hljs-keyword">int</span> how       <span class="hljs-comment">// Способ закрытия</span>
+           )</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">closesocket</span><span class="hljs-params">(SOCKET s   <span class="hljs-comment">// Закрываемый сокет</span>
+    )</span></span>;
+
+closesocket (s);
+</div></code></pre>
+<p>Для того, что бы узнать IP адрес машины зная ёё имя, существует функция gethostbyname.</p>
+<pre class="hljs"><code><div><span class="hljs-function">struct hostent FAR *<span class="hljs-title">gethostbyname</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> FAR *name )</span></span>;
+
+hostent* d_addr; <span class="hljs-comment">// Структура, в которую будет помещен IP адрес, // при возврате.</span>
+hostent* hn = gethostbyname (<span class="hljs-string">"www.Shelek.com"</span>);
+<span class="hljs-comment">//...</span>
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">hostent</span> {</span>
+   <span class="hljs-keyword">char</span> FAR * h_name;               <span class="hljs-comment">// Официальное имя машины</span>
+   <span class="hljs-keyword">char</span> FAR * FAR * h_aliases;      <span class="hljs-comment">// Массив альтернативных имен машины // (заканчивающийся 0)</span>
+   short h_addrtype;                <span class="hljs-comment">// Тип адреса (AF_INET...)</span>
+   short h_length;                  <span class="hljs-comment">// Длина адреса в байтах</span>
+   <span class="hljs-keyword">char</span> FAR * FAR * h_addr_list;    <span class="hljs-comment">// Список адресов (заканчивающийся 0)</span>
+};
+
+
+sockaddr_in adr;
+<span class="hljs-comment">// ...</span>
+hostent* d_addr = gethostbyname (<span class="hljs-string">"www.Shelek.com"</span>);
+adr.sin_addr.S_un.S_addr = *(DWORD* ) hn-h_addr_list[<span class="hljs-number">0</span>];
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-function">struct HOSTENT FAR * <span class="hljs-title">gethostbyaddr</span><span class="hljs-params">(
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> FAR *addr,     <span class="hljs-comment">// Адрес машины (в сетевом виде)</span>
+    <span class="hljs-keyword">int</span> len,                  <span class="hljs-comment">// Длинна адреса</span>
+    <span class="hljs-keyword">int</span> type                  <span class="hljs-comment">// Тип адреса</span>
+)</span></span>;
+
+DWORD a = inet_addr (<span class="hljs-string">"192.168.0.4"</span>); <span class="hljs-comment">// Адрес машины в сетевом формате</span>
+   hn = gethostbyaddr ((<span class="hljs-keyword">char</span>* )&amp;a, <span class="hljs-number">4</span>, AF_INET);
+</div></code></pre>
+<p>Функция ioctlsocket.
+Функция ioctlsocket позволяет менять/получать режим ввода/вывода конкретного сокета.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ioctlsocket</span><span class="hljs-params">(SOCKET s,              <span class="hljs-comment">// Сокет [in]</span>
+                <span class="hljs-keyword">long</span> cmd,              <span class="hljs-comment">// Комманда [in]</span>
+                u_long FAR *argp       <span class="hljs-comment">// Параметр/значение [in/out]</span>
+               )</span></span>;
+
+BOOL l = TRUE;
+<span class="hljs-keyword">if</span> (SOCKET_ERROR == ioctlsocket (s, FIONBIO, (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span>* ) &amp;l) )
+{
+    <span class="hljs-comment">// Error</span>
+   <span class="hljs-keyword">int</span> res = WSAGetLastError ();
+   <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+}
+</div></code></pre>
+<p>Функция select
+Функция slect позволяет определить текущее состояние одного или более сокетов.
+То есть, из какого-то входящего множества сокетов, она формирует выходящее множество сокетов, готовых к операциям чтения/записи/....</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">select</span><span class="hljs-params">(<span class="hljs-keyword">int</span> nfds,                         <span class="hljs-comment">// Не используется (оставлен для совместимости)</span>
+           fd_set FAR *readfds,              <span class="hljs-comment">// множество сокетов, проверяемых на готовность к чтению</span>
+           fd_set FAR *writefds,             <span class="hljs-comment">// множество сокетов, проверяемых на готовность к отсылке</span>
+           fd_set FAR *exceptfds,            <span class="hljs-comment">// множество сокетов, проверяемых на ошибку/OOB данные</span>
+           <span class="hljs-keyword">const</span> struct timeval FAR *timeout <span class="hljs-comment">// Таймаут проверки</span>
+)</span></span>;
+
+FD_CLR (s, *<span class="hljs-built_in">set</span>) -Удаляет дескриптор s из <span class="hljs-built_in">set</span>.
+FD_ISSET(s, *<span class="hljs-built_in">set</span>) - Возвращает ненулевое значение, если s присутствует в <span class="hljs-built_in">set</span>. Иначе, возвращает ноль.
+FD_SET(s, *<span class="hljs-built_in">set</span>) - добавляет s к <span class="hljs-built_in">set</span>.
+FD_ZERO(*<span class="hljs-built_in">set</span>) - Очищает множество <span class="hljs-built_in">set</span>
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timeval</span> {</span>
+   <span class="hljs-keyword">long</span> tv_sec;  <span class="hljs-comment">// секунды</span>
+   <span class="hljs-keyword">long</span> tv_usec; <span class="hljs-comment">// микросекунды</span>
+};
+</div></code></pre>
+<p>С помощью функции select и этого набора макросов, мы можем проверять конечное множество сокетов на готовность к считыванию/отсылке данных, выполнения connect, на предмет входящих соединений, наличия OOB сообщений и т.п.
+На данном этапе нас интересует проверка сокета на возможность считывания данных, поэтому пока ограничимся самым простым вызовом select.
+Для этого нам необходимо поместить наш сокет в множество на которое будет указывать readfds (в примере это read_s), задать timeout и выполнить select.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// ...</span>
+
+fd_set read_s; <span class="hljs-comment">// Множество</span>
+timeval time_out; <span class="hljs-comment">// Таймаут</span>
+
+FD_ZERO (&amp;read_s); <span class="hljs-comment">// Обнуляем мнодество</span>
+FD_SET (s, &amp;read_s); <span class="hljs-comment">// Заносим в него наш сокет</span>
+time_out.tv_sec = <span class="hljs-number">0</span>;time_out.tv_usec = <span class="hljs-number">500000</span>; <span class="hljs-comment">//Таймаут 0.5 секунды.</span>
+<span class="hljs-keyword">if</span> (SOCKET_ERROR == (res = select (<span class="hljs-number">0</span>, &amp;read_s, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>, &amp;time_out) ) ) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+
+<span class="hljs-keyword">if</span> ((res!=<span class="hljs-number">0</span>) &amp;&amp; (FD_ISSET (s, &amp;read_s)) ) <span class="hljs-comment">// Использую FD_ISSET только для примера! :)</span>
+{
+    <span class="hljs-comment">// Получаю данные</span>
+}
+<span class="hljs-comment">// ...</span>
+</div></code></pre>
+<p><a href="https://club.shelek.ru/viewart.php?id=35">Winsock для всех (часть 1)</a>
+<a href="https://club.shelek.ru/viewart.php?id=36">Winsock для всех (часть 2)</a>
+<a href="https://club.shelek.ru/viewart.php?id=37">Winsock для всех (часть 3)</a></p>
+<hr>
+<h1 id="%D0%BE%D1%81">ОС</h1>
+<h2 id="%D0%B6%D0%B8%D0%B7%D0%BD%D1%8C-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B">Жизнь программы</h2>
+<p>Выполнение любого процесса жизненного цикла предполагает наличие результата, в явном или неявном виде.</p>
+<h4 id="design-time">Design-time</h4>
+<p>Программа появляется в голове программиста.
+Но так как это время абстрактно, примем за время появления программы - момент создания минимального запускаемого кода.</p>
+<h4 id="compile-time">Compile-time</h4>
+<p>В результате выполнения процесса компиляции мы получаем компилят (то есть непосредственный результат обработки нашего исходного кода).</p>
+<h4 id="load-time">Load-time</h4>
+<p>После получения компилята, над ним, сразу или отложенно должен быть исполнен процесс связывания или линковки. Так как компилят обычно хранится в файле, то возникает время загрузки</p>
+<h4 id="link-time">Link-time</h4>
+<p>Обычно, линковка необходима, так как компилятор всегда производит компилят для одного модуля для непосредственного исполнения на целевой машине.
+Однако в реальной модульной системе на машине одновременно будут исполнены несколько модулей.</p>
+<h4 id="init-run-close-time">Init, Run, Close-time</h4>
+<p>Запуск и дальнейшая работа. Наиболее известные широкой публике этапы. Представлены временем инициализации (init-time) и временем исполнения (run-time).
+В сущности, результат работы этого этапа жизненного цикла и является обычно непосредственной целью написания программы.</p>
+<p>Можно дополнительно выделить время завершения работы программы (close-time).
+Однако сейчас все три времени работы обычно принято называть run-time, а логическое деление на три этапа реализовывать уже в рамках клиентского программного кода.</p>
+<h4 id="death-time">Death-time</h4>
+<p>Отдельным важным временем жизни программы является посмертное время (death-time), в которое, вопреки распространенным представлениям тоже является частью жизненного цикла программы.
+Целью работы программы обычно является некий результат, обычно зависящий от входных данных, программы строятся с применением методов, позволяющих итеративно обрабатывать входные данные и производить выходные данные, которые могут быть поданы на вход следующей итерации.
+Например записывать итоги работы в бд</p>
+<p><a href="https://habr.com/ru/articles/313934/">Концепция жизни программы</a></p>
+<hr>
+<h1 id="%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8-%D0%B8-%D1%84%D1%80%D0%B5%D0%B9%D0%BC%D0%B2%D0%BE%D1%80%D0%BA%D0%B8">Библиотеки и фреймворки</h1>
+<h2 id="boost">Boost</h2>
+<h2 id="qt">Qt</h2>
+<p>Вопросы на собеседовании</p>
+<ul>
+<li>
+<p>Можно ли переназначить связь сигнала(-лов) со слотом(-ами) в рантайм? если да, то как. если нет, то почему?</p>
+</li>
+<li>
+<p>Можно ли с помощью сигнала передать данные размером ~2GB? если да, то зачем?</p>
+</li>
+<li>
+<p>каким образом должны обрабатываться ошибки и исключительные ситуации в приложении, использующем Qt? есть ли вообще какая-то специфика в данном ключе, или можно воспользовать общими для C++ соглашениями?</p>
+</li>
+</ul>
+<h2 id="gtestgmoch">gtest/gmoch</h2>
+<h1 id="%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B8-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8">Практики разработки()</h1>
+<h1 id="sql">SQ()L</h1>
+
+</body>
+</html>
