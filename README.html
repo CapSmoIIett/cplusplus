@@ -396,7 +396,10 @@ code {
 </ul>
 </li>
 <li><a href="#%D0%BF%D0%B5%D1%80%D0%B5%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">Перечисления</a></li>
-<li><a href="#%D0%B8%D0%B4%D0%B8%D0%BE%D0%BC%D1%8B">Идиомы</a></li>
+<li><a href="#%D0%B8%D0%B4%D0%B8%D0%BE%D0%BC%D1%8B">Идиомы</a>
+-<a href="#raii">RAII</a>
+-<a href="#pimpl">pimpl</a>
+-<a href="#non-copyablenon-moveable">Non-Copyable/Non-Moveable</a></li>
 <li><a href="#%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D0%B8-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8">Указатели и ссылки</a>
 <ul>
 <li>[Ссылки] (#ссылки)</li>
@@ -436,7 +439,17 @@ code {
 </ul>
 </li>
 <li><a href="#%D0%BF%D0%BE-%D0%B1%D0%B8%D1%82%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8">По битовые операции</a></li>
-<li><a href="#STL">STL</a></li>
+<li><a href="#STL">STL</a>
+<ul>
+<li><a href="#%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B">Контейнеры</a></li>
+<li><a href="#%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B-%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8">Контейнеры последовательности</a>
+<ul>
+<li><a href="#array">Array</a></li>
+<li><a href="#vector">Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8">Системы сборки</a>
 <ul>
 <li><a href="#make">Make</a></li>
@@ -1240,6 +1253,31 @@ fun(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">move</sp
 <li>Данная идиома применима только в языках с предсказуемым временем жизни объекта. Сюда относится, например, С++, а также языки с сборщиком мусора, где время жизни объекта определяется количеством ссылок на него, такие как Objective C.</li>
 <li>Эта идиома неприменима в таких языках как Java или С#, где невозможно предсказать когда объект будет удален.</li>
 </ol>
+<h4 id="%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE-3-%D1%85">Правило 3-х</h4>
+<p>(актуально до <a href="#c11">C++11</a>)<br>
+Eсли вам нужно определить что-либо из конструктора копирования, оператора присваивания копированием или деструктора, то скорее всего вам нужно определить “все три”</p>
+<h4 id="%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE-5-%D1%85">Правило 5-х</h4>
+<p>Eсли вам нужно определить что-либо из пятерки конструкторов или деструтктор, то вам, скорее всего, нужно определить или удалить (или, по крайней мере, рассмотреть такую возможность) все пять.</p>
+<p>(если вы не определите операции перемещения, они не будут генерироваться, и вызовы будут обрабатываться через операции копирования. И это не будет ошибкой, но, возможно, это будет вашим большим упущением с точки зрения оптимизации.))</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Инициализация и уничтожение</span>
+   <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">IndirectValue</span><span class="hljs-params">(T* ptr )</span></span>;
+   ~IndirectValue() <span class="hljs-keyword">noexcept</span> ;
+
+   <span class="hljs-comment">// Копирование (вместе с деструктором дает нам Правило Трех)</span>
+   IndirectValue(IndirectValue <span class="hljs-keyword">const</span>&amp; other) ;
+
+   IndirectValue&amp; <span class="hljs-keyword">operator</span>=(IndirectValue <span class="hljs-keyword">const</span>&amp; other);
+
+   <span class="hljs-comment">// Перемещение (добавление этих элементов уже дает нам Правило Пяти)</span>
+   IndirectValue(IndirectValue&amp;&amp; other) <span class="hljs-keyword">noexcept</span>;
+
+   IndirectValue&amp; <span class="hljs-keyword">operator</span>=(IndirectValue&amp;&amp; other) <span class="hljs-keyword">noexcept</span> ;
+</div></code></pre>
+<h4 id="%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE-0-%D0%BB%D1%8F">Правило 0-ля</h4>
+<p>Если ничего из специальных функций-членов не определено пользователем, то (с учетом переменных-членов) компилятор предоставит реализации по умолчанию для каждой из них.<br>
+<em>Правило Ноля заключается в том, что тот сценарий, когда не нужно определять ничего из специальных функций-членов, должен быть предпочтительным.</em></p>
+<p>Самый лучший подход — по умолчанию следовать Правилу Ноля, прибегая к Правилу Пяти, если обнаружили, что вам нужно написать какие-либо специализированные классы, управляющие ресурсами (что само по себе должно происходить  достаточно редко).</p>
+<p><a href="https://habr.com/ru/companies/otus/articles/704492/">Источник</a></p>
 <hr>
 <h3 id="pimpl">pimpl</h3>
 <p><em>pointer to implementation - указатель на реализацию</em></p>
@@ -1744,6 +1782,10 @@ std::bitset::reference, в котором находится указатель 
 <li>random access iterator — для обхода коллекции в любом направлении.</li>
 </ol>
 <p>Важно понимать, что при получении итератора на какой-то элемент коллекции и последующем изменении коллекции итератор может стать непригоден для использования.</p>
+<h1 id="bind">Bind</h1>
+<p>Bind - это адаптер функциональных объектов, который позволяет адаптировать функциональные объекты под заданное число параметров.</p>
+<pre class="hljs"><code><div>
+</div></code></pre>
 <h2 id="%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B">Алгоритмы</h2>
 <p>Методы перебора всех элементов коллекции и их обработки:<br>
 <a href="https://cplusplus.com/reference/algorithm/count/">count</a> - Возвращает количество элементов в диапазоне [first,last), которые равны val ;<br>
@@ -2580,6 +2622,13 @@ time_out.tv_sec = <span class="hljs-number">0</span>;time_out.tv_usec = <span cl
 <a href="https://club.shelek.ru/viewart.php?id=37">Winsock для всех (часть 3)</a></p>
 <hr>
 <h1 id="%D0%BE%D1%81">ОС</h1>
+<h2 id="windows">Windows</h2>
+<h3 id="tmain">_tmain</h3>
+<p>Для не-Unicode-программ используется соответствующее стандарту имя main и список параметров int argc, char* argv[].
+Для Unicode-программ список параметров в MSVC выглядит как int argc, wchar_t* argv[], и во избежание конфликтов с исходниками и компиляторами, соответствующими стандарту, функция называется wmain.</p>
+<p>https://ru.stackoverflow.com/questions/213830/tmain-%D0%BF%D0%BE%D1%87%D0%B5%D0%BC%D1%83-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5</p>
+<h3 id="sal">SAL</h3>
+<p><a href="https://learn.microsoft.com/ru-ru/cpp/code-quality/using-sal-annotations-to-reduce-c-cpp-code-defects?view=msvc-170">SAL — это язык заметок исходного кода Майкрософт</a>. С помощью заметок исходного кода можно сделать намерение явного кода. Эти заметки также позволяют автоматизированным статическим средствам анализа анализировать код более точно, что значительно меньше ложных срабатываний и ложных отрицательных значений.</p>
 <h2 id="%D0%B6%D0%B8%D0%B7%D0%BD%D1%8C-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B">Жизнь программы</h2>
 <p>Выполнение любого процесса жизненного цикла предполагает наличие результата, в явном или неявном виде.</p>
 <h4 id="design-time">Design-time</h4>
