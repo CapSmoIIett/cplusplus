@@ -1,0 +1,4 @@
+FROM swidzinski/cmake:toolchain
+
+ADD ./ /root
+WORKDIR /root/examples
