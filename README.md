@@ -21,14 +21,14 @@
         - [Интроспекция](#интроспекция)
     - [Области видимости](#области-видимости)
     - [Работа с памятью](#работа-с-памятью)
-        - [Выравнивание] (#выравнивание)
+        - [Выравнивание](#выравнивание)
     - [Перечисления](#перечисления)
     - [Идиомы](#идиомы)
-        -[RAII](#raii)
-        -[pimpl](#pimpl)
-        -[Non-Copyable/Non-Moveable](#non-copyablenon-moveable)
+        - [RAII](#raii)
+        - [pimpl](#pimpl)
+        - [Non-Copyable/Non-Moveable](#non-copyablenon-moveable)
     - [Указатели и ссылки](#указатели-и-ссылки)
-        - [Ссылки] (#ссылки)
+        - [Ссылки](#ссылки)
         - [Умные казатели](#умные-казатели)
             - [std::auto_ptr](#stdаutо_ptr)
             - [std::unique_ptr](#stdunique_ptr)
@@ -2826,9 +2826,87 @@ https://ru.stackoverflow.com/questions/213830/tmain-%D0%BF%D0%BE%D1%87%D0%B5%D0%
 
 # Библиотеки и фреймворки
 
-## Boost
 
-## Qt
+# Qt
+
+## Модули
+
+| Имя | Описание |
+|--|--|
+| [QtCore](#qtcore) | базовый модуль |
+| [QtGui](#qtgui) | Интеграция с оконной системой (OpenGL) |
+| [QtWidget](#qtwidget) | Дополняет qtGui |
+| [QtQuick](#qtquick) | технология для быстрой разработки гуи на основе qml |
+| [QtQML](#qtqml) | |
+| [QtNetwork](#) | модуль для работы с сокетами |
+| [QtXml](#) | нужен для работы с xml |
+| ... |
+
+
+### QtCore
+
+QCoreApplication - содержит объекты, подсоединенные к контексту оперрационной системы. Срок жизни 
+QCoreApplication соответсвует времени жизни всего приложения. Создается только один раз
+
+### QtGui
+
+Класс приложения этого модуля - QGuiApplication. Он содержит механизм
+цикла событий и обладает доступом к буферу обмена, и инструментам для настроек приложения (палитра)
+(есть еще доступ к форме курсора)
+
+### QtWidget
+
+базовый класс для всех элементов управления Qt. По своему виду - четырех угольник
+
+QApplication - наслежник QCoreApplication.
+
+## Философия объектной модели 
+
+> [!IMPORTANT]
+> При множественном наследовании, наследование от QObject должен быть первым, чтобы
+> MOC (Meta Object Compiler) мог его правильно распознать. Другой порядок приведет к ошибке
+> class MyClass : public QObject, public AnotherClass { ...};
+
+> [!IMPORTANT]
+> При множественном наследовании так же важно, чтобы от QObject наследовался только 
+> один родительский класс
+
+
+### Сигналы и слоты
+
+Callback function - старая концепция в основе X Windows System, основана на использовании 
+обычных фунций, которые вызываются в результате действий пользователя. 
+Минусы:
+    - отсутвует возможность проверки возврщаемых значений (все передается через void*) 
+    - гуи плотно связан с логикой - что усложняет их параллельную разработку
+
+MFC - Надстройка над функциями Windows, реализованных на C. Для обеспечения связей сообщений и 
+методов обработки задействуются специальные макросы - крты сообщений.
+
+```c++
+class CPhotoStylerApp : public CWinApp 
+{
+public:
+    CPhotoStylerApp();
+
+    virtual BOOL Initinstance();
+    afx_msg void OnAppAЬout();
+    afx_msg void OnFileNew();
+    DECLARE_МESSAGE_МАР ()
+};
+
+BEGIN_МESSAGE_МAP(CPhotoStylerApp, CWinApp)
+    ON_COММAND(ID_APP_AВOUT, OnAppAЬout)
+    ON_COММAND(ID_FILE_NEW, OnFileNew)
+    ON_COММAND(ID_FILE_NEW, CWinApp::OnFileNew)
+    ON_COММAND(ID_FILE_OPEN, CWinApp::OnFileOpen)
+    ON_COММAND(ID_FILE_PRINT_SETUP, CWinApp::OnFilePrintSetup)
+END_МESSAGE_МАР () 
+```
+
+
+В Qt все построенно на объектах. QObject - основной, базовый класс. Большинство классов в Qt его
+наследники
 
 Вопросы на собеседовании
 
@@ -2838,8 +2916,9 @@ https://ru.stackoverflow.com/questions/213830/tmain-%D0%BF%D0%BE%D1%87%D0%B5%D0%
 
 - каким образом должны обрабатываться ошибки и исключительные ситуации в приложении, использующем Qt? есть ли вообще какая-то специфика в данном ключе, или можно воспользовать общими для C++ соглашениями?
 
+# Boost
 
-## gtest/gmoch
+# gtest/gmoch
 
 [документация](https://google.github.io/googletest/)
 
