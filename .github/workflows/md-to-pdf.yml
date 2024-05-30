@@ -19,10 +19,11 @@ jobs:
       #- run: sudo apt-get install texlive texlive-latex-extra
       #- run: sudo apt-get install texlive-xetex
       #- run: sudo apt install texlive-latex-base pandoc texlive-fonts-recommended
-
+      - run : pandoc -s -f markdown -t html5 -o output.html README.md 
       - name: Convert
       #  run: pandoc --pdf-engine=xelatex -V -s README.md -o README.pdf 
-        run: pandoc README.md -o README.pdf
+      #  run: pandoc README.md -o README.pdf
+        run: pandoc output.html -o README.pdf
       
       - name: Release
         uses: softprops/action-gh-release@v1
