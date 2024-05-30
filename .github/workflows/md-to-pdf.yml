@@ -13,22 +13,17 @@ jobs:
         uses: actions/checkout@v4
 
       - run: sudo apt update
+
       - name: Install pandoc
-        #run: sudo apt-get install pandoc
         run: sudo apt-get install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra
-      #- run: sudo apt-get install texlive texlive-latex-extra
-      #- run: sudo apt-get install texlive-xetex
-      #- run: sudo apt install texlive-latex-base pandoc texlive-fonts-recommended
-      - run : pandoc -s -f markdown -t html5 -o output.html README.md 
+
       - name: Convert
-      #  run: pandoc --pdf-engine=xelatex -V -s README.md -o README.pdf 
-      #  run: pandoc README.md -o README.pdf
-        run: pandoc output.html -o README.pdf
+        run : pandoc README.md -s -o output.html 
       
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            README.pdf
+            output.html
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
