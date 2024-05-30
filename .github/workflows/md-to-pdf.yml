@@ -14,6 +14,7 @@ jobs:
 
       - name: Install pandoc
         run: sudo apt install pandoc
+        run: install pdflatex
 
       - name: Convert
         run: pandoc README.md -o README.pdf 
