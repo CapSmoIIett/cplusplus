@@ -2,8 +2,8 @@ name: md to pdf builder
 
 on:
   push:
-    branches:
-      - 'auto-pdf'
+    tags:
+      - 'v*.*' 
 
 jobs:
   runs-on: ubuntu-20.04
