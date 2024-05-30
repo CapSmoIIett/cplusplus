@@ -19,7 +19,7 @@ jobs:
       - run: sudo apt install texlive-latex-base pandoc texlive-fonts-recommended
 
       - name: Convert
-        run: pandoc -s README.md -o README.pdf 
+        run: pandoc --pdf-engine=xelatex -V -s README.md -o README.pdf 
       
       - name: Release
         uses: softprops/action-gh-release@v1
