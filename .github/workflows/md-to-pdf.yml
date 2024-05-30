@@ -16,7 +16,7 @@ jobs:
         run: sudo apt install pandoc
 
       - name: Convert
-        run: pandoc --from=gfm --to=pdf -o README.pdf README.md
+        run: pandoc README.md -o README.pdf 
       
       - name: Release
         uses: softprops/action-gh-release@v1
