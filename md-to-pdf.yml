@@ -3,7 +3,7 @@ name: md to pdf builder
 on:
   push:
     branches:
-      - 'master'
+      - 'auto-pdf'
 
 jobs:
   runs-on: ubuntu-20.04
@@ -11,8 +11,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install markdown-pdf
-      run: npm install -g markdown-pdf
+    - name: Install pandoc
+      run: sudo apt install pandoc
 
     - name: Convert
-      run: markdown-pdf README.md
+      run: pandoc --from=gfm --to=pdf -o README.pdf README.md
+    
+    - name: Release
+      uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            README.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
