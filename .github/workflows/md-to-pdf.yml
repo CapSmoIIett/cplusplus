@@ -14,7 +14,7 @@ jobs:
 
       - name: Install pandoc
         run: sudo apt install pandoc
-      - run: install pdflatex
+      - run: sudo apt install texlive-latex-base pandoc texlive-fonts-recommended
 
       - name: Convert
         run: pandoc README.md -o README.pdf 
