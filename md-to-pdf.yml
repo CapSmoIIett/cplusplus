@@ -6,19 +6,20 @@ on:
       - 'v*.*' 
 
 jobs:
-  runs-on: ubuntu-20.04
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Install pandoc
-      run: sudo apt install pandoc
+      - name: Install pandoc
+        run: sudo apt install pandoc
 
-    - name: Convert
-      run: pandoc --from=gfm --to=pdf -o README.pdf README.md
-    
-    - name: Release
-      uses: softprops/action-gh-release@v1
+      - name: Convert
+        run: pandoc --from=gfm --to=pdf -o README.pdf README.md
+      
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
           files: |
             README.pdf
