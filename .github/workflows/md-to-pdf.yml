@@ -21,7 +21,7 @@ jobs:
         run: sudo apt-get install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra
 
       - name: Convert
-        run : pandoc README.md -s -o output.html 
+        run : pandoc --standalone --embed-resource -c github-markdown.css -f gfm -t html README.md -o output.html 
       
       - name: Release
         uses: softprops/action-gh-release@v1
