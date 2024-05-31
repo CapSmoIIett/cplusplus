@@ -27,7 +27,7 @@ jobs:
       - run: sudo apt-get install zip
 
       - name: Archive
-        run: zip book.zip output.html images 
+        run: zip book.zip output.html images/*
 
       - name: Release
         uses: softprops/action-gh-release@v1
