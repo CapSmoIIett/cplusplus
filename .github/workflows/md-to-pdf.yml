@@ -23,13 +23,20 @@ jobs:
       - name: Convert
         #run : pandoc --standalone --embed-resource -c github-markdown.css -f gfm -t html README.md -o output.html 
         run: pandoc --standalone -c images/github-markdown.css -f gfm -t html README.md -o output.html
+
+      - run: mkdir book
+      - run: mv output.html /book
+      - run: mv images /book
         
+      - run: sudo apt-get install zip
+
+      - name: Archive
+        run: zip book.zip book
+
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            output.html
-            images
-            images/*
+            book.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
