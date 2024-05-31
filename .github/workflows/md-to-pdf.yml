@@ -22,12 +22,13 @@ jobs:
 
       - name: Convert
         #run : pandoc --standalone --embed-resource -c github-markdown.css -f gfm -t html README.md -o output.html 
-        run: pandoc --standalone -c github-markdown.css -f gfm -t html README.md -o output.html
+        run: pandoc --standalone -c images/github-markdown.css -f gfm -t html README.md -o output.html
         
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
             output.html
+            images/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
