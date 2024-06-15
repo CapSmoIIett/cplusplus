@@ -199,7 +199,105 @@ x = x >> 3;             //0b00011111 (31)
 ---
 
 ### Функтор
+
 ### Пользовательские литералы
+
+[Пользовательские литералы в C++11](https://habr.com/ru/articles/140357/)
+
+Литерал — это некоторое выражение, создающее объект. Литералы появились не только в C++11, они были и в C++03. Например, есть литералы для создания символа, строки, вещественных чисел, и т.д.
+Примеры литералов:
+
+```c++
+    'x';      // character
+    "some";   // c-style string
+    7.2f;     // float
+    74u;      // unsigned int
+    74l;      // long
+    0xF8;     // hexadecimal number
+    1;        // то же литерал (литеральная константа)
+```
+
+Существует две категории пользовательских литералов: сырые литералы (raw) и литералы для встроенных типов (cooked).
+
+Стоит, однако, заметить, что C++ позволяет создавать только литералы-суфиксы. Иными словами, создать литералы префиксы (как, например, 0x), или префиксо-суфиксные (как "") — не получится.
+
+#### Системные литералы
+
+[Литералы](http://mycpp.ru/cpp/book/c03_1.html)
+
+true и false являются литералами типа bool.
+записываются как escape-последовательности - тоже литералы
+Фактически строковый литерал представляет собой массив символьных констант, где по соглашению 
+языков С и С++ последним элементом всегда является специальный символ с кодом 0 (\0).
+
+|Символ         | Описание      |
+| -             | -             |
+| *u или *U     | unsigned int  |
+| *UL или *LU   | unsigned long |
+| *.*f или *.*F | float         |
+| *.*L или *.*I | long double   |
+| L*            | wchar_t       |
+
+#### Литералы для численных типов
+
+литерал для целых чисел в качестве аргумента принимает unsigned long long
+литерал для вещественных чисел в качестве аргумента принимает long double
+Данные типы обязательнымы и утверждены стандартом языка.
+
+```c++
+    // сигнатура литерала для целочисленных типов
+    OutputType operator "" _suffix(unsigned long long);
+
+    // сигнатура литерала для вещественных типов
+    OutputType operator "" _suffix(long double);
+
+    42_suffix;      // OutputType operator "" _suffix(unsigned long long);
+    42.24_suffix;   // OutputType operator "" _suffix(long double);
+```
+
+#### Литералы для строковых типов
+
+```c++
+    OutputType operator "" _suffix(const char* str, size_t size);
+    OutputType operator "" _suffix(const wchar_t* str, size_t size);
+    OutputType operator "" _suffix(const char16_t* str, size_t size);
+    OutputType operator "" _suffix(const char32_t* str, size_t size);
+
+    "1234"_suffix;   // operator "" _suffix(const char* str, size_t size);
+    u8"1234"_suffix; // operator "" _suffix(const char* str, size_t size);
+    L"1234"_suffix;  // operator "" _suffix(const wchar_t* str, size_t size);
+    u"1234"_suffix;  // operator "" _suffix(const char16_t* str, size_t size);
+    U"1234"_suffix;  // operator "" _suffix(const char32_t* str, size_t size);
+```
+
+#### Сырые литералы
+
+Сигнатура сырого литерала выглядит следующим образом:
+
+```c++
+    OutputType operator "" _suffix(const char* literalString);
+```
+
+Он принимает число ввиде строки (не 1 а "1").
+Используя данный тип литералов, можно написать литерал преобразующий двоичное число в десятичное. 
+
+
+Существует еще одна сигнатура для сырых литералов. Основана она на применении Variadic Template:
+```c++
+    template <char...>
+        OutputType operator "" _b();
+```
+Преимущества литералов на базе Variadic Template заключается в том, что они могут вычисляться на этапе компиляции.
+
+
+#### Порядок вызова литералов
+
+1. operator "" _x (unsigned long long) или operator "" _x (long double)`
+2. operator "" _x (const char* raw)
+3. operator "" _x <'c1', 'c2', ... 'cn'>
+
+Если пользовательский литерал совпадает с системным, то выполняется системный
+
 
 
 ### sizeof
@@ -228,7 +326,7 @@ struct Foo{};
 Ответ: malloc — выделение блока памяти в стиле Си, опасное с точки зрения приведения типов (non-typesafe), т.к. возвращает void * и требует обязательного приведения. new — выделение блока памяти и последующий вызов конструктора, безопасное с точки зрения приведения типов (typesafe), т.к. тип возвращаемого значения определен заранее.
 (new вызывает конструктор)
 
-[В чем различия между delete и delete](https://habr.com/ru/articles/117996/)[]?
+[В чем различия между delete[] и delete](https://habr.com/ru/articles/117996/)[]?
 
 Ответ: delete предназначен для уничтожения объектов, память под которые выделена при помощи new(). delete[] для объектов выделенных при помощи оператора new[]().
 
