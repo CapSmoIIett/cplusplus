@@ -1369,6 +1369,45 @@ dynamic_cast <new_type>(exp)
 
 ## Шаблоны
 
+
+### Концепт
+```c++
+template<class T>
+//concept Sumable = std::is_arithmetic_v<T>;    // тоже можно
+concept Sumable = requires(T t)     // Если это не вызывает ошибку
+{
+    return a + b;
+} 
+
+template<Sumbale T>
+T Sum (T a, T b)
+{
+    return a + b;
+}
+```
+
+Концепт проверяет подходят ли передаваемые в шаблон типы условию концепта. Если они не подходят это вызовет понятную ошибку компиляции
+
+```c++
+
+template<class T>
+concept Printable = requires(T t)
+{
+    std::cout << t;
+}
+
+template<Printable T, Printable TArgs>
+void Print(T a, TArgs... args)
+{
+    std::cout << a << " ";
+    Print(args...);
+} 
+
+...
+
+Print(1, "hello");
+```
+
 ### CRTP
 The Curiously Recurring Template Pattern - Странно повторяющийся шаблон
 
