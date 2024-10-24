@@ -3068,8 +3068,22 @@ std::async позволяет запустить асинхронную зада
 
 ### std::packaged_task
 
-При конструировании экземпляра std::packaged_task вы
-обязаны передать функцию или допускающий вызов объект
+При конструировании экземпляра std::packaged_task вы обязаны передать функцию или допускающий вызов объект. Сам packaged_task тоже допускает вызовы
+Пример исполтьзования: список задач которые должен выполнить другой поток 
+
+```c++
+std::deque<std::packaged_task<void()> > tasks;
+...
+// потоко обработки задач
+if(tasks.empty()) continue;
+task=std::move(tasks.front());
+tasks.pop_front();
+
+// добавление задач
+std::packaged_task<void()> task(f);
+std::future<void> res = task.get_future();
+tasks.push_back(std::move(task));
+```
 
 # Процессы 
 
