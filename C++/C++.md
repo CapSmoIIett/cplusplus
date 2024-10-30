@@ -13,3 +13,8 @@
 [Quiz](https://cppquiz.org/quiz/question/1)
 
 # Содержание:
+
+- [[Синтаксис]]
+	
+
+![карта LK](images/roadmapLK.png)
