@@ -484,7 +484,7 @@ int main() {
 }
 ```
 
-резульато будет call of overloaded 'func(<brace-enclosed initializer list>)' is ambiguous
+резульато будет call of overloaded 'func(brace-enclosed initializer list>)' is ambiguous
 Это получается т.к. вызов подходит для первой перегрузки (initializer_list to vector),
 а со второй перегрузкой, приведение к вектору строк не походит, но у vector есть конструктро принимающий
 два итератора который подхоит.
