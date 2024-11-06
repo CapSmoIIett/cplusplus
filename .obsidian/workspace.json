@@ -1,0 +1,294 @@
+{
+  "main": {
+    "id": "26630d4bf5f1a0b4",
+    "type": "split",
+    "children": [
+      {
+        "id": "b60efeab49382096",
+        "type": "tabs",
+        "dimension": 40,
+        "children": [
+          {
+            "id": "0522dc0f7eb9af49",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++/Синтаксис/Синтаксис.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Синтаксис"
+            }
+          },
+          {
+            "id": "95246eb758bd7e10",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++/Синтаксис/Литералы/Литералы для строковых типов.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Литералы для строковых типов"
+            }
+          },
+          {
+            "id": "8fc0581c742f7dc6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++/Синтаксис/Литералы/Литералы для численных типов.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Литералы для численных типов"
+            }
+          },
+          {
+            "id": "11320b24b5abff39",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++/Синтаксис/Литералы/Литералы.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Литералы"
+            }
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "92dbfd12198c486c",
+        "type": "tabs",
+        "dimension": 28.71331828442438,
+        "children": [
+          {
+            "id": "472ca3c449e8cbb5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      },
+      {
+        "id": "413efc5ece45d831",
+        "type": "tabs",
+        "dimension": 31.28668171557562,
+        "children": [
+          {
+            "id": "c237dfddd6bcafde",
+            "type": "leaf",
+            "state": {
+              "type": "3d_graph_view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "3D-Graph"
+            }
+          },
+          {
+            "id": "414d73f4ad316b3b",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "463168b3590875ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "51dcdd6147fdcba6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a5b91cb7c7c001ae",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "2878998391099071",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9745cca9d2e58185",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5b69421e795d8733",
+    "type": "split",
+    "children": [
+      {
+        "id": "ba61696fc091bb82",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc86502e6e9db411",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "d7a0026adc71d4f8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "29569abf066c960b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "3dfb2e42be5eb800",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "3d-graph:3D Graph": false
+    }
+  },
+  "active": "414d73f4ad316b3b",
+  "lastOpenFiles": [
+    "README.md",
+    "C++/Синтаксис/Литералы/Cырые литералы.md",
+    "C++/Синтаксис/Литералы/Системные литералы.md",
+    "C++/Синтаксис/Литералы/Литералы.md",
+    "C++/Синтаксис/Литералы/Пользовательские литералы.md",
+    "C++/Синтаксис/Литералы/Литералы для строковых типов.md",
+    "C++/Синтаксис/Литералы/Литералы для численных типов.md",
+    "C++/Синтаксис/Синтаксис.md",
+    "C++/Стандарты/Стандарты.md",
+    "C++/Стандарты/C++11.md",
+    "C++/Стандарты",
+    "C++/New folder",
+    "C++/Синтаксис/Базовые операции/Базовые операцие.md",
+    "C++/C++.md",
+    "C++/Синтаксис/Литералы",
+    "C++/Синтаксис/New folder",
+    "C++/Синтаксис/Базовые операции/Арифметические операции.md",
+    "C++/Синтаксис/Базовые операции/По битовые операции.md",
+    "C++/Синтаксис/Базовые операции/Инкремент и декремент.md",
+    "C++/Синтаксис/Базовые операции",
+    "C++/Синтаксис/По битовые операции.md",
+    "C++/Синтаксис/Инкремент и декремент.md",
+    "C++/Синтаксис/Базовые операцие.md",
+    "Books/Cmake/Modern CMake for C++ [2022] Rafal Swidzinski/Modern-CMake-for-Cpp-main/examples/chapter12/01-full-project/README.md",
+    "initializer_list.md",
+    "Books/Cmake/Modern CMake for C++ [2022] Rafal Swidzinski/Modern CMake for C++ Discover a better approach to building, testing and packaging your software [2022] Rafal Swidzinski.pdf",
+    "Books/Cmake/Modern CMake for C++ [2022] Rafal Swidzinski/Modern-CMake-for-Cpp-main/README.md",
+    "C++/Синтаксис/Арифметические операции.md",
+    "!.md",
+    "C++/README.md",
+    "Untitled",
+    "Amazon.md",
+    "C++/Untitled 1",
+    "C++/Синтаксис",
+    "Untitled 1",
+    "C++/Welcome.md"
+  ]
+}
