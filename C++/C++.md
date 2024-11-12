@@ -27,4 +27,7 @@
 - [[Патерны]]
 
 
+![карта с++](images/cpp_map.png)  
+
+
 ![карта LK](images/roadmapLK.png)
