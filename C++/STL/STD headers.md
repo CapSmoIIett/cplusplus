@@ -2,3 +2,4 @@
 [[thread std header]]
 [[mutex std header]]
 [[std_condition_variable]]
+[[Функции работающие с таймаутами]]
