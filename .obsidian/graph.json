@@ -5,18 +5,82 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
-  "colorGroups": [],
-  "collapse-display": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:C++/STL  ",
+      "color": {
+        "a": 1,
+        "rgb": 12446855
+      }
+    },
+    {
+      "query": "path:C++/Многопоточность  ",
+      "color": {
+        "a": 1,
+        "rgb": 12600463
+      }
+    },
+    {
+      "query": "path:C++/Синтаксис  ",
+      "color": {
+        "a": 1,
+        "rgb": 7855591
+      }
+    },
+    {
+      "query": "path:C++/Стандарты  ",
+      "color": {
+        "a": 1,
+        "rgb": 16776960
+      }
+    },
+    {
+      "query": "path:\"C++/Библиотеки и Фреймворки/Unreal Engine\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 14118400
+      }
+    },
+    {
+      "query": "path:\"C++/Системы Сборки\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 5050811
+      }
+    },
+    {
+      "query": "path:\"C++/Библиотеки и Фреймворки/Qt\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 6749952
+      }
+    },
+    {
+      "query": "path:\"C++/Алгоритмы\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 2003199
+      }
+    },
+    {
+      "query": "path:C++/Сети  ",
+      "color": {
+        "a": 1,
+        "rgb": 13253159
+      }
+    }
+  ],
+  "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": 0,
-  "nodeSizeMultiplier": 1,
-  "lineSizeMultiplier": 1,
-  "collapse-forces": true,
-  "centerStrength": 0.518713248970312,
-  "repelStrength": 10,
-  "linkStrength": 1,
-  "linkDistance": 250,
-  "scale": 0.7132754626224428,
+  "textFadeMultiplier": -1.1,
+  "nodeSizeMultiplier": 2.06510416666667,
+  "lineSizeMultiplier": 1.35052083333333,
+  "collapse-forces": false,
+  "centerStrength": 0.380208333333333,
+  "repelStrength": 20,
+  "linkStrength": 0.734375,
+  "linkDistance": 353,
+  "scale": 0.06699744995282783,
   "close": true
 }
