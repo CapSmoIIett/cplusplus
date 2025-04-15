@@ -1,3 +1,4 @@
+#Syntax
 
 Создавть std::shared_ptr с помощью *this* - плохая идея.  
 
