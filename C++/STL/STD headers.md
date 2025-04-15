@@ -1,5 +1,6 @@
 [[furute std header]]
 [[thread std header]]
 [[mutex std header]]
+[[memory std header]]
 [[std_condition_variable]]
 [[Функции работающие с таймаутами]]
