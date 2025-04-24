@@ -4,107 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "b60efeab49382096",
+        "id": "334f386dd2c1ee61",
         "type": "tabs",
-        "dimension": 40,
         "children": [
           {
-            "id": "0522dc0f7eb9af49",
+            "id": "5fc23d69609900a7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C++/Синтаксис/Синтаксис.md",
+                "file": "C++/C++.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Синтаксис"
-            }
-          },
-          {
-            "id": "95246eb758bd7e10",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "C++/Синтаксис/Литералы/Литералы для строковых типов.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Литералы для строковых типов"
-            }
-          },
-          {
-            "id": "8fc0581c742f7dc6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "C++/Синтаксис/Литералы/Литералы для численных типов.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Литералы для численных типов"
-            }
-          },
-          {
-            "id": "11320b24b5abff39",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "C++/Синтаксис/Литералы/Литералы.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Литералы"
-            }
-          }
-        ],
-        "currentTab": 3
-      },
-      {
-        "id": "92dbfd12198c486c",
-        "type": "tabs",
-        "dimension": 28.71331828442438,
-        "children": [
-          {
-            "id": "472ca3c449e8cbb5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
+              "title": "C++"
             }
           }
         ]
       },
       {
-        "id": "413efc5ece45d831",
+        "id": "bb17fa2582a848d6",
         "type": "tabs",
-        "dimension": 31.28668171557562,
         "children": [
           {
-            "id": "c237dfddd6bcafde",
-            "type": "leaf",
-            "state": {
-              "type": "3d_graph_view",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "3D-Graph"
-            }
-          },
-          {
-            "id": "414d73f4ad316b3b",
+            "id": "e41dc061a4434752",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -113,8 +37,7 @@
               "title": "Graph view"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -234,11 +157,12 @@
               "title": "Outline"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
@@ -248,47 +172,52 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "3d-graph:3D Graph": false
+      "command-palette:Open command palette": false
     }
   },
-  "active": "414d73f4ad316b3b",
+  "active": "e41dc061a4434752",
   "lastOpenFiles": [
-    "README.md",
-    "C++/Синтаксис/Литералы/Cырые литералы.md",
-    "C++/Синтаксис/Литералы/Системные литералы.md",
-    "C++/Синтаксис/Литералы/Литералы.md",
-    "C++/Синтаксис/Литералы/Пользовательские литералы.md",
-    "C++/Синтаксис/Литералы/Литералы для строковых типов.md",
-    "C++/Синтаксис/Литералы/Литералы для численных типов.md",
-    "C++/Синтаксис/Синтаксис.md",
-    "C++/Стандарты/Стандарты.md",
-    "C++/Стандарты/C++11.md",
-    "C++/Стандарты",
-    "C++/New folder",
-    "C++/Синтаксис/Базовые операции/Базовые операцие.md",
     "C++/C++.md",
-    "C++/Синтаксис/Литералы",
-    "C++/Синтаксис/New folder",
-    "C++/Синтаксис/Базовые операции/Арифметические операции.md",
-    "C++/Синтаксис/Базовые операции/По битовые операции.md",
-    "C++/Синтаксис/Базовые операции/Инкремент и декремент.md",
-    "C++/Синтаксис/Базовые операции",
-    "C++/Синтаксис/По битовые операции.md",
-    "C++/Синтаксис/Инкремент и декремент.md",
-    "C++/Синтаксис/Базовые операцие.md",
-    "Books/Cmake/Modern CMake for C++ [2022] Rafal Swidzinski/Modern-CMake-for-Cpp-main/examples/chapter12/01-full-project/README.md",
-    "initializer_list.md",
-    "Books/Cmake/Modern CMake for C++ [2022] Rafal Swidzinski/Modern CMake for C++ Discover a better approach to building, testing and packaging your software [2022] Rafal Swidzinski.pdf",
-    "Books/Cmake/Modern CMake for C++ [2022] Rafal Swidzinski/Modern-CMake-for-Cpp-main/README.md",
-    "C++/Синтаксис/Арифметические операции.md",
-    "!.md",
-    "C++/README.md",
-    "Untitled",
-    "Amazon.md",
-    "C++/Untitled 1",
-    "C++/Синтаксис",
-    "Untitled 1",
-    "C++/Welcome.md"
+    "C++/Разное/Методы оптимизации/Методы оптимизации.md",
+    "images/operation_cost.png",
+    "C++/Разное/Разное.md",
+    "C++/Библиотеки и Фреймворки/Qt/Qt.md",
+    "C++/Библиотеки и Фреймворки/Qt/MOC/MOC.md",
+    "C++/STL/atomic/atomic std header.md",
+    "C++/STL/STD headers.md",
+    "QML и Qt Quick.md",
+    "C++/STL/mutex/mutex std header.md",
+    "C++/STL/mutex/std_shared_lock.md",
+    "C++/STL/mutex/std_unique_lock.md",
+    "C++/Многопоточность/Функциональное программирование с применением будущих результатов.md",
+    "C++/Многопоточность/Синхронизация операций с помощью передачи сообщений.md",
+    "C++/Многопоточность/Мьютексы.md",
+    "C++/STL/mutex/std_lock_guard.md",
+    "C++/Многопоточность/Многопоточность.md",
+    "C++/STL/Контейнеры/Последовательные контейнеры/Array.md",
+    "C++/STL/mutex/std_mutex.md",
+    "C++/Синтаксис/Синтаксис.md",
+    "C++/Синтаксис/Шаблоны/template disabling.md",
+    "C++/Синтаксис/Шаблоны/SFINAE.md",
+    "C++/Синтаксис/Шаблоны/Шаблоны.md",
+    "C++/Компиляция/Поиск функции.md",
+    "C++/Синтаксис/Шаблоны",
+    "C++/Синтаксис/Указатели и ссылки/Untitled",
+    "C++/STL/STL.md",
+    "C++/STL/memory/memory std header.md",
+    "C++/Синтаксис/Базовые операции/Перегрузки.md",
+    "C++/Компиляция",
+    "images/factory_method.png",
+    "images/Untitled.png",
+    "C++/Патерны/Порождающие",
+    "C++/Патерны",
+    "C++/ОС/Windows/Очередь сообщений",
+    "C++/ОС/Windows",
+    "C++/ОС",
+    "C++/Библиотеки и Фреймворки/Qt/MOC",
+    "C++/Библиотеки и Фреймворки/Qt/Базовые типы и структуры данных в Qt",
+    "images/bitmap_example.png",
+    "images/quicksort_fp.png",
+    "images/cpp_map.png"
   ]
 }

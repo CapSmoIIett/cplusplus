@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "path:C++/STL  ",
@@ -71,16 +71,16 @@
       }
     }
   ],
-  "collapse-display": false,
+  "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": -1.1,
   "nodeSizeMultiplier": 2.06510416666667,
   "lineSizeMultiplier": 1.35052083333333,
   "collapse-forces": false,
-  "centerStrength": 0.380208333333333,
+  "centerStrength": 0.286458333333333,
   "repelStrength": 20,
-  "linkStrength": 0.734375,
-  "linkDistance": 353,
-  "scale": 0.06699744995282783,
-  "close": true
+  "linkStrength": 0.765625,
+  "linkDistance": 253,
+  "scale": 0.04231590268975958,
+  "close": false
 }
