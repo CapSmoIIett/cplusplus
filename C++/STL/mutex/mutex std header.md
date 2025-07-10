@@ -2,5 +2,6 @@
 [[std_shared_mutex]]
 [[std_call_once]]
 [[std_lock_guard]]
+[[std_scoped_lock]]
 [[std_shared_lock]]
 [[std_unique_lock]]

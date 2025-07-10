@@ -1,4 +1,4 @@
-[[furute std header]]
+[[future std header]]
 [[thread std header]]
 [[mutex std header]]
 [[memory std header]]
